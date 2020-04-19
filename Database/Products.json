@@ -1,0 +1,11 @@
+{
+    "Id":"1"
+    "ProductName": "Big Mac",
+    "Description": 
+    "Base del panino,Salsa Big Mac,Cipolla tritata disidratata,Insalata Iceberg tritata,Fetta di formaggio Cheddar fuso,Hamburger,Tramezzo del panino,
+    Salsa (Segreta) Big Mac,Cipolla disidratata tritata,2 cetriolini,Hamburger,Corona del paninoSalsa Big Mac: 1 tazza (equivalente a 250 grammi circa) 
+    di Miracle Whip (un equivalente della maionese), 1/3 di tazza di vinaigrette (80 ml) (sale olio e aceto), 1/4 di tazza di sottaceti-giardiniera (60 ml),
+     1 cucchiaio di zucchero, 1 cucchiaino di cipolla tritata, 1 pizzico di pepe.",
+    "Size": ["small", "medium", "big"],
+    "Price": 4.6
+}

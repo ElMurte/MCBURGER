@@ -7,7 +7,7 @@ class Burger : public Product
 private:
 Size size;
 public:
-    Burger(Size size);
+    Burger(Size size=small);
     Burger* clone() const;
 };
 
