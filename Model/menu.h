@@ -4,7 +4,6 @@
 using std::string;
 #include"product.h"
 #include "Dlist.h"
-enum Size{undefined,small,medium,big};
 class Menu{
 private:
     Dlist<Product*>products;
@@ -13,7 +12,8 @@ private:
     float price;
 public:
     Menu(Product* p=0,Size=undefined);
-    float Get_Menu_Price();
+    float Get_Price();
+    void Set_Price();
 };
 
 #endif // MENU_H

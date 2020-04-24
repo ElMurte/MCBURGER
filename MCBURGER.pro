@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Model/burger.cpp \
     Model/menu.cpp \
+    Model/patatine.cpp \
     Model/product.cpp \
     main.cpp \
     mainwindow.cpp
@@ -26,6 +27,7 @@ HEADERS += \
     Model/Dlist.h \
     Model/burger.h \
     Model/menu.h \
+    Model/patatine.h \
     Model/product.h \
     mainwindow.h
 

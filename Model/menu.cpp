@@ -9,7 +9,3 @@ Menu::Menu(Product *p,Size s):size(s){
         price=0;
     }
 }
-
-float Menu::Get_Menu_Price(){
-  return price;
-}
