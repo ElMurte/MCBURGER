@@ -1,14 +1,17 @@
 //#include "mainwindow.h"
 #include <iostream>
 //#include <QApplication>
-#include"./Model/Dlist.h"
-#include"./Model/product.h"
-#include"./Model/burger.h"
+#include"Model/restorant.h"
+#include"View/mainwindow.h"
+#include<QApplication>
 using std::cout;using std::endl;
 int main(int argc, char *argv[])
 {
-   /*QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();*/
+    QApplication a(argc, argv);
+    Restorant r;
+    r.printproducts();
+    cout<<endl<<1<<endl;
+    MainWindow m;
+    m.show();
+    return a.exec();
 }

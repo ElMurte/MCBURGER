@@ -14,6 +14,7 @@ public:
     Menu(Product* p=0,Size=undefined);
     float Get_Price();
     void Set_Price();
+    Menu *clone()const;
 };
 
 #endif // MENU_H

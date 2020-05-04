@@ -1,7 +1,7 @@
 #include "product.h"
-
-Product::Product(){}
-
+Product::Product(std::string nome, std::string description, unsigned short calor, float price)
+:nome(nome),description(description),calories(calor),price(price){
+}
 std::string Product::Get_Nome() const{
 return nome;
 }
@@ -32,5 +32,12 @@ void Product::Set_Calories(const unsigned short & calor){
 
 void Product::SetPrice(const float & prc){
     price=prc;
+}
+
+void Product::read(const QJsonObject &json){
+        nome=json["name"].toString().toUtf8().constData();
+        description=json["description"].toString().toUtf8().constData();
+        calories=json["calories"].toDouble();
+        price=json["price"].toDouble();
 }
 

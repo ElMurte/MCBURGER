@@ -7,6 +7,7 @@ private:
 Size size;
 public:
     Patatine(Size=medium);
+    Patatine* clone()const;
 };
 
 #endif // PATATINE_H

@@ -17,24 +17,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Model/burger.cpp \
+    Model/employee.cpp \
     Model/menu.cpp \
+    Model/order.cpp \
     Model/patatine.cpp \
     Model/product.cpp \
+    Model/restorant.cpp \
+    View/mainwindow.cpp \
     main.cpp \
-    mainwindow.cpp
 
 HEADERS += \
     Model/Dlist.h \
     Model/burger.h \
+    Model/employee.h \
     Model/menu.h \
+    Model/order.h \
     Model/patatine.h \
     Model/product.h \
-    mainwindow.h
+    Model/restorant.h \
+    View/mainwindow.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
+DESTDIR = $$PWD
 DISTFILES += \
     Database/Products.json

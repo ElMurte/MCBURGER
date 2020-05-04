@@ -1,17 +1,17 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
 #include <string>
+#include <QJsonObject>
 using std::string;
 enum Size{undefined,small,medium,big};
-class Product
-{
-private:
+class Product{
+protected:
 string nome;
 string description;
 unsigned short calories;
 float price;
 public:
-    Product();
+    Product(string="not defined",string="not defined",unsigned short=0,float=0);
     virtual Product* clone()const=0;
     string Get_Nome()const;
     string Get_Description()const;
@@ -21,6 +21,8 @@ public:
     void Set_Description(const string& );
     void Set_Calories(const unsigned short&);
     void SetPrice(const float&);
+    void read(const QJsonObject &json);
+
 };
 
 #endif // PRODUCT_H

@@ -9,3 +9,11 @@ Menu::Menu(Product *p,Size s):size(s){
         price=0;
     }
 }
+
+float Menu::Get_Price(){
+    return price;
+}
+
+Menu *Menu::clone() const{
+return new Menu(*this);
+}

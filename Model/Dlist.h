@@ -76,10 +76,7 @@ public:
     IteratoreConst begin()const;
     IteratoreConst end()const;
 
-  };
-
-
-
+};
 #endif // Dlist_H
 
 template <class T>
@@ -223,7 +220,7 @@ typename Dlist<T>::IteratoreConst Dlist<T>::begin() const{                  //be
 }
 template <class T>
 typename Dlist<T>::IteratoreConst Dlist<T>::end() const{                    //end iterator const
-    Iteratore temp;
+    IteratoreConst temp;
     temp.p=last->next;
     return temp;
 }
