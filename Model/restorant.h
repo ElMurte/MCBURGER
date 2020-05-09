@@ -24,14 +24,13 @@ Dlist<Employee*> employees;
 vector<Order*> ordtemp;
 vector<Order*> ordinprep;
 vector<Order*> ordready;
+
 public:
     Restorant();
+    void readArrey(const QJsonArray &json);/*funzione di utilita leggibilità*/
      void read(const QJsonObject &json);
      void write(QJsonObject &json) const;
-     void printproducts(){
-    for(auto it=products.begin();it!=products.end();it++)
-        cout<<(*it)->Get_Nome();
-     }
+     void printproducts();
 
 };
 

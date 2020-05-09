@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Control/ignore.cpp \
     Model/burger.cpp \
     Model/employee.cpp \
     Model/menu.cpp \
@@ -23,7 +24,7 @@ SOURCES += \
     Model/patatine.cpp \
     Model/product.cpp \
     Model/restorant.cpp \
-    View/mainwindow.cpp \
+    View/clientwindow.cpp \
     main.cpp \
 
 HEADERS += \
@@ -34,8 +35,8 @@ HEADERS += \
     Model/order.h \
     Model/patatine.h \
     Model/product.h \
-    Model/restorant.h \
-    View/mainwindow.h \
+    Model/restorant.h \ \
+    View/clientwindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -43,4 +44,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 DESTDIR = $$PWD
 DISTFILES += \
-    Database/Products.json
+    Database/Products.json \
+    Resources/images/burgericon.png \
+    Resources/style/style.css

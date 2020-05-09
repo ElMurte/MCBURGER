@@ -12,6 +12,7 @@ unsigned short calories;
 float price;
 public:
     Product(string="not defined",string="not defined",unsigned short=0,float=0);
+    virtual ~Product()=default;
     virtual Product* clone()const=0;
     string Get_Nome()const;
     string Get_Description()const;
