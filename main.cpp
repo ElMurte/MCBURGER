@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Restorant r;
+    r.printproducts();
     ClientWindow m;
     m.show();
     return a.exec();

@@ -11,14 +11,16 @@
 #include<QJsonDocument>
 #include<QFile>
 #include<QDir>
-class Order;//partial delcalration has a
+#include<QString>
+#include "Model/order.h"
+//partial delcalration has a
 using std::vector;using std::cout;
 /*JSON
 classes who build runtime data such as menus: from JSON
 */
 class Restorant{
 private:
-Dlist<Product*> products;
+vector<Product*> products;
 Dlist<Menu*> menus;
 Dlist<Employee*> employees;
 vector<Order*> ordtemp;
@@ -29,9 +31,13 @@ public:
     Restorant();
     void readArrey(const QJsonArray &json);/*funzione di utilita leggibilità*/
      void read(const QJsonObject &json);
+     void read(const QJsonObject &json,const QString&);
      void write(QJsonObject &json) const;
      void printproducts();
-
+     template <class C>
+     void readV(const QJsonArray &json);
+     template<class C>
+     void read(const QJsonObject &json, const QString & s);
 };
 
 #endif // RESTORANT_H

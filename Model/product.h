@@ -23,6 +23,8 @@ public:
     void Set_Calories(const unsigned short&);
     void SetPrice(const float&);
     void read(const QJsonObject &json);
+    virtual bool isBurger(){return false;};
+    virtual bool isBibita(){return false;};;
 
 };
 

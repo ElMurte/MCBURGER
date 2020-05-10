@@ -4,28 +4,63 @@
         "name": "Big Mc",
         "description": "Base del panino,Salsa Big Mac,Cipolla tritata disidratata,Insalata Iceberg tritata,Fetta di formaggio Cheddar fuso,Hamburger,Tramezzo del panino,Salsa (Segreta) Big Mac,Cipolla disidratata tritata,2 cetriolini,Hamburger,Corona del paninoSalsa Big Mac: 1 tazza (equivalente a 250 grammi circa) di Miracle Whip (un equivalente della maionese), 1/3 di tazza di vinaigrette (80 ml) (sale olio e aceto), 1/4 di tazza di sottaceti-giardiniera (60 ml),1 cucchiaio di zucchero, 1 cucchiaino di cipolla tritata, 1 pizzico di pepe.",
         "calories": 900,
-        "price": 4.6
+        "price": 4.6,
+        "size": "medium"
         },
         {
         "name": "Chickenburger",
         "description": "100% pollo italiano impanato e gustosa salsa Caesar tra due morbide fette di pane. Nella sua semplicità il Chickenburger è davvero sorprendente, forse perché non serve altro per godersi la sua panatura croccante?",
         "calories": 323,
-        "price": 1.5
+        "price": 1.5,
+        "size": "small"
         },
         {
         "name": "Hamburger",
         "description": "Carne 100% bovina da allevamenti italiani, arricchita con cipolla a dadini, cetriolo, ketchup e senape. L’Hamburger, un panino semplice che non passa mai di moda.",
         "calories": 254,
-        "price": 1
+        "price": 1,
+        "size": "small"
         }
     ],
     "Patatine":[
-    {
-    "name": "Patatine Classiche",
-    "description": "Perfette per uno snack, da gustare da sole o accompagnate da una delle nostre salse, oppure nel tuo Happy Meal, le patatine regolari sono sempre irresistibili. Sempre con patate tagliate intere e cotte in olio 100% vegetale.",
-    "calories": 231,
-    "price": 1.4
-    }
-    ]
+        {
+        "name": "Patatine Classiche",
+        "description": "Perfette per uno snack, da gustare da sole o accompagnate da una delle nostre salse, oppure nel tuo Happy Meal, le patatine regolari sono sempre irresistibili. Sempre con patate tagliate intere e cotte in olio 100% vegetale.",
+        "calories": 231,
+        "price": 1.4
+        }
+        ],
+        "Bibita":[
+                {
+                "name": "Coca Cola",
+                "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 168,
+                "price": 1.5,
+                "size": "small"
+                },
+                {
+                "name": "Fanta",
+                "description": "Fanta® Orange alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 192,
+                "price": 1.5
+                }
+         ],
+         "Caffe":[
+         {
+         "name": "Capuccino",
+         "description": "Il caffè, unito a un’irresistibile crema di latte: è impossibile rinunciare al piacere di un classico della caffetteria italiana. Magari insieme a uno dei nostri croissant.
+         Disponibile anche decaffeinato, orzo e ginseng.",
+         "calories": 82,
+         "price": 1.3
+         }
+         ],
+         "Dolce":[
+         {
+         "name": "Brioche",
+         "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
+         "calories": 281,
+         "price": 1
+         }
+         ]
 
 }

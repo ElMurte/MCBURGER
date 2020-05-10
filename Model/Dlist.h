@@ -41,6 +41,7 @@ public:
     void push_front(const T &f);
     void pop_back();
     void pop_front();
+    void edit(const T& t);
 
     class Iteratore{
     public:
