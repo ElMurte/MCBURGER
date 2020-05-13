@@ -21,7 +21,7 @@ classes who build runtime data such as menus: from JSON
 class Restorant{
 private:
 vector<Product*> products;
-Dlist<Menu*> menus;
+vector<Menu*> menus;
 Dlist<Employee*> employees;
 vector<Order*> ordtemp;
 vector<Order*> ordinprep;
@@ -34,10 +34,10 @@ public:
      void read(const QJsonObject &json,const QString&);
      void write(QJsonObject &json) const;
      void printproducts();
-     template <class C>
-     void readV(const QJsonArray &json);
-     template<class C>
-     void read(const QJsonObject &json, const QString & s);
+     template <class P,class C>
+     void readV(const QJsonArray &json,vector<P*>&);//utility function to read
+     template<class P,class C>
+     void read(const QJsonObject &json, const QString & s,vector<P*>&p);
 };
 
 #endif // RESTORANT_H
