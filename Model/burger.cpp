@@ -1,6 +1,6 @@
 #include "burger.h"
 
-Burger::Burger(Size s,bool b,bool g,bool c):size(s),bacon(b),glutenfree(g),chicken(c){
+Burger::Burger():Product("Burger"){
 }
 
 
@@ -10,4 +10,11 @@ Burger* Burger::clone() const{//ovverride from Product
 
 void Burger::write(QJsonObject &json) const{
 
+}
+
+void Burger::readInfoFromJson(const QJsonObject &json){
+Product::readInfoFromJson(json);//leggo i valori di product
+bacon=json["bacon"].toBool() ;
+glutenfree=json["description"].toBool();
+chicken=json["chicken"].toBool();
 }

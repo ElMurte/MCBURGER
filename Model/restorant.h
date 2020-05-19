@@ -1,8 +1,6 @@
 #ifndef RESTORANT_H
 #define RESTORANT_H
 #include "Model/product.h"
-#include "Model/burger.h"
-#include "Model/patatine.h"
 #include "Model/employee.h"
 #include "Model/menu.h"
 #include<vector>
@@ -13,6 +11,7 @@
 #include<QDir>
 #include<QString>
 #include "Model/order.h"
+#include"Model/database.h"
 //partial delcalration has a
 using std::vector;using std::cout;
 /*JSON
@@ -29,15 +28,18 @@ vector<Order*> ordready;
 
 public:
     Restorant();
-    void readArrey(const QJsonArray &json);/*funzione di utilita leggibilità*/
-     void read(const QJsonObject &json);
-     void read(const QJsonObject &json,const QString&);
-     void write(QJsonObject &json) const;
      void printproducts();
-     template <class P,class C>
-     void readV(const QJsonArray &json,vector<P*>&);//utility function to read
-     template<class P,class C>
-     void read(const QJsonObject &json, const QString & s,vector<P*>&p);
+     template<class C>
+     vector<C> filterProuduct(const QString& qs,QString size="" );
 };
-
+template<class C>
+vector<C> Restorant::filterProuduct(const QString &qs,QString sz){
+vector<C> r;
+    for(auto it=products.begin();it!=products.end();it++){
+        if(sz!="")
+        if((*it)->Get_Categorie().toLower()==qs.toLower() && ( (*it)->Get_Size()==sz ) )
+            r.push_back(*it);
+    }
+return r;
+}
 #endif // RESTORANT_H

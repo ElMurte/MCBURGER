@@ -10,13 +10,12 @@ private:
     Payment paytype;
     double totalbill;
     unsigned short numtav;
-    unsigned int numord=0;
+    static unsigned int idord;
 public:
     double Gettotale()const;
     unsigned short SetNumTav();
     Order(Menu*,Payment=notselected);
     Order(Product*,Payment=notselected);
     Order(Menu*,Product*,Payment=notselected);
-    unsigned int idord;
 };
 #endif // ORDER_H

@@ -1,5 +1,5 @@
 #include "order.h"
-
+unsigned int Order::idord=0;
 double Order::Gettotale() const{
     double i=0;
     for(auto it=menuord.begin();it!=menuord.end();it++){
@@ -11,17 +11,20 @@ double Order::Gettotale() const{
     return i;
 }
 
-Order::Order(Menu * omenu, Payment pay):numord(++idord){
+Order::Order(Menu * omenu, Payment pay){
+    idord++;
 menuord.push_back(omenu->clone()); totalbill=Gettotale();
 paytype=pay;
 }
 
-Order::Order(Product *oprod, Payment pay):numord(++idord){
+Order::Order(Product *oprod, Payment pay){
+    idord++;
     prdsord.push_back(oprod->clone()); totalbill=Gettotale();
     paytype=pay;
 }
 
-Order::Order(Menu *omenu, Product * oprod, Payment pay):numord(++idord){
+Order::Order(Menu *omenu, Product * oprod, Payment pay){
+    idord++;
     prdsord.push_back(oprod->clone());
     menuord.push_back(omenu->clone());
     totalbill=Gettotale();

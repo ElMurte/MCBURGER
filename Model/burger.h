@@ -7,17 +7,14 @@ using std::cout;using std::endl;
 class Burger : public Product
 {
 private:
-Size size;
 bool bacon;
 bool glutenfree;
 bool chicken;
 public:
-    Burger(Size =small,bool=false,bool =false,bool=false);
-    Burger* clone() const;
+    Burger();
+    Burger* clone() const override;
     void write(QJsonObject &json) const;
-    void printb(){
-        cout<<nome<<endl<<description<<endl<<calories<<endl<<price<<endl;
-    }
+    void readInfoFromJson(const QJsonObject &json)override;
 };
 
 #endif // BURGER_H

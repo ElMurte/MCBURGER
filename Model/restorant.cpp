@@ -1,35 +1,15 @@
 #include "restorant.h"
 Restorant::Restorant(){
-    QFile file("Database/Products.json");/*C:\Users\elvis\Desktop\P2\PROGETTO\MCBURGER\Database*/
-    file.open(QIODevice::ReadOnly);
-    QByteArray rawData=file.readAll();
-    QJsonDocument doc(QJsonDocument::fromJson(rawData));
-    read<Product,Burger>(doc.object(),"Panino",products);
-    read<Product,Patatine>(doc.object(),"Patatine",products);
+    Database::ReadfromJson<Product,Burger>("Panino",products);/*alloco memoria da o con DB e leggo read() dentro Restourant()*/
+    Database::ReadfromJson<Product,Patatine>("Patatine",products);
+
 }
 /*utility function*/
-void Restorant::printproducts(){
+void Restorant::printproducts(){//test function
 for(auto it=products.begin();it!=products.end();it++)
-   cout<<(*it)->Get_Nome()<<endl;
-}
-template <class P,class C>
-void Restorant::readV(const QJsonArray &json, vector<P*>&v){
-    for (int Index = 0; Index < json.size(); ++Index) {
-        QJsonObject paninoObj = json[Index].toObject();
-        P* prod=new C();prod->read(paninoObj);
-        v.push_back(prod->clone());
-    }
+   cout<<(*it)->Get_Nome()<<endl<<(*it)->Get_Description()<<endl<<(*it)->Get_Calories()<<endl<<(*it)->Get_Price()<<endl<<endl;
 }
 
 
-template<class P,class C>
-void Restorant::read(const QJsonObject &json, const QString & s, vector<P*>&v){
-    if (json.contains(s) && json[s].isArray()) {
-        QJsonArray paninoArray = json[s].toArray();
-        readV<P,C>(paninoArray,v);
-    }
-}
 
-void Restorant::write(QJsonObject &json) const{
 
-}

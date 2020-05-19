@@ -4,10 +4,10 @@
 class Patatine : public Product
 {
 private:
-Size size;
+
 public:
-    Patatine(Size=medium);
-    Patatine* clone()const;
+    Patatine();
+    Patatine* clone()const override;
 };
 
 #endif // PATATINE_H

@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     Restorant r;
     r.printproducts();
+    cout<<"easy";
     ClientWindow m;
     m.show();
     return a.exec();

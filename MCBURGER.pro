@@ -18,24 +18,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Control/ignore.cpp \
     Model/burger.cpp \
+    Model/database.cpp \
+    Model/drink.cpp \
     Model/employee.cpp \
     Model/menu.cpp \
     Model/order.cpp \
     Model/patatine.cpp \
     Model/product.cpp \
     Model/restorant.cpp \
+    Model/sweet.cpp \
     View/clientwindow.cpp \
     main.cpp \
 
 HEADERS += \
     Model/Dlist.h \
     Model/burger.h \
+    Model/database.h \
+    Model/drink.h \
     Model/employee.h \
     Model/menu.h \
     Model/order.h \
     Model/patatine.h \
     Model/product.h \
     Model/restorant.h \ \
+    Model/sweet.h \
     View/clientwindow.h
 
 # Default rules for deployment.
@@ -44,6 +50,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 DESTDIR = $$PWD
 DISTFILES += \
+    Database/Employees.json \
     Database/Products.json \
     Resources/images/burgericon.png \
     Resources/style/style.css
