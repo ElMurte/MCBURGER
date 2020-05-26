@@ -16,7 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Control/ignore.cpp \
+    Control/controller.cpp \
     Model/burger.cpp \
     Model/database.cpp \
     Model/drink.cpp \
@@ -28,9 +28,12 @@ SOURCES += \
     Model/restorant.cpp \
     Model/sweet.cpp \
     View/clientwindow.cpp \
+    View/menubutton.cpp \
+    View/menuitembutton.cpp \
     main.cpp \
 
 HEADERS += \
+    Control/controller.h \
     Model/Dlist.h \
     Model/burger.h \
     Model/database.h \
@@ -42,15 +45,28 @@ HEADERS += \
     Model/product.h \
     Model/restorant.h \ \
     Model/sweet.h \
-    View/clientwindow.h
+    View/clientwindow.h \
+    View/menubutton.h \
+    View/menuitembutton.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
 DESTDIR = $$PWD
 DISTFILES += \
     Database/Employees.json \
     Database/Products.json \
+    Resources/images/Burger/bIg-mc.png \
+    Resources/images/Burger/chicken-burger.png \
+    Resources/images/Burger/hamburger.png \
+    Resources/images/Caffe/cappuccino.png \
+    Resources/images/Drink/coca-cola.png \
+    Resources/images/Drink/fanta.png \
+    Resources/images/Icons/burgericon.ico \
+    Resources/images/Icons/burgericon.png \
+    Resources/images/Patatine/patatine-classiche-medie.png \
+    Resources/images/Sweet/croissant-vuoto.png \
     Resources/images/burgericon.png \
     Resources/style/style.css

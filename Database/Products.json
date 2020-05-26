@@ -1,15 +1,16 @@
 {
-    "Panino":[
+    "Burger":[
         {
         "name": "Big Mc",
         "description": "Base del panino,Salsa Big Mac,Cipolla tritata disidratata,Insalata Iceberg tritata,Fetta di formaggio Cheddar fuso,Hamburger,Tramezzo del panino,Salsa (Segreta) Big Mac,Cipolla disidratata tritata,2 cetriolini,Hamburger,Corona del paninoSalsa Big Mac: 1 tazza (equivalente a 250 grammi circa) di Miracle Whip (un equivalente della maionese), 1/3 di tazza di vinaigrette (80 ml) (sale olio e aceto), 1/4 di tazza di sottaceti-giardiniera (60 ml),1 cucchiaio di zucchero, 1 cucchiaino di cipolla tritata, 1 pizzico di pepe.",
         "calories": 900,
         "price": 4.6,
         "size": "medium",
-        "categories":"Panino",
+        "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
-        "chicken":false
+        "chicken":false,
+        "icon":":/Resources/images/Burger/big-mc.png"
         },
         {
         "name": "Chickenburger",
@@ -17,10 +18,11 @@
         "calories": 323,
         "price": 1.5,
         "size": "small",
-        "categories":"Panino",
+        "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
-        "chicken":true
+        "chicken":true,
+        "icon":":/Resources/images/Burger/chicken-burger.png"
         },
         {
         "name": "Hamburger",
@@ -28,30 +30,33 @@
         "calories": 254,
         "price": 1,
         "size": "small",
-        "categories":"Panino",
+        "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
-        "chicken":false
+        "chicken":false,
+        "icon":":/Resources/images/Burger/hamburger.png"
         }
     ],
     "Patatine":[
         {
-        "name": "Patatine Classiche",
+        "name": "Patatine medie",
         "description": "Perfette per uno snack, da gustare da sole o accompagnate da una delle nostre salse, oppure nel tuo Happy Meal, le patatine regolari sono sempre irresistibili. Sempre con patate tagliate intere e cotte in olio 100% vegetale.",
         "calories": 231,
         "price": 1.4,
-        "size":"small",
-        "categories":"Patatine"
+        "size":"medium",
+        "categories":"Patatine",
+        "icon":":/Resources/images/Patatine/patatine-classiche-medie.png"
         }
         ],
         "Drink":[
                 {
-                "name": "Coca Cola",
+                "name": "Coca Cola piccola",
                 "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 168,
                 "price": 1.5,
                 "size": "small",
-                "categories":"Drink"
+                "categories":"Drink",
+                "icon":":/Resources/images/Drink/coca-cola.png"
                 },
                 {
                 "name": "Fanta",
@@ -59,7 +64,8 @@
                 "calories": 192,
                 "price": 1.5,
                 "size": "small",
-                "categories":"Drink"
+                "categories":"Drink",
+                "icon":":/Resources/images/Drink/fanta.png"
                 }
          ],
          "Caffe":[
@@ -69,17 +75,19 @@
          "calories": 82,
          "price": 1.3,
          "size": "undefined",
-         "categories":"Caffe"
+         "categories":"Caffe",
+         "icon":":/Resources/images/Caffe/cappuccino.png"
          }
          ],
-         "Dolce":[
+         "Sweet":[
          {
          "name": "Brioche",
          "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
          "calories": 281,
          "price": 1,
          "size": "undefined",
-         "categories":"Dolce"
+         "categories":"Sweet",
+         "icon":":/Resources/images/Sweet/croissant-vuoto.png"
          }
          ]
 

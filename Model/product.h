@@ -11,11 +11,14 @@ string description;
 unsigned short calories;
 float price;
 QString categorie;
+Size size;
+QString icon;
 public:
     Product( const QString& c);
     virtual ~Product()=default;
     virtual Product* clone()const=0;
     virtual void readInfoFromJson(const QJsonObject &json);
+    virtual void writeInfoInJson(QJsonObject &json)const;
     /*GETTERS*/
     string Get_Nome()const;
     string Get_Description()const;

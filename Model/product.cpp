@@ -20,6 +20,10 @@ float Product::Get_Price()const{
     return price;
 }
 
+Size Product::Get_Size() const{
+    return size;
+}
+
 void Product::Set_Nome(const string& s){
     nome=s;
 }
@@ -46,5 +50,18 @@ void Product::readInfoFromJson(const QJsonObject &json){
         description=json["description"].toString().toUtf8().constData();
         calories=json["calories"].toDouble();
         price=json["price"].toDouble();
+        categorie=json["categories"].toString().toLower();
+        size=Size(qRound(json["size"].toDouble()));
+        icon=json["icon"].toString();
+}
+
+void Product::writeInfoInJson(QJsonObject &json) const{
+        QString n(*(nome.begin())); QString d(*(description.begin()));
+        json["name"]=n;
+        json["description"]=d;
+        json["calories"]=calories;
+        json["price"]=price;
+        json["categories"]=categorie;
+        json["size"]=size;
 }
 

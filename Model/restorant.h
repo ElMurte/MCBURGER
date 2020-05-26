@@ -25,20 +25,27 @@ Dlist<Employee*> employees;
 vector<Order*> ordtemp;
 vector<Order*> ordinprep;
 vector<Order*> ordready;
-
+void LoaddatafromJSON();
 public:
     Restorant();
      void printproducts();
      template<class C>
-     vector<C> filterProuduct(const QString& qs,QString size="" );
+     vector<C> filterProuduct(const QString& qs,Size sz=undefined );
 };
 template<class C>
-vector<C> Restorant::filterProuduct(const QString &qs,QString sz){
-vector<C> r;
+vector<C> Restorant::filterProuduct(const QString &qs,Size sz){
+vector<Product*> r;
+    if((sz)==undefined){
     for(auto it=products.begin();it!=products.end();it++){
-        if(sz!="")
-        if((*it)->Get_Categorie().toLower()==qs.toLower() && ( (*it)->Get_Size()==sz ) )
+        if((*it)->Get_Categorie().toLower()==qs.toLower() )
             r.push_back(*it);
+    }
+    }
+    else{//non filtra
+        for(auto it=products.begin();it!=products.end();it++){
+        if((*it)->Get_Categorie().toLower()==qs.toLower() && sz==(*it)->Get_Size())
+            r.push_back(*it);
+        }
     }
 return r;
 }

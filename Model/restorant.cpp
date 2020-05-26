@@ -1,7 +1,15 @@
 #include "restorant.h"
+void Restorant::LoaddatafromJSON(){/*alloco la memoria per i prodotti e li legge dal file json*/
+    Database::ReadProductfromJson<Product,Burger>("Burger",products);
+    Database::ReadProductfromJson<Product,Patatine>("Patatine",products);
+    Database::ReadProductfromJson<Product,Drink>("Drink",products);
+    Database::ReadProductfromJson<Product,Sweet>("Sweet",products);
+    /*MENU ??? */
+    /*Employes*/
+}
+
 Restorant::Restorant(){
-    Database::ReadfromJson<Product,Burger>("Panino",products);/*alloco memoria da o con DB e leggo read() dentro Restourant()*/
-    Database::ReadfromJson<Product,Patatine>("Patatine",products);
+LoaddatafromJSON();
 
 }
 /*utility function*/

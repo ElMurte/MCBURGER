@@ -13,7 +13,7 @@ bool chicken;
 public:
     Burger();
     Burger* clone() const override;
-    void write(QJsonObject &json) const;
+    void writeInfoInJson(QJsonObject &json) const override;
     void readInfoFromJson(const QJsonObject &json)override;
 };
 

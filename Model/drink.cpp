@@ -7,10 +7,6 @@ Drink* Drink::clone() const{//ovverride from Product
     return new Drink(*this);
 }
 
-void Drink::write(QJsonObject &json) const{
-
-}
-
 void Drink::readInfoFromJson(const QJsonObject &json){
 Product::readInfoFromJson(json);//leggo i valori di product
 

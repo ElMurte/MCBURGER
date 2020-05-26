@@ -1,0 +1,15 @@
+
+QPushButton {
+    margin: 0;
+    padding:0;
+    border: 1px solid white;
+    background-color: #212121;
+}
+
+QPushButton:hover {
+    background-color: #212121;
+}
+QScrollArea{
+background:#212121;
+color:red;
+}

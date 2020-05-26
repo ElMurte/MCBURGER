@@ -8,7 +8,6 @@ private:
 public:
     Drink();
     Drink* clone() const override;
-    void write(QJsonObject &json) const;
     void readInfoFromJson(const QJsonObject &json)override;
 };
 
