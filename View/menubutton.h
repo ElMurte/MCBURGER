@@ -7,13 +7,14 @@ class MenuButton : public QPushButton
 {
     Q_OBJECT
 public:
-    MenuButton(QString si,QWidget*parent=nullptr);
+    MenuButton(QString cat,QString label="",QString icon="",QWidget*parent=nullptr);
 
 signals:
 void clickedCell(QString);
 
 private:
     QString icona;
+    QString categorie;
 private slots:
 void cellEmitter();
 };
