@@ -32,7 +32,7 @@ return r;
 /*utility function*/
 void Restorant::printproducts(){//test function
 for(auto it=products.begin();it!=products.end();it++)
-   cout<<(*it)->Get_Nome()<<endl<<(*it)->Get_Description()<<endl<<(*it)->Get_Calories()<<endl<<(*it)->Get_Price()<<endl<<endl;
+   cout<<(*it)->Get_Nome().toStdString()<<endl<<(*it)->Get_Description().toStdString()<<endl<<(*it)->Get_Calories()<<endl<<(*it)->Get_Price()<<endl<<endl;
 }
 
 

@@ -4,11 +4,11 @@ Product::Product(const QString &c):categorie(c)
 {
 
 }
-std::string Product::Get_Nome() const{
+QString Product::Get_Nome() const{
 return nome;
 }
 
-std::string Product::Get_Description()const{
+QString Product::Get_Description()const{
     return description;
 }
 
@@ -24,11 +24,15 @@ Size Product::Get_Size() const{
     return size;
 }
 
-void Product::Set_Nome(const string& s){
+QString Product::Get_Icon() const{
+    return icon;
+}
+
+void Product::Set_Nome(const QString& s){
     nome=s;
 }
 
-void Product::Set_Description(const string& dsc){
+void Product::Set_Description(const QString& dsc){
     description=dsc;
 }
 
@@ -46,8 +50,8 @@ QString Product::Get_Categorie() const
 }
 
 void Product::readInfoFromJson(const QJsonObject &json){
-        nome=json["name"].toString().toUtf8().constData();
-        description=json["description"].toString().toUtf8().constData();
+        nome=json["name"].toString().toUtf8();
+        description=json["description"].toString().toUtf8();
         calories=json["calories"].toDouble();
         price=json["price"].toDouble();
         categorie=json["categories"].toString().toLower();

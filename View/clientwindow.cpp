@@ -44,7 +44,6 @@ void ClientWindow::addViewButtons(){
    productviews->setLayout(menu);
    //menuproducts->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
 }
-
 void ClientWindow::setRestorantStyle(){
     QFile file("Resources/style/style.css");
     file.open(QFile::ReadOnly);
@@ -58,5 +57,20 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):QWidget(parent),contr
     setMinimumHeight(720);
     setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
     setRestorantStyle();
+}
+
+void ClientWindow::UpdateRightArea(QVector<MenuButton *> v){
+    QGridLayout*menu=new QGridLayout(this);
+    for(auto p = std::make_pair(0, v.begin());p.second!=v.end();p.second++,p.first++){
+     menu->addWidget((*p.second),p.first%2,p.first/2);
+     (*p.second)->setAccessibleName("RightButtonAreaClient");
+     connect(*p.second,SIGNAL(clickedCell(const QString&)),controller,SLOT(FilterProductsonclick(QString)));
+    //connect(*p.second,SIGNAL(clickedCell(QString)),controller,SLOT(controller->FilterProductsonclick(QString)));
+    }
+    delete productviews->layout();
+    delete productviews;
+    productviews=new QScrollArea(this);
+    productviews->setLayout(menu);
+    UI->addWidget(productviews);
 }
 

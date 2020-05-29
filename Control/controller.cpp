@@ -9,9 +9,11 @@ void ControllerR::set_View(ClientWindow *v){
 void ControllerR::FilterProductsonclick(const QString& qs){
     vector<Product*>v=model->filterProuduct(qs);
     QString test;
+    QVector<MenuButton*> a;
     for(auto it=v.begin();it!=v.end();it++)
-        test=test+(*it)->Get_Categorie();
-    view->ShowErrorMessage(test);
+        if((*it)->Get_Categorie().toLower()==qs.toLower())
+           a.push_back(new MenuButton(qs,(*it)->Get_Nome(),(*it)->Get_Icon()));
+        view->UpdateRightArea(a);
 }
 
 void ControllerR::Home(){

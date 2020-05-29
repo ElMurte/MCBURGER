@@ -28,7 +28,9 @@ void Update();
 
 public:
     ClientWindow(ControllerR* c,QWidget *parent = nullptr);
-    ~ClientWindow()=default;void ShowErrorMessage(const QString &message){
+    ~ClientWindow()=default;
+    void UpdateRightArea(QVector<MenuButton*>v);
+    void ShowErrorMessage(const QString &message){
         QDialog* messaggio=new QDialog(this);
         QVBoxLayout* layoutmessaggio=new QVBoxLayout(messaggio);
         layoutmessaggio->addWidget(new QLabel(message,messaggio));

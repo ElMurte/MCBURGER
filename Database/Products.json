@@ -10,7 +10,7 @@
         "bacon":false,
         "glutenfree":false,
         "chicken":false,
-        "icon":":/Resources/images/Burger/big-mc.png"
+        "icon":"Resources/images/Burger/big-mc.png"
         },
         {
         "name": "Chickenburger",
@@ -22,7 +22,7 @@
         "bacon":false,
         "glutenfree":false,
         "chicken":true,
-        "icon":":/Resources/images/Burger/chicken-burger.png"
+        "icon":"Resources/images/Burger/chicken-burger.png"
         },
         {
         "name": "Hamburger",
@@ -34,7 +34,7 @@
         "bacon":false,
         "glutenfree":false,
         "chicken":false,
-        "icon":":/Resources/images/Burger/hamburger.png"
+        "icon":"Resources/images/Burger/hamburger.png"
         }
     ],
     "Patatine":[
@@ -45,7 +45,7 @@
         "price": 1.4,
         "size":"medium",
         "categories":"Patatine",
-        "icon":":/Resources/images/Patatine/patatine-classiche-medie.png"
+        "icon":"Resources/images/Patatine/patatine-classiche-medie.png"
         }
         ],
         "Drink":[
@@ -56,7 +56,7 @@
                 "price": 1.5,
                 "size": "small",
                 "categories":"Drink",
-                "icon":":/Resources/images/Drink/coca-cola.png"
+                "icon":"Resources/images/Drink/coca-cola.png"
                 },
                 {
                 "name": "Fanta",
@@ -65,7 +65,7 @@
                 "price": 1.5,
                 "size": "small",
                 "categories":"Drink",
-                "icon":":/Resources/images/Drink/fanta.png"
+                "icon":"Resources/images/Drink/fanta.png"
                 }
          ],
          "Caffe":[
@@ -76,7 +76,7 @@
          "price": 1.3,
          "size": "undefined",
          "categories":"Caffe",
-         "icon":":/Resources/images/Caffe/cappuccino.png"
+         "icon":"Resources/images/Caffe/cappuccino.png"
          }
          ],
          "Sweet":[
@@ -87,7 +87,7 @@
          "price": 1,
          "size": "undefined",
          "categories":"Sweet",
-         "icon":":/Resources/images/Sweet/croissant-vuoto.png"
+         "icon":"Resources/images/Sweet/croissant-vuoto.png"
          }
          ]
 
