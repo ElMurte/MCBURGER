@@ -9,7 +9,7 @@
 using std::cout;using std::endl;
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication a(argc, argv);a.setWindowIcon(QIcon("Resources/images/Icons/mcburgericon.png"));
     Restorant r;
     ControllerR c(&r);
     ClientWindow v(&c); //manca il costruttore

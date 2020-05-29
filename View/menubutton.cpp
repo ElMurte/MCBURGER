@@ -1,13 +1,14 @@
 #include "menubutton.h"
 
-MenuButton::MenuButton(QString cat,QString label,QString sicona, QWidget *parent) : QPushButton(parent),icona(sicona){
+MenuButton::MenuButton(const QString& cat,const QString& label,const QString& sicona, QWidget *parent) : QPushButton(parent),categorie(cat){
     /*connect(this,SIGNAL(clicked()),this,SLOT(cellEmitter()));*/
-    this->setIcon(QIcon(icona));
+    this->setIcon(QIcon(sicona));
     setIconSize(QSize(85,85));
     setText(label);
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    connect(this,SIGNAL(clicked()),this,SLOT(handleclick()));
 }
 
-void MenuButton::cellEmitter(){
-emit clickedCell(icona);
+void MenuButton::handleclick(){
+emit clickedCell(categorie);
 }

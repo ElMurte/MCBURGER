@@ -12,6 +12,23 @@ Restorant::Restorant(){
 LoaddatafromJSON();
 
 }
+
+vector<Product*> Restorant::filterProuduct(const QString &qs,Size sz){
+vector<Product*> r;
+    if((sz)==undefined){
+    for(auto it=products.begin();it!=products.end();it++){
+        if((*it)->Get_Categorie().toLower()==qs.toLower() )
+            r.push_back(*it);
+    }
+    }
+    else{//non filtra
+        for(auto it=products.begin();it!=products.end();it++){
+        if((*it)->Get_Categorie().toLower()==qs.toLower() && sz==(*it)->Get_Size())
+            r.push_back(*it);
+        }
+    }
+return r;
+}
 /*utility function*/
 void Restorant::printproducts(){//test function
 for(auto it=products.begin();it!=products.end();it++)

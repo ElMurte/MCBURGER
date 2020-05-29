@@ -6,18 +6,19 @@ void ControllerR::set_View(ClientWindow *v){
     view=v;
 }
 
-void ControllerR::FilterProductsonclick(QString)
-{
+void ControllerR::FilterProductsonclick(const QString& qs){
+    vector<Product*>v=model->filterProuduct(qs);
+    QString test;
+    for(auto it=v.begin();it!=v.end();it++)
+        test=test+(*it)->Get_Categorie();
+    view->ShowErrorMessage(test);
+}
+
+void ControllerR::Home(){
 
 }
 
-void ControllerR::Home()
-{
-
-}
-
-void ControllerR::resetOrdinazione()
-{
+void ControllerR::resetOrdinazione(){
 
 }
 
