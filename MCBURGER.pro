@@ -18,9 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Control/controller.cpp \
     Model/burger.cpp \
+    Model/cashier.cpp \
+    Model/cooker.cpp \
     Model/database.cpp \
     Model/drink.cpp \
     Model/employee.cpp \
+    Model/manager.cpp \
     Model/menu.cpp \
     Model/order.cpp \
     Model/patatine.cpp \
@@ -28,6 +31,7 @@ SOURCES += \
     Model/restorant.cpp \
     Model/sweet.cpp \
     View/clientwindow.cpp \
+    View/mcburgerview.cpp \
     View/menubutton.cpp \
     main.cpp \
 
@@ -35,9 +39,12 @@ HEADERS += \
     Control/controller.h \
     Model/Dlist.h \
     Model/burger.h \
+    Model/cashier.h \
+    Model/cooker.h \
     Model/database.h \
     Model/drink.h \
     Model/employee.h \
+    Model/manager.h \
     Model/menu.h \
     Model/order.h \
     Model/patatine.h \
@@ -45,6 +52,7 @@ HEADERS += \
     Model/restorant.h \ \
     Model/sweet.h \
     View/clientwindow.h \
+    View/mcburgerview.h \
     View/menubutton.h
 
 # Default rules for deployment.

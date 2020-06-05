@@ -12,6 +12,7 @@ bool inprove;
 double income;
 public:
  Employee(string nome=0,char* datainizio=0,unsigned short int old=0,bool inprove=false,double income=0);
+ virtual ~Employee()=default;
  virtual Employee* clone()const=0;
  virtual double Get_Income()const;
 };

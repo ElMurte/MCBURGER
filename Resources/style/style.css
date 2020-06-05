@@ -4,14 +4,16 @@ color:black;
 }
 QPushButton {
 min-width:180px;
-min-height:100px;
+min-height:180px;
+max-width:250px;
+max-height:250px;
 border:1px solid black;
     background-color: white;
     text-align:center;
     font-size:20px;
 }
 MenuButton#RightButtonAreaClient{
-margin:none;
+    margin:70px;
 background-color:#f1f1f1;
 min-width:300px;
 min-height:200px;
@@ -31,4 +33,7 @@ max-width:350px;
 background-color:whitesmoke;
 }
 QScrollArea#RightAreaClient{
+}
+QIcon#RightButtonAreaClient{
+min-width:150px;
 }

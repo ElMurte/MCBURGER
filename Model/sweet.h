@@ -4,7 +4,7 @@
 
 class Sweet:public Product{
 private:
-
+QString tipo;
 public:
     Sweet();
     Sweet* clone() const override;

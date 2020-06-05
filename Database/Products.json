@@ -36,6 +36,7 @@
         "chicken":false,
         "icon":"Resources/images/Burger/hamburger.png"
         }
+
     ],
     "Patatine":[
         {
@@ -50,13 +51,22 @@
         ],
         "Drink":[
                 {
-                "name": "Coca Cola piccola",
+                "name": "Coca Cola",
                 "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 168,
                 "price": 1.5,
                 "size": "small",
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/coca-cola.png"
+                },
+                {
+                "name": "Coca Cola Zero",
+                "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 5,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/coca-cola-zero.png"
                 },
                 {
                 "name": "Fanta",
@@ -66,7 +76,116 @@
                 "size": "small",
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/fanta.png"
+                },
+                {
+                "name": "Sprite",
+                "description": "Sprite alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 153,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/sprite.png"
+                },
+                {
+                "name": "Tea Lipton",
+                "description": "Lipton Ice Tea® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L e nei gusti limone e pesca.",
+                "calories": 168,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/tea-lipton.png"
+                },
+                {
+                "name": "Coca Cola",
+                "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 168,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/coca-cola.png"
+                },
+                {
+                "name": "Coca Cola Zero",
+                "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 5,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/coca-cola-zero.png"
+                },
+                {
+                "name": "Fanta",
+                "description": "Fanta® Orange alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 192,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/fanta.png"
+                },
+                {
+                "name": "Sprite",
+                "description": "Sprite alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 153,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/sprite.png"
+                },
+                {
+                "name": "Tea Lipton",
+                "description": "Lipton Ice Tea® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L e nei gusti limone e pesca.",
+                "calories": 168,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/tea-lipton.png"
+                },
+                {
+                "name": "Coca Cola",
+                "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 168,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/coca-cola.png"
+                },
+                {
+                "name": "Coca Cola Zero",
+                "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 5,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/coca-cola-zero.png"
+                },
+                {
+                "name": "Fanta",
+                "description": "Fanta® Orange alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 192,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/fanta.png"
+                },
+                {
+                "name": "Sprite",
+                "description": "Sprite alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
+                "calories": 153,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/sprite.png"
+                },
+                {
+                "name": "Tea Lipton",
+                "description": "Lipton Ice Tea® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L e nei gusti limone e pesca.",
+                "calories": 168,
+                "price": 1.5,
+                "size": "small",
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/tea-lipton.png"
                 }
+
          ],
          "Caffe":[
          {
@@ -81,14 +200,31 @@
          ],
          "Sweet":[
          {
-         "name": "Brioche",
+         "name": "Brioche Vuota",
          "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
          "calories": 281,
          "price": 1,
          "size": "undefined",
-         "categories":"Sweet",
-         "icon":"Resources/images/Sweet/croissant-vuoto.png"
+         "categories":"Brioche",
+         "icon":"Resources/images/Sweet/Brioche/croissant-vuoto.png"
+         },
+         {
+         "name": "Donut Classico",
+         "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
+         "calories": 281,
+         "price": 1,
+         "size": "undefined",
+         "categories":"Donut",
+         "icon":"Resources/images/Sweet/Donut/donut-cioccolato.png"
+         },
+         {
+         "name": "Torta Cioccolato Multi",
+         "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
+         "calories": 281,
+         "price": 1,
+         "size": "undefined",
+         "categories":"Cake",
+         "icon":"Resources/images/Sweet/Cake/torta-cioccolato-multi.png"
          }
          ]
-
 }

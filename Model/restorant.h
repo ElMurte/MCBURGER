@@ -11,24 +11,18 @@
 #include<QDir>
 #include<QString>
 #include "Model/order.h"
-#include"Model/database.h"
+#include"Model/database.h"//class to read data
 //partial delcalration has a
 using std::vector;using std::cout;
-/*JSON
-classes who build runtime data such as menus: from JSON
-*/
 class Restorant{
 private:
 vector<Product*> products;
 vector<Menu*> menus;
-Dlist<Employee*> employees;
-vector<Order*> ordtemp;
-vector<Order*> ordinprep;
-vector<Order*> ordready;
+Dlist<Employee*> employees;//Container gerarchia G
+vector<Order*> orders;
 void LoaddatafromJSON();
 public:
     Restorant();
-     void printproducts();
      vector<Product*> filterProuduct(const QString& qs,Size sz=undefined );
 };
 #endif // RESTORANT_H

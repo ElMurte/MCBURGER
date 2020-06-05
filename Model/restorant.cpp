@@ -17,7 +17,7 @@ vector<Product*> Restorant::filterProuduct(const QString &qs,Size sz){
 vector<Product*> r;
     if((sz)==undefined){
     for(auto it=products.begin();it!=products.end();it++){
-        if((*it)->Get_Categorie().toLower()==qs.toLower() )
+        if((*it)->Get_Categorie().toLower().contains(qs.toLower()) ||  (*it)->Get_Nome().toLower().contains(qs.toLower()) )
             r.push_back(*it);
     }
     }
@@ -30,10 +30,7 @@ vector<Product*> r;
 return r;
 }
 /*utility function*/
-void Restorant::printproducts(){//test function
-for(auto it=products.begin();it!=products.end();it++)
-   cout<<(*it)->Get_Nome().toStdString()<<endl<<(*it)->Get_Description().toStdString()<<endl<<(*it)->Get_Calories()<<endl<<(*it)->Get_Price()<<endl<<endl;
-}
+
 
 
 

@@ -1,40 +1,31 @@
 #ifndef CLIENTWINDOW_H
 #define CLIENTWINDOW_H
-#include <QWidget>
 #include<Qt>
 #include <QMainWindow>
 #include <QScrollArea>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QFile>
-#include<QObject>
-#include "View/menubutton.h"
-#include <Control/controller.h>
-#include <QDialog>
-#include <QLabel>
-class ControllerR;
-class ClientWindow : public QWidget {
+#include <QStackedLayout>
+#include "mcburgerview.h"
+class MenuButton;
+class ClientWindow : public McBurgerView {
     Q_OBJECT
 private:
-ControllerR*controller;
 QScrollArea*menuproducts;
 QScrollArea* productviews;
-QLayout* UI;
+QStackedLayout* UI;
+QLayout *mainlayout;
 void addClientWidgets();
 void addMenuButtons();
-void addViewButtons();
 void setRestorantStyle();
 void Update();
-
+void addButtonstoWidget(const QHBoxLayout&);
+QScrollArea* addViewButtons();
+signals:
+void buildbuttons(const vector<QString>&);
 public:
     ClientWindow(ControllerR* c,QWidget *parent = nullptr);
-    ~ClientWindow()=default;
     void UpdateRightArea(QVector<MenuButton*>v);
-    void ShowErrorMessage(const QString &message){
-        QDialog* messaggio=new QDialog(this);
-        QVBoxLayout* layoutmessaggio=new QVBoxLayout(messaggio);
-        layoutmessaggio->addWidget(new QLabel(message,messaggio));
-        messaggio->show();
-    }
+protected slots:
+    void updateFromData(const vector<Product *>& products)override;
+    void updateFromData(const QString& qs)override;
 };
 #endif // MAINWINDOW_H

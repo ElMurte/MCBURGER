@@ -14,6 +14,5 @@ int main(int argc, char *argv[])
     ControllerR c(&r);
     ClientWindow v(&c); //manca il costruttore
     c.set_View(&v);
-    v.show();
     return a.exec();
 }
