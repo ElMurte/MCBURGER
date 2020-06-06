@@ -14,9 +14,17 @@ border:1px solid black;
 }
 MenuButton#RightButtonAreaClient{
     margin:70px;
-background-color:#f1f1f1;
 min-width:300px;
 min-height:200px;
+}
+QPushButton#btnlay{
+min-height:100px;
+max-width:120px;
+max-height:100px;
+background:lightblue;
+}
+MenuButton#productbutton{
+background:lightgreen;
 }
 QPushButton:hover,MenuButton#RightButtonAreaClient:hover {
     background-color:grey;

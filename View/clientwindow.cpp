@@ -13,7 +13,7 @@ menuproducts->setWidgetResizable(true);*/
 addMenuButtons();
 menuproducts->setObjectName("LeftAreaClient");
 }
-ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QHBoxLayout(this)){
+ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)){
 
     connect(this,SIGNAL(buildbuttons(vector<QString>)),controller,SLOT(FilterProductsonclick(vector<QString>)) );
     //create layouts
@@ -28,7 +28,13 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     UI=new QStackedLayout(productviews);
     QScrollArea*t=addViewButtons();
     addClientWidgets();UI->addWidget(t);
-    mainlayout->addWidget(menuproducts);mainlayout->addWidget(productviews);
+    QHBoxLayout*btnspec=new QHBoxLayout(this);
+    QWidget*tbtn=new MenuButton("",0,"","Resources/images/Icons/home-icon.png");
+    connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
+    tbtn->setLayout(new QHBoxLayout);tbtn->setObjectName("btnlay");
+    mainlayout->addWidget(tbtn);
+    btnspec->addWidget(menuproducts);btnspec->addWidget(productviews);
+        mainlayout->addItem(btnspec);
     emit buildbuttons(costrfin);
     setLayout(mainlayout);
     //style
@@ -74,7 +80,7 @@ QScrollArea* ClientWindow::addViewButtons(){
             boxbottoni->addLayout(t);
         }*/
      boxbottoni->addWidget((*p.second));
-     (*p.second)->setAccessibleName("RightButtonAreaClient");
+     (*p.second)->setObjectName("RightButtonAreaClient");
      //connect(*p.second,SIGNAL(clickedCell(const QString&)),controller,SLOT(FilterProductsonclick(QString)));
      connect(*p.second,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
     }
@@ -126,7 +132,7 @@ void ClientWindow::updateFromData(const vector<Product *> &products){
             boxbottoni->addLayout(tmp);
         }
         auto*btn=new MenuButton((*it)->Get_Categorie(),indice,(*it)->Get_Nome(),(*it)->Get_Icon());
-           tmp->addWidget(btn);btn->setAccessibleName("productbutton");
+           tmp->addWidget(btn);btn->setObjectName("productbutton");
     }
     t->setLayout(boxbottoni);
     t->layout()->setAlignment(Qt::AlignTop);t->layout()->setSpacing(100);
