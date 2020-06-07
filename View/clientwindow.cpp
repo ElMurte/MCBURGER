@@ -25,10 +25,12 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     menuproducts=new QScrollArea();productviews=new QScrollArea(qw);
     */
     menuproducts=new QScrollArea(this);productviews=new QScrollArea(this);
+
     UI=new QStackedLayout(productviews);
-    QScrollArea*t=addViewButtons();
-    addClientWidgets();UI->addWidget(t);
+    addViewButtons();
+    addClientWidgets();//UI->addWidget();
     QHBoxLayout*btnspec=new QHBoxLayout(this);
+
     QWidget*tbtn=new MenuButton("",0,"","Resources/images/Icons/home-icon.png");
     connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
     tbtn->setLayout(new QHBoxLayout);tbtn->setObjectName("btnlay");
@@ -42,9 +44,9 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     setMinimumHeight(720);*/
     menuproducts->setWidgetResizable(true);productviews->setWidgetResizable(true);
     productviews->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
-    productviews->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored);
+    productviews->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
     menuproducts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
-    menuproducts->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored);
+    menuproducts->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
 
     setRestorantStyle();
     show();
@@ -52,7 +54,8 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
 }
 void ClientWindow::addMenuButtons(){
     QVector<MenuButton*> v;
-    QVBoxLayout* menu=new QVBoxLayout(menuproducts);
+    QWidget*t=new QWidget();
+    QVBoxLayout* menu=new QVBoxLayout(t);
     v.push_back(new MenuButton("Burger",1,"Panini","Resources/images/Icons/burgericon.png"));
     v.push_back(new MenuButton("Drink",2,"Bibite","Resources/images/Icons/drinkicon.png"));
     v.push_back(new MenuButton("Patatine",3,"Patatine","Resources/images/Icons/patatineicon.png"));
@@ -61,15 +64,19 @@ void ClientWindow::addMenuButtons(){
     for(auto it=v.begin();it!=v.end();it++){
      connect(*it,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
      menu->addWidget((*it));
+        (*it)->setObjectName("menubtn");
     //connect(*it,SIGNAL(clickedCell(const QString&)),controller,SLOT(FilterProductsonclick(QString)));
     }
+    t->setObjectName("leftWidgetArea");
+    menuproducts->setWidget(t);
    //menuproducts->setLayout(menu);
 }
-QScrollArea* ClientWindow::addViewButtons(){
+void ClientWindow::addViewButtons(){
     QVector<MenuButton*> v;
     //QGridLayout* menu=new QGridLayout(productviews);
-    QScrollArea*t=new QScrollArea();
-    QHBoxLayout*boxbottoni=new QHBoxLayout(t);//t->setLayout(boxbottoni);
+    //QScrollArea*t=new QScrollArea();
+    QWidget*final=new QWidget;
+    QHBoxLayout*boxbottoni=new QHBoxLayout(final);//t->setLayout(boxbottoni);
     v.push_back(new MenuButton("1",99,"SalvaEuro","Resources/images/Icons/salvaeuro.png"));
      v.push_back(new MenuButton("Vegan",20,"Vegan","Resources/images/Icons/vegan.png"));
      v.push_back(new MenuButton("1",30,"SalvaEuro","Resources/images/Icons/salvaeuro.png"));
@@ -79,12 +86,14 @@ QScrollArea* ClientWindow::addViewButtons(){
             t=new QHBoxLayout();
             boxbottoni->addLayout(t);
         }*/
+        //(*p.second)->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
      boxbottoni->addWidget((*p.second));
      (*p.second)->setObjectName("RightButtonAreaClient");
      //connect(*p.second,SIGNAL(clickedCell(const QString&)),controller,SLOT(FilterProductsonclick(QString)));
      connect(*p.second,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
     }
-    return t;
+    //productviews->setWidget(final);
+    UI->addWidget(final);
 
 }
 void ClientWindow::setRestorantStyle(){
@@ -122,8 +131,8 @@ void ClientWindow::setRestorantStyle(){
 void ClientWindow::updateFromData(const vector<Product *> &products){
     QVector<MenuButton*> a;int indice=0;
     //QHBoxLayout*tl=new QHBoxLayout;tl->addWidget(menuproducts);
-
-    QScrollArea*t=new QScrollArea();
+    QScrollArea* sa=new QScrollArea();sa->setObjectName("RightAreaProd");
+    QWidget*t=new QWidget();
     QVBoxLayout*boxbottoni=new QVBoxLayout();
     QHBoxLayout*tmp;
     for(auto it=products.begin();it!=products.end();it++,indice++){
@@ -136,7 +145,11 @@ void ClientWindow::updateFromData(const vector<Product *> &products){
     }
     t->setLayout(boxbottoni);
     t->layout()->setAlignment(Qt::AlignTop);t->layout()->setSpacing(100);
-    UI->addWidget(t);
+    sa->setWidget(t);
+    UI->addWidget(sa);
+    sa->setWidgetResizable(true);
+        sa->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+        sa->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
     //TODO: UPDATE VIEW WITH DATA IN products
 
 }

@@ -18,7 +18,7 @@ void addMenuButtons();
 void setRestorantStyle();
 void Update();
 void addButtonstoWidget(const QHBoxLayout&);
-QScrollArea* addViewButtons();
+void addViewButtons();
 signals:
 void buildbuttons(const vector<QString>&);
 public:
