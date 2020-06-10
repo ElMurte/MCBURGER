@@ -33,6 +33,7 @@ SOURCES += \
     View/clientwindow.cpp \
     View/mcburgerview.cpp \
     View/menubutton.cpp \
+    View/productbutton.cpp \
     main.cpp \
 
 HEADERS += \
@@ -53,7 +54,8 @@ HEADERS += \
     Model/sweet.h \
     View/clientwindow.h \
     View/mcburgerview.h \
-    View/menubutton.h
+    View/menubutton.h \
+    View/productbutton.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

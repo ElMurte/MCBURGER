@@ -2,7 +2,8 @@
 #include "View/menubutton.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <Control/controller.h>
+#include "Control/controller.h"
+#include "View/productbutton.h"
 #include <QtDebug>
 void ClientWindow::addClientWidgets(){
 /*QSizePolicy QSP(QSizePolicy::Preferred,QSizePolicy::Preferred);
@@ -29,13 +30,20 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     UI=new QStackedLayout(productviews);
     addViewButtons();
     addClientWidgets();//UI->addWidget();
-    QHBoxLayout*btnspec=new QHBoxLayout(this);
-
+    QWidget* actionbuttons=new QWidget;
     QWidget*tbtn=new MenuButton("",0,"","Resources/images/Icons/home-icon.png");
+    QWidget*resetordine=new MenuButton("",0,"","Resources/images/Icons/reset-icon.png");
     connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
-    tbtn->setLayout(new QHBoxLayout);tbtn->setObjectName("btnlay");
-    mainlayout->addWidget(tbtn);
+    actionbuttons->setLayout(new QHBoxLayout());
+    tbtn->setObjectName("btnlay");resetordine->setObjectName("btnlay");
+
+    actionbuttons->layout()->addWidget(tbtn);
+    actionbuttons->layout()->addWidget(resetordine);
+    actionbuttons->layout()->setAlignment(Qt::AlignLeft);
+    actionbuttons->setMaximumHeight(130);
+    QHBoxLayout*btnspec=new QHBoxLayout(this);
     btnspec->addWidget(menuproducts);btnspec->addWidget(productviews);
+        mainlayout->addWidget(actionbuttons);
         mainlayout->addItem(btnspec);
     emit buildbuttons(costrfin);
     setLayout(mainlayout);
@@ -140,7 +148,7 @@ void ClientWindow::updateFromData(const vector<Product *> &products){
             tmp=new QHBoxLayout();
             boxbottoni->addLayout(tmp);
         }
-        auto*btn=new MenuButton((*it)->Get_Categorie(),indice,(*it)->Get_Nome(),(*it)->Get_Icon());
+        auto*btn=new ProductButton((*it)->Get_Categorie(),indice,(*it)->Get_Nome(),(*it)->Get_Icon());
            tmp->addWidget(btn);btn->setObjectName("productbutton");
     }
     t->setLayout(boxbottoni);

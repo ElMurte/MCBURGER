@@ -19,6 +19,16 @@ border:1px solid black;
 min-width:300px;
 min-height:200px;
 }*/
+ProductButton{
+font-size:15px;
+font-weight:bold;
+background:lightgrey;
+margin:4px;
+min-width:200px;
+max-width:250px;
+min-height:200px;
+max-height:210px;
+}
 MenuButton#menubtn{
 width:300px;
 max-height:100px;
@@ -34,6 +44,7 @@ QScrollArea#RightAreaProd{
 }
 MenuButton#productbutton{
 max-width:250px;
+text-align:center;
 background:lightgreen;
 }
 QPushButton:hover,MenuButton#RightButtonAreaClient:hover {
