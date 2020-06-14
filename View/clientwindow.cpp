@@ -2,49 +2,56 @@
 #include "View/menubutton.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QLabel>
+#include <QTextBrowser>
+#include <QDialogButtonBox>
 #include "Control/controller.h"
 #include "View/productbutton.h"
 #include <QtDebug>
 void ClientWindow::addClientWidgets(){
-/*QSizePolicy QSP(QSizePolicy::Preferred,QSizePolicy::Preferred);
-menuproducts->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
-productviews->setSizePolicy(QSP);
-menuproducts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
-menuproducts->setWidgetResizable(true);*/
 addMenuButtons();
+addViewButtons();
 menuproducts->setObjectName("LeftAreaClient");
 }
-ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)){
+void ClientWindow::addWindowAddProduct(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo){
+    if(pointerproductwindow && pointerproductwindow->isVisible()){
+        pointerproductwindow->close();
+        //delete pointerproductwindow;
+    }
+ pointerproductwindow=new WindowAddProduct(nome,imma,descriz,prezzo);
+ //pointerproductwindow->setAttribute( Qt::WA_DeleteOnClose, true );
+}
+ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(nullptr){
 
     connect(this,SIGNAL(buildbuttons(vector<QString>)),controller,SLOT(FilterProductsonclick(vector<QString>)) );
-    //create layouts
-    vector<QString>costrfin;
+    vector<QString>costrfin;//vettore per costruire i layouts dei vari prodotti senza farlo ogni volta
     costrfin.push_back("Burger");costrfin.push_back("Drink");
     costrfin.push_back("Patatine");costrfin.push_back("Sweet");
     costrfin.push_back("Brioche");costrfin.push_back("Cake");costrfin.push_back("Donut");
-    /* qw=new QScrollArea();qw->setLayout(finestra1);
-    menuproducts=new QScrollArea();productviews=new QScrollArea(qw);
-    */
+
     menuproducts=new QScrollArea(this);productviews=new QScrollArea(this);
 
     UI=new QStackedLayout(productviews);
-    addViewButtons();
     addClientWidgets();//UI->addWidget();
+
+    /*menu in alto*/
     QWidget* actionbuttons=new QWidget;
     QWidget*tbtn=new MenuButton("",0,"","Resources/images/Icons/home-icon.png");
     QWidget*resetordine=new MenuButton("",0,"","Resources/images/Icons/reset-icon.png");
     connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
     actionbuttons->setLayout(new QHBoxLayout());
     tbtn->setObjectName("btnlay");resetordine->setObjectName("btnlay");
-
     actionbuttons->layout()->addWidget(tbtn);
     actionbuttons->layout()->addWidget(resetordine);
     actionbuttons->layout()->setAlignment(Qt::AlignLeft);
     actionbuttons->setMaximumHeight(130);
-    QHBoxLayout*btnspec=new QHBoxLayout(this);
-    btnspec->addWidget(menuproducts);btnspec->addWidget(productviews);
+
+    /**/
+    QHBoxLayout*secondarigamainwidget=new QHBoxLayout(this);
+    secondarigamainwidget->addWidget(menuproducts);secondarigamainwidget->addWidget(productviews);
+    /*Mainlayout of clientwindow=menualto+menu+productsview*/
         mainlayout->addWidget(actionbuttons);
-        mainlayout->addItem(btnspec);
+        mainlayout->addItem(secondarigamainwidget);
     emit buildbuttons(costrfin);
     setLayout(mainlayout);
     //style
@@ -55,11 +62,11 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     productviews->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
     menuproducts->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
     menuproducts->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
-
     setRestorantStyle();
     show();
     //
 }
+
 void ClientWindow::addMenuButtons(){
     QVector<MenuButton*> v;
     QWidget*t=new QWidget();
@@ -142,17 +149,18 @@ void ClientWindow::updateFromData(const vector<Product *> &products){
     QScrollArea* sa=new QScrollArea();sa->setObjectName("RightAreaProd");
     QWidget*t=new QWidget();
     QVBoxLayout*boxbottoni=new QVBoxLayout();
-    QHBoxLayout*tmp;
+    QHBoxLayout*tmp=nullptr;
     for(auto it=products.begin();it!=products.end();it++,indice++){
-        if(indice%4==0){
+        if(indice%5==0){
             tmp=new QHBoxLayout();
             boxbottoni->addLayout(tmp);
         }
-        auto*btn=new ProductButton((*it)->Get_Categorie(),indice,(*it)->Get_Nome(),(*it)->Get_Icon());
+        auto*btn=new ProductButton((*it)->Get_Nome(),(*it)->Get_Nome(),(*it)->Get_Icon());
            tmp->addWidget(btn);btn->setObjectName("productbutton");
+           connect(btn,SIGNAL(clickedCell(QString)),controller,SLOT(getPointerProduct(QString)));
     }
     t->setLayout(boxbottoni);
-    t->layout()->setAlignment(Qt::AlignTop);t->layout()->setSpacing(100);
+    t->layout()->setAlignment(Qt::AlignTop);t->layout()->setSpacing(40);
     sa->setWidget(t);
     UI->addWidget(sa);
     sa->setWidgetResizable(true);

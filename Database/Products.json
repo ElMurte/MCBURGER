@@ -60,97 +60,7 @@
                 "icon":"Resources/images/Drink/coca-cola.png"
                 },
                 {
-                "name": "Coca Cola Zero",
-                "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 5,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/coca-cola-zero.png"
-                },
-                {
-                "name": "Fanta",
-                "description": "Fanta® Orange alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 192,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/fanta.png"
-                },
-                {
-                "name": "Sprite",
-                "description": "Sprite alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 153,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/sprite.png"
-                },
-                {
-                "name": "Tea Lipton",
-                "description": "Lipton Ice Tea® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L e nei gusti limone e pesca.",
-                "calories": 168,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/tea-lipton.png"
-                },
-                {
-                "name": "Coca Cola",
-                "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 168,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/coca-cola.png"
-                },
-                {
-                "name": "Coca Cola Zero",
-                "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 5,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/coca-cola-zero.png"
-                },
-                {
-                "name": "Fanta",
-                "description": "Fanta® Orange alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 192,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/fanta.png"
-                },
-                {
-                "name": "Sprite",
-                "description": "Sprite alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 153,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/sprite.png"
-                },
-                {
-                "name": "Tea Lipton",
-                "description": "Lipton Ice Tea® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L e nei gusti limone e pesca.",
-                "calories": 168,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/tea-lipton.png"
-                },
-                {
-                "name": "Coca Cola",
-                "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
-                "calories": 168,
-                "price": 1.5,
-                "size": "small",
-                "categories":"Drink",
-                "icon":"Resources/images/Drink/coca-cola.png"
-                },
-                {
-                "name": "Coca Cola Zero",
+                "name": "CocaCola Zero",
                 "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 5,
                 "price": 1.5,
@@ -185,7 +95,6 @@
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/tea-lipton.png"
                 }
-
          ],
          "Caffe":[
          {

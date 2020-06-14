@@ -12,7 +12,6 @@ MenuButton::MenuButton(const QString& cat,int pag,const QString& label,const QSt
     setAutoDefault(false);
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(this,SIGNAL(clicked()),this,SLOT(handleclick()));
-    //connect(this,SIGNAL(),this,fakehandleclick());
 }
 void MenuButton::fakehandleclick(){
 emit clickedCell(categorie);

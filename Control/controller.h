@@ -14,6 +14,7 @@ public slots:
     void FilterProductsonclick(const vector<QString>& qs);
     void Home();//da fare
     void resetOrdinazione();//da fare
+    void getPointerProduct(const QString&);
 private:
 ClientWindow* view;
 Restorant * model;
@@ -21,6 +22,7 @@ Restorant * model;
 signals:
  void newData(const vector<Product*>& p);
  void newData(const QString& p);
+ void productdata(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo);
 };
 
 #endif // CONTROLLER_H
