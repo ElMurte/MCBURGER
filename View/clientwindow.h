@@ -14,7 +14,7 @@ QScrollArea*menuproducts;
 QScrollArea* productviews;
 QStackedLayout* UI;
 QLayout *mainlayout;
-QWidget* pointerproductwindow;
+WindowAddProduct* pointerproductwindow;
 QWidget*tmp;
 void addClientWidgets();
 void addMenuButtons();
@@ -26,10 +26,13 @@ signals:
 void buildbuttons(const vector<QString>&);
 public:
     ClientWindow(ControllerR* c,QWidget *parent = nullptr);
+    ~ClientWindow();
     void UpdateRightArea(QVector<MenuButton*>v);
 public slots:
-    void addWindowAddProduct(const QString&,const QString&,const QString&,const double&);
 protected slots:
+    void closeaddprodwin();
+    void setnullptrtoaddprodwin();
+    void addWindowAddProduct(const QString&,const QString&,const QString&,const double&);
     void updateFromData(const vector<Product *>& products)override;
     void updateFromData(const QString& qs)override;
 };

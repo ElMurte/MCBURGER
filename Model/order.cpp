@@ -11,22 +11,8 @@ double Order::Gettotale() const{
     return i;
 }
 
-Order::Order(Menu * omenu, Payment pay){
-    idord++;
-menuord.push_back(omenu->clone()); totalbill=Gettotale();
+Order::Order(State pay){
+    idord++; totalbill=Gettotale();
 paytype=pay;
 }
 
-Order::Order(Product *oprod, Payment pay){
-    idord++;
-    prdsord.push_back(oprod->clone()); totalbill=Gettotale();
-    paytype=pay;
-}
-
-Order::Order(Menu *omenu, Product * oprod, Payment pay){
-    idord++;
-    prdsord.push_back(oprod->clone());
-    menuord.push_back(omenu->clone());
-    totalbill=Gettotale();
-    paytype=pay;
-}
