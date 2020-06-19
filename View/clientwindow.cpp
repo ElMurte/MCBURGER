@@ -15,24 +15,11 @@ menuproducts->setObjectName("LeftAreaClient");
 }
 void ClientWindow::addWindowAddProduct(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo){
 
-    if(pointerproductwindow && !((pointerproductwindow->isthesame(nome,imma,descriz,prezzo)))){
-        pointerproductwindow->close();
-        delete pointerproductwindow;
-        pointerproductwindow=nullptr;
-    }
-     if(pointerproductwindow && (pointerproductwindow->isthesame(nome,imma,descriz,prezzo))){
-         pointerproductwindow->activateWindow();
-     }
-     else{
-         pointerproductwindow=new WindowAddProduct(nome,imma,descriz,prezzo,controller);
-         connect(pointerproductwindow,SIGNAL(destroyed()),this,SLOT(setnullptrtoaddprodwin()));
-         pointerproductwindow->setAttribute(Qt::WA_DeleteOnClose,true);
-         pointerproductwindow->show();
-     }
+    pointerproductwindow->showWindow(nome,imma,descriz,prezzo);
  //pointerproductwindow->setAttribute( Qt::WA_DeleteOnClose, true );
 }
-ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(nullptr){
-    connect(this,SIGNAL(destroyed()),this,SLOT(closeaddprodwin()));
+ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(new WindowAddProduct(this)){
+    //connect(this,SIGNAL(destroyed()),this,SLOT(closeaddprodwin()));
     connect(this,SIGNAL(buildbuttons(vector<QString>)),controller,SLOT(FilterProductsonclick(vector<QString>)) );
     vector<QString>costrfin;//vettore per costruire i layouts dei vari prodotti senza farlo ogni volta
     costrfin.push_back("Burger");costrfin.push_back("Drink");
@@ -77,21 +64,9 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     //
 }
 
-ClientWindow::~ClientWindow(){
-        pointerproductwindow->close();
-        pointerproductwindow->hide();
-        delete pointerproductwindow;
-        pointerproductwindow=0;
-}
-
-void ClientWindow::closeaddprodwin(){
-if(pointerproductwindow)
-    pointerproductwindow->close();
-}
-
-void ClientWindow::setnullptrtoaddprodwin(){
+/*void ClientWindow::setnullptrtoaddprodwin(){
 pointerproductwindow=nullptr;
-}
+}*/
 
 void ClientWindow::addMenuButtons(){
     QVector<MenuButton*> v;

@@ -1,14 +1,14 @@
 #ifndef WINDOWADDPRODUCT_H
 #define WINDOWADDPRODUCT_H
 #include <QCloseEvent>
-#include <QWidget>
+#include <QDialog>
 
 
 class ControllerR;
 class Product;
 class QLabel;
 class QTextBrowser;
-class WindowAddProduct : public QWidget{
+class WindowAddProduct : public QDialog{
     Q_OBJECT
 private:
 Product* p;
@@ -18,12 +18,12 @@ QLabel* picture;
 QLabel* name;
 QTextBrowser* desc;
 QLabel* price;
+QWidget*psa;
 protected:
 public:
-    WindowAddProduct(Product* ptr, QWidget* parent = nullptr);
-    WindowAddProduct(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo,ControllerR*,QWidget *parent = nullptr);
-    bool isthesame(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo)const;
-    void setProduct(Product*ptr);
+    WindowAddProduct(QWidget* parent = nullptr);
+    bool isthesame(Product *ptr)const;
+    void showWindow(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo);
 public slots:
 
 signals:

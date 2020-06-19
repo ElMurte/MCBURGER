@@ -26,10 +26,9 @@ void ControllerR::FilterProductsonclick(const vector<QString>& qs){
 
 void ControllerR::getPointerProduct(const QString &qs){
         vector<Product*>v=model->filterProuduct(qs);
-        connect(this,SIGNAL(productdata(const QString&,const QString&,const QString&,const double&)),view,SLOT(addWindowAddProduct(const QString& ,const QString& ,const QString&,const double&)) );
-        for(auto it=v.begin();it!=v.end();it++){
-            emit productdata((*it)->Get_Nome(),(*it)->Get_Icon(),(*it)->Get_Description(),(*it)->Get_Price());
-        }
+        Product* primo=*(v.begin());
+        connect(this,SIGNAL(productdata(const QString&,const QString&,const QString&,const double&)),view,SLOT(addWindowAddProduct(const QString&,const QString&,const QString&,const double&)) );
+             emit productdata(primo->Get_Nome(),primo->Get_Icon(),primo->Get_Description(),primo->Get_Price());
             //view->UpdateRightArea(a)
 }
 

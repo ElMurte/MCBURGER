@@ -26,12 +26,10 @@ signals:
 void buildbuttons(const vector<QString>&);
 public:
     ClientWindow(ControllerR* c,QWidget *parent = nullptr);
-    ~ClientWindow();
     void UpdateRightArea(QVector<MenuButton*>v);
 public slots:
 protected slots:
-    void closeaddprodwin();
-    void setnullptrtoaddprodwin();
+   // void setnullptrtoaddprodwin();
     void addWindowAddProduct(const QString&,const QString&,const QString&,const double&);
     void updateFromData(const vector<Product *>& products)override;
     void updateFromData(const QString& qs)override;
