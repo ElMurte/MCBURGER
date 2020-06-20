@@ -16,9 +16,12 @@ menuproducts->setObjectName("LeftAreaClient");
 void ClientWindow::addWindowAddProduct(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo){
 
     pointerproductwindow->showWindow(nome,imma,descriz,prezzo);
- //pointerproductwindow->setAttribute( Qt::WA_DeleteOnClose, true );
 }
-ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(new WindowAddProduct(this)){
+void ClientWindow::ShowCart(){
+    cart->ShowCartWindow();
+    //cart->
+}
+ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(new WindowAddProduct(this)),cart(new Cart(this)){
     //connect(this,SIGNAL(destroyed()),this,SLOT(closeaddprodwin()));
     connect(this,SIGNAL(buildbuttons(vector<QString>)),controller,SLOT(FilterProductsonclick(vector<QString>)) );
     vector<QString>costrfin;//vettore per costruire i layouts dei vari prodotti senza farlo ogni volta
@@ -35,14 +38,21 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
     QWidget* actionbuttons=new QWidget;
     QWidget*tbtn=new MenuButton("",0,"","Resources/images/Icons/home-icon.png");
     QWidget*resetordine=new MenuButton("",0,"","Resources/images/Icons/reset-icon.png");
+    QWidget*seecart=new MenuButton("",0,"","Resources/images/Icons/icon-cart.png");
     connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
+    connect(seecart,SIGNAL(clicked()),this,SLOT(ShowCart()));
     actionbuttons->setLayout(new QHBoxLayout());
-    tbtn->setObjectName("btnlay");resetordine->setObjectName("btnlay");
+
     actionbuttons->layout()->addWidget(tbtn);
     actionbuttons->layout()->addWidget(resetordine);
+    actionbuttons->layout()->addWidget(seecart);
     actionbuttons->layout()->setAlignment(Qt::AlignLeft);
-    actionbuttons->setMaximumHeight(130);
 
+    /*style menu*/
+    tbtn->setObjectName("btnlay");
+    seecart->setObjectName("btnlay");
+    resetordine->setObjectName("btnlay");
+    actionbuttons->setMaximumHeight(130);
     /**/
     QHBoxLayout*secondarigamainwidget=new QHBoxLayout(this);
     secondarigamainwidget->addWidget(menuproducts);secondarigamainwidget->addWidget(productviews);
@@ -51,6 +61,7 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent
         mainlayout->addItem(secondarigamainwidget);
     emit buildbuttons(costrfin);
     setLayout(mainlayout);
+
     //style
     /*setMinimumWidth(1080);
     setMinimumHeight(720);*/

@@ -6,6 +6,7 @@
 #include <QStackedLayout>
 #include "mcburgerview.h"
 #include "View/windowaddproduct.h"
+#include "View/cart.h"
 class MenuButton;
 class ClientWindow : public McBurgerView {
     Q_OBJECT
@@ -15,7 +16,7 @@ QScrollArea* productviews;
 QStackedLayout* UI;
 QLayout *mainlayout;
 WindowAddProduct* pointerproductwindow;
-QWidget*tmp;
+Cart* cart;
 void addClientWidgets();
 void addMenuButtons();
 void setRestorantStyle();
@@ -30,6 +31,7 @@ public:
 public slots:
 protected slots:
    // void setnullptrtoaddprodwin();
+    void ShowCart();
     void addWindowAddProduct(const QString&,const QString&,const QString&,const double&);
     void updateFromData(const vector<Product *>& products)override;
     void updateFromData(const QString& qs)override;

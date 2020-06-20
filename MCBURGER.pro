@@ -30,6 +30,7 @@ SOURCES += \
     Model/product.cpp \
     Model/restorant.cpp \
     Model/sweet.cpp \
+    View/cart.cpp \
     View/clientwindow.cpp \
     View/mcburgerview.cpp \
     View/menubutton.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     Model/product.h \
     Model/restorant.h \ \
     Model/sweet.h \
+    View/cart.h \
     View/clientwindow.h \
     View/mcburgerview.h \
     View/menubutton.h \

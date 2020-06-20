@@ -27,7 +27,12 @@ WindowAddProduct::WindowAddProduct(QWidget *parent):QDialog(parent),p(nullptr),
     sa->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     sa->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
     vbp->addWidget(sa);
-    vbp->addWidget(new QPushButton("ciao"));
+    QDialogButtonBox*addcancelprod=new QDialogButtonBox;addcancelprod->setObjectName("addannprodbtns");
+    QAbstractButton*addprodbtn=new QPushButton("Aggiungi");addprodbtn->setObjectName("btnaddprodtocart");
+    QPushButton*cancelprodbtn=new QPushButton("Annulla");cancelprodbtn->setObjectName("btnannprodtocart");
+    addcancelprod->addButton(addprodbtn,QDialogButtonBox::ButtonRole::AcceptRole);
+    addcancelprod->addButton(cancelprodbtn,QDialogButtonBox::ButtonRole::RejectRole);
+    vbp->addWidget(addcancelprod);
     setLayout(vbp);
     QFile file("Resources/style/style.css");
     file.open(QFile::ReadOnly);
@@ -48,7 +53,6 @@ void WindowAddProduct::showWindow(const QString& nome,const QString& imma,const 
         desc=new QTextBrowser(psa);desc->setObjectName("descprodotto");
         price=new QLabel(psa);
         price->setObjectName("prezzoprodotto");
-
         QLayout* sal = psa->layout();
         sal->addWidget(name);
         sal->addWidget(picture);
