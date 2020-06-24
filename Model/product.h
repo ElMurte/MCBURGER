@@ -8,6 +8,7 @@ QString nome;
 QString description;
 unsigned short calories;
 float price;
+unsigned int quantita;
 QString categorie;
 Size size;
 QString icon;
@@ -25,6 +26,7 @@ public:
     float Get_Price()const;
     Size Get_Size()const;
     QString Get_Icon()const;
+    unsigned int get_Quantita() const;
     /*SETTERS*/
     void Set_Nome(const QString&);
     void Set_Description(const QString& );
@@ -32,8 +34,8 @@ public:
     void SetPrice(const float&);
     void SetCategorie(QString);
     void SetSize(Size);
-
-
+    void set_Quantita(unsigned int value);
+    virtual bool isEqual(Product*)const;
 };
 
 #endif // PRODUCT_H

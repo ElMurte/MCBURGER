@@ -10,9 +10,10 @@
 #include <Control/controller.h>
 #include <Model/product.h>
 
-WindowAddProduct::WindowAddProduct(QWidget *parent):QDialog(parent),p(nullptr),
+WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(parent),controller(&*c),p(nullptr),
     picture(nullptr),name(nullptr),desc(nullptr),price(nullptr)
 {
+
     setObjectName("WindowAddProd");
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     QVBoxLayout*vbp=new QVBoxLayout(this);
@@ -27,12 +28,32 @@ WindowAddProduct::WindowAddProduct(QWidget *parent):QDialog(parent),p(nullptr),
     sa->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     sa->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
     vbp->addWidget(sa);
+
+    quantita=new QLabel("0");
+    QWidget*addrembox=new QWidget(this);addrembox->setLayout(new QHBoxLayout);
+    QPushButton*moreofthis=new QPushButton("+");moreofthis->setObjectName("btncart");
+    connect(moreofthis,SIGNAL(clicked()),this,SLOT(addquantita()));
+    QPushButton*lessofthis=new QPushButton("-");lessofthis->setObjectName("btncart");
+    connect(lessofthis,SIGNAL(clicked()),this,SLOT(remquantita()));
+    addrembox->layout()->addWidget(moreofthis);
+    addrembox->layout()->addWidget(quantita);
+    addrembox->layout()->addWidget(lessofthis);
+    vbp->addWidget(sa);
+    vbp->addWidget(addrembox);
+
+
+
     QDialogButtonBox*addcancelprod=new QDialogButtonBox;addcancelprod->setObjectName("addannprodbtns");
-    QAbstractButton*addprodbtn=new QPushButton("Aggiungi");addprodbtn->setObjectName("btnaddprodtocart");
+    QPushButton*addprodbtn=new QPushButton("Aggiungi");addprodbtn->setObjectName("btnaddprodtocart");
     QPushButton*cancelprodbtn=new QPushButton("Annulla");cancelprodbtn->setObjectName("btnannprodtocart");
     addcancelprod->addButton(addprodbtn,QDialogButtonBox::ButtonRole::AcceptRole);
     addcancelprod->addButton(cancelprodbtn,QDialogButtonBox::ButtonRole::RejectRole);
+    connect(addprodbtn,SIGNAL(clicked()),this,SLOT(addProdtoCart()));
+    connect(cancelprodbtn,SIGNAL(clicked()),this,SLOT(reject()));
     vbp->addWidget(addcancelprod);
+
+
+
     setLayout(vbp);
     QFile file("Resources/style/style.css");
     file.open(QFile::ReadOnly);
@@ -40,12 +61,9 @@ WindowAddProduct::WindowAddProduct(QWidget *parent):QDialog(parent),p(nullptr),
     setStyleSheet(filesheet);
 }
 
-bool WindowAddProduct::isthesame(Product* ptr)const{
-    return(p->Get_Nome()==ptr->Get_Nome() && p->Get_Icon()==ptr->Get_Icon() && p->Get_Description()==ptr->Get_Description() && p->Get_Price()==ptr->Get_Price());
-}
 
 
-void WindowAddProduct::showWindow(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo)
+void WindowAddProduct::showWindow(Product*p)
 {
     if(name == nullptr) {
         picture=new QLabel(psa);picture->setObjectName("imgprodotto");
@@ -59,10 +77,36 @@ void WindowAddProduct::showWindow(const QString& nome,const QString& imma,const 
         sal->addWidget(desc);
         sal->addWidget(price);
     }
+    this->p=p;
     //img = QPixmap("Resources/images/Burger/big-mc.png");//get immagine
-    picture->setPixmap(imma);
-    name->setText(nome);
-    desc->setText(descriz);
-    price->setText(QString::number(prezzo)+" €");
+    picture->setPixmap(p->Get_Icon());
+    name->setText(p->Get_Nome());
+    desc->setText(p->Get_Description());
+    quantita->setText(QString::number(p->get_Quantita()));
+    price->setText(QString::number(p->Get_Price())+" €");
     open();
 }
+
+void WindowAddProduct::remquantita(){
+ uint q =quantita->text().toInt();
+ q--;
+if(q<1)
+    q=1;
+p->set_Quantita(q);
+quantita->setText(QString::number(q));
+}
+
+void WindowAddProduct::addquantita(){
+    uint q =quantita->text().toInt();
+    q++;
+   p->set_Quantita(q);
+   quantita->setText(QString::number(q));
+}
+
+void WindowAddProduct::addProdtoCart(){
+       connect(this,SIGNAL(addthisprod(Product*)),controller,SLOT(addthisprodtocart(Product*)));
+    emit addthisprod(p);
+    QDialog::accept();
+       disconnect(this,SIGNAL(addthisprod(Product*)),controller,SLOT(addthisprodtocart(Product*)));
+}
+

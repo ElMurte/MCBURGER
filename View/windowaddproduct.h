@@ -10,21 +10,25 @@ class QTextBrowser;
 class WindowAddProduct : public QDialog{
     Q_OBJECT
 private:
+ControllerR*controller;
 Product* p;
 QPixmap img;//get immagine
 QLabel* picture;
 QLabel* name;
 QTextBrowser* desc;
 QLabel* price;
+QLabel* quantita;
 QWidget*psa;
 protected:
 public:
-    WindowAddProduct(QWidget* parent = nullptr);
-    bool isthesame(Product *ptr)const;
-    void showWindow(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo);
+    WindowAddProduct(ControllerR* c,QWidget* parent = nullptr);
+    void showWindow(Product*);
 public slots:
-
+void remquantita();
+void addquantita();
+void addProdtoCart();
 signals:
+void addthisprod(Product*);
 };
 
 #endif // WINDOWADDPRODUCT_H

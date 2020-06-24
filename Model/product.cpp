@@ -1,11 +1,23 @@
 #include "product.h"
 
-Product::Product(const QString &c):categorie(c)
-{
+unsigned int Product::get_Quantita() const{
+    return quantita;
+}
 
+void Product::set_Quantita(unsigned int value){
+    quantita = value;
+}
+
+bool Product::isEqual(Product *p) const
+{
+    return this == p || (nome == p->nome && description == p->description);
+}
+
+Product::Product(const QString &c):categorie(c){
+    quantita=1;
 }
 QString Product::Get_Nome() const{
-return nome;
+    return nome;
 }
 
 QString Product::Get_Description()const{

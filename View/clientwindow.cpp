@@ -13,16 +13,27 @@ addMenuButtons();
 addViewButtons();
 menuproducts->setObjectName("LeftAreaClient");
 }
-void ClientWindow::addWindowAddProduct(const QString& nome,const QString& imma,const QString& descriz,const double& prezzo){
+void ClientWindow::addWindowAddProduct(Product*p){
 
-    pointerproductwindow->showWindow(nome,imma,descriz,prezzo);
+    pointerproductwindow->showWindow(p);
 }
 void ClientWindow::ShowCart(){
     cart->ShowCartWindow();
-    //cart->
 }
-ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(new WindowAddProduct(this)),cart(new Cart(this)){
-    //connect(this,SIGNAL(destroyed()),this,SLOT(closeaddprodwin()));
+
+void ClientWindow::AddProducttoCart(Product *p){
+//cerco prima se cè già se ce gia do un messaggio di errore dove
+//dico che il prodotto e gia presente
+    //o altrimenti si aggiunge quella quantita al puntatore gia presente ovvero:
+    //*it->quantita=*it->quantita+p->quantita
+//cart->InsertRowProd(p);
+    connect(this,SIGNAL(insertrow(Product*)),cart,SLOT(InsertRowProd(Product*)));
+    emit insertrow(p);
+    disconnect(this,SIGNAL(insertrow(Product*)),cart,SLOT(InsertRowProd(Product*)));
+//messaggio di aggiunta avvenuta con successo
+}
+ClientWindow::ClientWindow(ControllerR *c, QWidget*parent):McBurgerView(c,parent),mainlayout(new QVBoxLayout(this)),pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this)){
+    //c+onnect(this,SIGNAL(destroyed()),this,SLOT(closeaddprodwin()));
     connect(this,SIGNAL(buildbuttons(vector<QString>)),controller,SLOT(FilterProductsonclick(vector<QString>)) );
     vector<QString>costrfin;//vettore per costruire i layouts dei vari prodotti senza farlo ogni volta
     costrfin.push_back("Burger");costrfin.push_back("Drink");

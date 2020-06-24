@@ -12,7 +12,20 @@ double Order::Gettotale() const{
 }
 
 Order::Order(State pay){
-    idord++; totalbill=Gettotale();
-paytype=pay;
+statetype=pay;
+}
+
+void Order::setState(State s){
+    statetype = s;
+}
+
+void Order::chiudiOrdine(){
+        for (auto it=prdsord.begin();it!=prdsord.end();it++)
+             delete *it;
+        prdsord.clear();
+
+        for (auto it=menuord.begin();it!=menuord.end();it++)
+             delete *it;
+        menuord.clear();
 }
 

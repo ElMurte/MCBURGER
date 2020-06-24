@@ -3,7 +3,6 @@
 #include "Model/product.h"
 #include "View/windowaddproduct.h"
 ProductButton::ProductButton(const QString& cat,const QString& label,const QString& sicona, QWidget *parent) : QToolButton(parent),nome(cat){
-    /*connect(this,SIGNAL(clicked()),this,SLOT(cellEmitter()));*/
     this->setIcon(QIcon(sicona));
     setIconSize(QSize(190,120));
     setText(label);

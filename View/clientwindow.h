@@ -25,6 +25,7 @@ void addButtonstoWidget(const QHBoxLayout&);
 void addViewButtons();
 signals:
 void buildbuttons(const vector<QString>&);
+void insertrow(Product*);
 public:
     ClientWindow(ControllerR* c,QWidget *parent = nullptr);
     void UpdateRightArea(QVector<MenuButton*>v);
@@ -32,7 +33,8 @@ public slots:
 protected slots:
    // void setnullptrtoaddprodwin();
     void ShowCart();
-    void addWindowAddProduct(const QString&,const QString&,const QString&,const double&);
+    void AddProducttoCart(Product*);
+    void addWindowAddProduct(Product*);
     void updateFromData(const vector<Product *>& products)override;
     void updateFromData(const QString& qs)override;
 };
