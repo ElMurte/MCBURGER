@@ -20,7 +20,7 @@ QLabel{
 font-weight:bolder;
 font-size:15px;
 }
-QDialog#carello{
+QDialog#cart{
 font-size:20px;
 min-width:450px;
 min-height:300px;

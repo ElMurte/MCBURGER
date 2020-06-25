@@ -29,7 +29,7 @@ WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(pare
     sa->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
     vbp->addWidget(sa);
 
-    quantita=new QLabel("0");
+    quantita=new QLabel("0");//+ -
     QWidget*addrembox=new QWidget(this);addrembox->setLayout(new QHBoxLayout);
     QPushButton*moreofthis=new QPushButton("+");moreofthis->setObjectName("btncart");
     connect(moreofthis,SIGNAL(clicked()),this,SLOT(addquantita()));
@@ -40,9 +40,7 @@ WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(pare
     addrembox->layout()->addWidget(lessofthis);
     vbp->addWidget(sa);
     vbp->addWidget(addrembox);
-
-
-
+    //aggiungial carello annulla
     QDialogButtonBox*addcancelprod=new QDialogButtonBox;addcancelprod->setObjectName("addannprodbtns");
     QPushButton*addprodbtn=new QPushButton("Aggiungi");addprodbtn->setObjectName("btnaddprodtocart");
     QPushButton*cancelprodbtn=new QPushButton("Annulla");cancelprodbtn->setObjectName("btnannprodtocart");

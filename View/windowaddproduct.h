@@ -19,6 +19,7 @@ QTextBrowser* desc;
 QLabel* price;
 QLabel* quantita;
 QWidget*psa;
+void setStyle();
 protected:
 public:
     WindowAddProduct(ControllerR* c,QWidget* parent = nullptr);

@@ -8,7 +8,7 @@
 class Product;
 class Menu;
 class ControllerR;
-
+class AddRemButtonsCart;
 using std::vector;
 class Cart : public QDialog{
     Q_OBJECT
@@ -18,13 +18,15 @@ vector <Menu*>vm;
 ControllerR* controller;
 QWidget*mainchild;
 QTableWidget*tabprod;
+QLabel*totale;
+AddRemButtonsCart*plusminprodbtns;
 QDialogButtonBox*boxpushorder;
 QPushButton*confirmordbtn;
 QPushButton*dontconfirmbtn;
 
 Cart(ControllerR*c,QWidget* parent = nullptr);
 void ShowCartWindow();
-
+double Get_totale()const;
 
 public slots:
 void InsertRowProd(Product*p);
