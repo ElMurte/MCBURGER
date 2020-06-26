@@ -23,7 +23,7 @@ AddRemButtonsCart*plusminprodbtns;
 QDialogButtonBox*boxpushorder;
 QPushButton*confirmordbtn;
 QPushButton*dontconfirmbtn;
-
+vector <AddRemButtonsCart*>widgetbotadd;
 Cart(ControllerR*c,QWidget* parent = nullptr);
 void ShowCartWindow();
 double Get_totale()const;

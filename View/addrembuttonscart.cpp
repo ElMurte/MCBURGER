@@ -18,20 +18,22 @@ void AddRemButtonsCart::remquantita_tocart(){
     if(quant==0){
         for(auto it=carel->vp.begin();it!=carel->vp.end();it++){
             if(p->Get_Nome()==(*it)->Get_Nome()){
-                //delete *it;
                 it=carel->vp.erase(it);
+                for(auto it=carel->widgetbotadd.begin();it!=carel->widgetbotadd.end();it++){
+                    if( (*it)->riga>riga)
+                        (*it)->riga--;//BUG SCOMPARSA BOTTONI DOPO RIMOZIONI QUANDO MI RIMANGONO SOLO 2 RIGHE
+            }
                 carel->tabprod->removeRow(riga);
+
                // riga=riga-1;
                if(carel->vp.empty()){
-                   carel->tabprod->removeRow(0);
                     carel->totale->setText("TOTALE: 0");
                     carel->tabprod->reset();
                 }
                else  carel->totale->setText("TOTALE: "+ QString::number(carel->Get_totale()));
-                break;//stop you find it
+               break;//stop you find it
             }
         }
-
 
     }
     else
@@ -43,6 +45,7 @@ void AddRemButtonsCart::remquantita_tocart(){
 
         //carel->tabprod->reset();
     }
+    //emit rimossounariga();
     //rimuovi la riga e rimetti a 1 la quantita del puntatore se non clonato
         //p->set_Quantita(p->get_Quantita()-1);
 

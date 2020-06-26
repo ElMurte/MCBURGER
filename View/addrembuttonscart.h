@@ -21,6 +21,7 @@ public slots:
     void add_quantita_tocart();
 signals:
 void quantitachange(unsigned int);
+//void rimossounariga();
 };
 
 #endif // ADDREMBUTTONSCART_H

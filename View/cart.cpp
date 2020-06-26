@@ -28,6 +28,8 @@ Cart::Cart(ControllerR*c,QWidget* parent)
     boxpushorder->addButton(confirmordbtn,QDialogButtonBox::ButtonRole::AcceptRole);
     boxpushorder->addButton(dontconfirmbtn,QDialogButtonBox::ButtonRole::RejectRole);
     layout()->addWidget(boxpushorder);
+    connect(confirmordbtn,SIGNAL(clicked()),this,SLOT(accept()));//TODO
+    connect(dontconfirmbtn,SIGNAL(clicked()),this,SLOT(reject()));
 }
 void Cart::InsertRowProd(Product*it){
         bool sent=true;
@@ -59,7 +61,9 @@ void Cart::InsertRowProd(Product*it){
             tabprod->setColumnWidth(0,250);
             tabprod->setItem( tabprod->rowCount()-1,1,quantita);
             auto* pp=it->clone();vp.push_back(pp);
-           tabprod->setCellWidget(tabprod->rowCount()-1,2,new AddRemButtonsCart(this,pp,tabprod->rowCount()-1,this));
+            auto*widgetbotaddrem=new AddRemButtonsCart(this,pp,tabprod->rowCount()-1,this);
+           tabprod->setCellWidget(tabprod->rowCount()-1,2,widgetbotaddrem);
+            widgetbotadd.push_back(widgetbotaddrem);
             tabprod->setItem( tabprod->rowCount()-1,3,totaleparziae);
             }
         totale->setText("TOTALE: "+ QString::number(Get_totale()));
