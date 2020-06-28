@@ -57,7 +57,13 @@ void ControllerR::Home(){
 void ControllerR::resetOrdinazione(){
 
 }
-
+void ControllerR::createneworder(vector<Product*>& v){
+    //connetti sengnale ordine aggiunto alla vista di cuoco e di cassiere
+       connect(this,SIGNAL(ordineaggiunto(unsigned int)),view,SLOT(aggiornalistaord(unsigned int)));
+    unsigned int num=model->addOrder(v);
+    emit ordineaggiunto(num);
+    disconnect(this,SIGNAL(ordineaggiunto(unsigned int)),view,SLOT(aggiornalistaord(unsigned int)));
+}
 
 
 

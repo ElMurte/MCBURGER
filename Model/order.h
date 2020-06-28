@@ -11,13 +11,14 @@ private:
     vector<Product*> prdsord;
     State statetype;
     unsigned short numtav;
-    static unsigned int idord;
+
 public:
+    static unsigned int idord;
+    Order(vector<Product*>&);
     double Gettotale()const;
     void addProd(Product*);
     void removeProd(Product*);
     unsigned short SetNumTav();
-    Order(State=notsetted);
     void setState(State);
     void chiudiOrdine();
 };

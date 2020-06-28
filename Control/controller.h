@@ -16,6 +16,7 @@ public slots:
     void resetOrdinazione();//da fare
     void getPointerProduct(const QString&);
     void addthisprodtocart(Product*);
+    void createneworder(vector<Product*>&);
 private:
 ClientWindow* view;
 Restorant * model;
@@ -25,6 +26,7 @@ signals:
  void newData(const QString& p);
  void productdata(Product*);
  void addProdtocart(Product*);
+ void ordineaggiunto(unsigned int);
 };
 
 #endif // CONTROLLER_H

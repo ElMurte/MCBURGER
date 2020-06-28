@@ -6,10 +6,11 @@
 #include <QFile>
 #include <Model/product.h>
 #include <Model/menu.h>
+#include <Control/controller.h>
 #include <View/addrembuttonscart.h>
 Cart::Cart(ControllerR*c,QWidget* parent)
     :QDialog(parent),controller(&*c),mainchild(new QWidget(this)),tabprod(new QTableWidget(mainchild)),
-      totale(new QLabel("ND"))
+      totale(new QLabel("TOTALE: 0 euro"))
 {
     setObjectName("cart");
     tabprod->setObjectName("tabcart");
@@ -28,7 +29,7 @@ Cart::Cart(ControllerR*c,QWidget* parent)
     boxpushorder->addButton(confirmordbtn,QDialogButtonBox::ButtonRole::AcceptRole);
     boxpushorder->addButton(dontconfirmbtn,QDialogButtonBox::ButtonRole::RejectRole);
     layout()->addWidget(boxpushorder);
-    connect(confirmordbtn,SIGNAL(clicked()),this,SLOT(accept()));//TODO
+    connect(confirmordbtn,SIGNAL(clicked()),this,SLOT(createneworder()));//TODO
     connect(dontconfirmbtn,SIGNAL(clicked()),this,SLOT(reject()));
 }
 void Cart::InsertRowProd(Product*it){
@@ -61,15 +62,22 @@ void Cart::InsertRowProd(Product*it){
             tabprod->setColumnWidth(0,250);
             tabprod->setItem( tabprod->rowCount()-1,1,quantita);
             auto* pp=it->clone();vp.push_back(pp);
-            auto*widgetbotaddrem=new AddRemButtonsCart(this,pp,tabprod->rowCount()-1,this);
+            auto*widgetbotaddrem=new AddRemButtonsCart(this,pp,tabprod->rowCount()-1);
            tabprod->setCellWidget(tabprod->rowCount()-1,2,widgetbotaddrem);
             widgetbotadd.push_back(widgetbotaddrem);
             tabprod->setItem( tabprod->rowCount()-1,3,totaleparziae);
             }
-        totale->setText("TOTALE: "+ QString::number(Get_totale()));
-        tabprod->setMinimumWidth(650);
-        tabprod->setMinimumHeight(400);
+        totale->setText("TOTALE: "+ QString::number(Get_totale())+" euro");
+        tabprod->setMinimumWidth(700);
+        tabprod->setMinimumHeight(500);
         it->set_Quantita(1);
+}
+
+void Cart::createneworder(){
+connect(this,SIGNAL(createneworder(vector<Product*>&)),controller,SLOT(createneworder(vector<Product*>&)));
+emit createneworder(vp);
+accept();
+//message box ok
 }
 
 void Cart::ShowCartWindow(){
@@ -87,3 +95,5 @@ double Cart::Get_totale() const
         }
         return i;
 }
+
+

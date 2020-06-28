@@ -1,4 +1,5 @@
 #include "restorant.h"
+#include <QtDebug>
 void Restorant::LoaddatafromJSON(){/*alloco la memoria per i prodotti e li legge dal file json*/
     Database::ReadProductfromJson<Product,Burger>("Burger",products);
     Database::ReadProductfromJson<Product,Patatine>("Patatine",products);
@@ -27,7 +28,18 @@ vector<Product*> r;
             r.push_back(*it);
         }
     }
-return r;
+    return r;
+}
+
+unsigned int Restorant::addOrder(vector<Product *> &v){
+orders.push_back(new Order(v));
+for(auto it=v.begin();it!=v.end();it++){
+    delete *it;
+    v.erase(it);
+    it--;
+}
+v.clear();
+return Order::idord;
 }
 /*utility function*/
 

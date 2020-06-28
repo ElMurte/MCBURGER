@@ -13,6 +13,18 @@ border-radius:30%;
     font-size:20px;
 
 }
+QDialog#orditem{
+min-height:50px;
+background:whitesmoke;
+}
+QPushButton#ordbtn{
+min-width:50px;
+min-height:30px;
+max-height:50px;
+max-width:100px;
+border-radius:30%;
+background:lightgreen;
+}
 QLabel#imgprod{
 max-height:150px;
 }

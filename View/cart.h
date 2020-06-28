@@ -30,8 +30,9 @@ double Get_totale()const;
 
 public slots:
 void InsertRowProd(Product*p);
+void createneworder();
 signals:
-
+void createneworder(vector<Product*>&);
 public:
 
 };

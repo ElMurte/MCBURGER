@@ -22,9 +22,8 @@ void AddRemButtonsCart::remquantita_tocart(){
                 for(auto it=carel->widgetbotadd.begin();it!=carel->widgetbotadd.end();it++){
                     if( (*it)->riga>riga)
                         (*it)->riga--;//BUG SCOMPARSA BOTTONI DOPO RIMOZIONI QUANDO MI RIMANGONO SOLO 2 RIGHE
-            }
+                    }
                 carel->tabprod->removeRow(riga);
-
                // riga=riga-1;
                if(carel->vp.empty()){
                     carel->totale->setText("TOTALE: 0");

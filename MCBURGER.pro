@@ -35,7 +35,9 @@ SOURCES += \
     View/clientwindow.cpp \
     View/mcburgerview.cpp \
     View/menubutton.cpp \
+    View/orditem.cpp \
     View/productbutton.cpp \
+    View/uigestioneordini.cpp \
     View/windowaddproduct.cpp \
     main.cpp \
 
@@ -60,7 +62,9 @@ HEADERS += \
     View/clientwindow.h \
     View/mcburgerview.h \
     View/menubutton.h \
+    View/orditem.h \
     View/productbutton.h \
+    View/uigestioneordini.h \
     View/windowaddproduct.h
 
 # Default rules for deployment.

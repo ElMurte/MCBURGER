@@ -8,7 +8,7 @@
 #include "Control/controller.h"
 #include "View/productbutton.h"
 #include <QtDebug>
-
+#include <View/uigestioneordini.h>
 
 void ClientWindow::addClientWidgets(){
 addtopmenuwidgets();
@@ -36,7 +36,7 @@ void ClientWindow::AddProducttoCart(Product *p){
 ClientWindow::ClientWindow(ControllerR *c, QWidget*parent)
     :McBurgerView(c,parent),menuproducts(new QScrollArea(this)),productviews(new QScrollArea(this)),
       UI(new QStackedLayout(productviews)),mainlayout(new QVBoxLayout(this)),topmenuwidget(new QWidget(this)),
-      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this))
+      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this)),UIgestord(new UIGestioneOrdini(this))
 {
     addClientWidgets();
     QHBoxLayout*secondarigamainwidget=new QHBoxLayout(this);
@@ -47,6 +47,22 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent)
     setRestorantStyle();
     show();
 }
+
+void ClientWindow::aggiornalistaord(unsigned int i){
+    while(cart->tabprod->rowCount())//togli tutte le righe dalla tabella
+    cart->tabprod->removeRow(0);
+    cart->accept();//messaggio avvenuto con successo
+    cart->totale->setText("TOTALE : 0 euro");
+    connect(this,SIGNAL(addordnum(unsigned int)),UIgestord,SLOT(addorder(unsigned int)));
+    emit addordnum(i);
+    disconnect(this,SIGNAL(addordnum(unsigned int)),UIgestord,SLOT(addorder(unsigned int)));
+
+}
+
+void ClientWindow::showGestOrd(){
+    UIgestord->showGestOrd();
+}
+
 
 void ClientWindow::addLeftMenuButtons(){
     QVector<MenuButton*> v;
@@ -102,6 +118,7 @@ QWidget*resetordine=new MenuButton("",0,"","Resources/images/Icons/reset-icon.pn
 QWidget*seecart=new MenuButton("",0,"","Resources/images/Icons/icon-cart.png");
 connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
 connect(seecart,SIGNAL(clicked()),this,SLOT(ShowCart()));
+connect(resetordine,SIGNAL(clicked()),this,SLOT(showGestOrd()));
 topmenuwidget->setLayout(new QHBoxLayout());
 
 topmenuwidget->layout()->addWidget(tbtn);

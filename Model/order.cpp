@@ -11,8 +11,8 @@ double Order::Gettotale() const{
     return i;
 }
 
-Order::Order(State pay){
-statetype=pay;
+Order::Order(vector<Product*>&v):prdsord(v),statetype(inpreparation),numtav(++idord){
+
 }
 
 void Order::setState(State s){
