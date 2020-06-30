@@ -9,7 +9,10 @@
 #include "View/productbutton.h"
 #include <QtDebug>
 #include <View/uigestioneordini.h>
-
+//UpdateRightArea(a);
+/*auto*s=new ControllerR(*controller);
+new ClientWindow(s);*/
+//TODO: UPDATE VIEW WITH DATA IN products
 void ClientWindow::addClientWidgets(){
 addtopmenuwidgets();
 addLeftMenuButtons();
@@ -36,7 +39,7 @@ void ClientWindow::AddProducttoCart(Product *p){
 ClientWindow::ClientWindow(ControllerR *c, QWidget*parent)
     :McBurgerView(c,parent),menuproducts(new QScrollArea(this)),productviews(new QScrollArea(this)),
       UI(new QStackedLayout(productviews)),mainlayout(new QVBoxLayout(this)),topmenuwidget(new QWidget(this)),
-      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this)),UIgestord(new UIGestioneOrdini(this))
+      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this)),UIgestord(new UIGestioneOrdini(c,this))
 {
     addClientWidgets();
     QHBoxLayout*secondarigamainwidget=new QHBoxLayout(this);
@@ -45,18 +48,23 @@ ClientWindow::ClientWindow(ControllerR *c, QWidget*parent)
         mainlayout->addItem(secondarigamainwidget);
     setLayout(mainlayout);
     setRestorantStyle();
-    show();
 }
 
-void ClientWindow::aggiornalistaord(unsigned int i){
+void ClientWindow::aggiornalistaord(Order *i){
     while(cart->tabprod->rowCount())//togli tutte le righe dalla tabella
     cart->tabprod->removeRow(0);
     cart->accept();//messaggio avvenuto con successo
     cart->totale->setText("TOTALE : 0 euro");
-    connect(this,SIGNAL(addordnum(unsigned int)),UIgestord,SLOT(addorder(unsigned int)));
-    emit addordnum(i);
-    disconnect(this,SIGNAL(addordnum(unsigned int)),UIgestord,SLOT(addorder(unsigned int)));
-
+    QString ordine=QString::number(i->Get_NumOrder());
+    UIgestord->addorder(i);
+    update();
+}
+void ClientWindow::orderready(Order*i){
+    QString ordine=QString::number(i->Get_NumOrder());
+    Orditem*order=UIgestord->inprep->findChild<Orditem*>(ordine);
+    UIgestord->inprep->layout()->removeWidget(order);
+    UIgestord->pronti->layout()->addWidget(new Orditem(controller,i));
+    update();
 }
 
 void ClientWindow::showGestOrd(){
@@ -158,9 +166,9 @@ void ClientWindow::updateFromData(const vector<Product *> &products){
             tmp=new QHBoxLayout();
             boxbottoni->addLayout(tmp);
         }
-        auto*btn=new ProductButton((*it)->Get_Nome(),(*it)->Get_Nome(),(*it)->Get_Icon());
+        auto*btn=new ProductButton(*it);
            tmp->addWidget(btn);btn->setObjectName("productbutton");
-           connect(btn,SIGNAL(clickedCell(QString)),controller,SLOT(getPointerProduct(QString)));
+            connect(btn,SIGNAL(clickedCell(Product*)),this,SLOT(addWindowAddProduct(Product*)) );
     }
     t->setLayout(boxbottoni);
     t->layout()->setAlignment(Qt::AlignTop);t->layout()->setSpacing(40);
@@ -187,8 +195,4 @@ void ClientWindow::updateFromData(const QString& qs){
     /*menu?*/
     UI->addWidget(t);
     }
-    //UpdateRightArea(a);
-    /*auto*s=new ControllerR(*controller);
-    new ClientWindow(s);*/
-    //TODO: UPDATE VIEW WITH DATA IN products
 }

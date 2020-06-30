@@ -2,17 +2,17 @@
 #define PRODUCTBUTTON_H
 #include <QAbstractButton>
 #include <QToolButton>
+class Product;
 class ProductButton : public QToolButton{
 Q_OBJECT
 signals:
-void clickedCell(const QString&);
-void clickedCell(const int&);
+void clickedCell(Product*);
 private:
-    QString nome;
+    Product*prodp;
 private slots:
 void fakehandleclick();
 public:
-    ProductButton(const QString&,const QString& label,const QString& sicona, QWidget *parent=0);
+    ProductButton(Product*p, QWidget *parent=nullptr);
 };
 
 #endif // PRODUCTBUTTON_H

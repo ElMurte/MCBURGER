@@ -13,7 +13,6 @@
 WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(parent),controller(&*c),p(nullptr),
     picture(nullptr),name(nullptr),desc(nullptr),price(nullptr)
 {
-
     setObjectName("WindowAddProd");
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     QVBoxLayout*vbp=new QVBoxLayout(this);
@@ -75,7 +74,7 @@ void WindowAddProduct::showWindow(Product*p)
         sal->addWidget(desc);
         sal->addWidget(price);
     }
-    this->p=p;
+    this->p=p->clone();
     //img = QPixmap("Resources/images/Burger/big-mc.png");//get immagine
     picture->setPixmap(p->Get_Icon());
     name->setText(p->Get_Nome());
@@ -104,7 +103,7 @@ void WindowAddProduct::addquantita(){
 void WindowAddProduct::addProdtoCart(){
        connect(this,SIGNAL(addthisprod(Product*)),controller,SLOT(addthisprodtocart(Product*)));
     emit addthisprod(p);
-    QDialog::accept();
+    accept();
        disconnect(this,SIGNAL(addthisprod(Product*)),controller,SLOT(addthisprodtocart(Product*)));
 }
 

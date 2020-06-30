@@ -2,14 +2,14 @@
 #include <QtDebug>
 #include "Model/product.h"
 #include "View/windowaddproduct.h"
-ProductButton::ProductButton(const QString& cat,const QString& label,const QString& sicona, QWidget *parent) : QToolButton(parent),nome(cat){
-    this->setIcon(QIcon(sicona));
+ProductButton::ProductButton(Product*p, QWidget *parent) : QToolButton(parent),prodp(p){
+    this->setIcon(QIcon(p->Get_Icon()));
     setIconSize(QSize(190,120));
-    setText(label);
+    setText(p->Get_Nome());
     setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(this,SIGNAL(clicked()),this,SLOT(fakehandleclick()));
 }
 void ProductButton::fakehandleclick(){
-emit clickedCell(nome);
+emit clickedCell(prodp);
 }

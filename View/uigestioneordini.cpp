@@ -3,10 +3,12 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QFile>
-UIGestioneOrdini::UIGestioneOrdini(QWidget*parent):QDialog(parent),inprep(new QWidget(this)),pronti(new QWidget(this)){
+#include <QDebug>
+#include <Model/order.h>
+UIGestioneOrdini::UIGestioneOrdini(ControllerR*c,QWidget*parent):QDialog(parent),controller(c),inprep(new QWidget(this)),pronti(new QWidget(this)){
 setLayout(new QHBoxLayout);
-inprep->setLayout(new QVBoxLayout);
-pronti->setLayout(new QVBoxLayout);
+inprep->setLayout(new QVBoxLayout);inprep->setObjectName("widgetord");
+pronti->setLayout(new QVBoxLayout);pronti->setObjectName("widgetord");
 inprep->layout()->addWidget(new QLabel("IN PREPARAZIONE"));
 pronti->layout()->addWidget(new QLabel("PRONTI"));
 layout()->addWidget(inprep);
@@ -21,8 +23,18 @@ void UIGestioneOrdini::showGestOrd(){
     open();
 }
 
-void UIGestioneOrdini::addorder(unsigned int i){
-    inprep->layout()->addWidget(new Orditem(i));
+void UIGestioneOrdini::addorder(Order* i){
+    inprep->layout()->addWidget(new Orditem(controller,i,inprep));
 }
+
+/*void UIGestioneOrdini::confirmorder(Order*i){
+    i->setState(State::ready);
+    QString ordine=QString::number(i->Get_NumOrder());
+    Orditem*order=inprep->findChild<Orditem*>(ordine);
+    if(order) qDebug()<<"esiste";
+    else  qDebug()<<"NONNONNON esiste";
+    pronti->layout()->addWidget(order);
+    update();
+}*/
 
 

@@ -18,7 +18,7 @@ json["chicken"]=chicken;
 
 void Burger::readInfoFromJson(const QJsonObject &json){
 Product::readInfoFromJson(json);//leggo i valori di product
-bacon=json["bacon"].toBool() ;
+bacon=json["bacon"].toBool();
 glutenfree=json["glutenfree"].toBool();
 chicken=json["chicken"].toBool();
 }

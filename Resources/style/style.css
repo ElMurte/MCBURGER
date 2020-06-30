@@ -13,7 +13,7 @@ border-radius:30%;
     font-size:20px;
 
 }
-QDialog#orditem{
+Qrditem{
 min-height:50px;
 background:whitesmoke;
 }
@@ -23,7 +23,11 @@ min-height:30px;
 max-height:50px;
 max-width:100px;
 border-radius:30%;
-background:lightgreen;
+background:lightgrey;
+padding:4px;
+}
+QWidget#widgetord{
+border:1px solid grey;
 }
 QLabel#imgprod{
 max-height:150px;
@@ -94,6 +98,7 @@ max-width:230px;
 min-height:180px;
 max-height:200px;
 }
+
 MenuButton#menubtn{
 width:300px;
 max-height:100px;
@@ -120,12 +125,12 @@ background:lightblue;
 QScrollArea#RightAreaProd{
 
 }
-QPushButton:hover,MenuButton#RightButtonAreaClient:hover {
-    background-color:grey;
+QPushButton:hover,MenuButton#RightButtonAreaClient:hover,ProductButton:hover{
+border:3px solid black;
 }
 
 QScrollArea{
-border:1px solid black;
+border:1px transparent black;
 background:white;
 }
 ClientWindow{

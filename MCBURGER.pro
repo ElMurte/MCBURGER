@@ -37,7 +37,9 @@ SOURCES += \
     View/menubutton.cpp \
     View/orditem.cpp \
     View/productbutton.cpp \
+    View/uicuoco.cpp \
     View/uigestioneordini.cpp \
+    View/uimanager.cpp \
     View/windowaddproduct.cpp \
     main.cpp \
 
@@ -64,7 +66,9 @@ HEADERS += \
     View/menubutton.h \
     View/orditem.h \
     View/productbutton.h \
+    View/uicuoco.h \
     View/uigestioneordini.h \
+    View/uimanager.h \
     View/windowaddproduct.h
 
 # Default rules for deployment.

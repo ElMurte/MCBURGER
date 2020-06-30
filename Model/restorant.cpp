@@ -31,7 +31,7 @@ vector<Product*> r;
     return r;
 }
 
-unsigned int Restorant::addOrder(vector<Product *> &v){
+Order* Restorant::addOrder(vector<Product *> &v){
 orders.push_back(new Order(v));
 for(auto it=v.begin();it!=v.end();it++){
     delete *it;
@@ -39,7 +39,7 @@ for(auto it=v.begin();it!=v.end();it++){
     it--;
 }
 v.clear();
-return Order::idord;
+return *(--orders.end());
 }
 /*utility function*/
 

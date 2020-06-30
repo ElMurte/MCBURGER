@@ -3,12 +3,14 @@
 ControllerR::ControllerR(Restorant *mod, QObject *parent) : QObject(parent),view(nullptr),model(mod){}
 
 void ControllerR::set_View(ClientWindow *v){
-    view=v;
+    view=v;v->show();
 }
 
-ControllerR::ControllerR(const ControllerR &c):QObject(new QObject()),model(c.model){
-//costruttore di copia che non fa la copia del campo dati view
-//perchè bisogna usarlo in questo modo per simulare più istanze
+void ControllerR::set_Cuoco(UICuoco *c){
+    viewcuoco=c;viewcuoco->show();
+}
+void ControllerR::set_Manager(UIManager *vm){
+    viewmanager=vm;viewmanager->show();
 }
 void ControllerR::FilterProductsonclick(const vector<QString>& qs){
     for(auto it=qs.begin();it!=qs.end();it++){
@@ -24,18 +26,20 @@ void ControllerR::FilterProductsonclick(const vector<QString>& qs){
     }
 }
 
-void ControllerR::getPointerProduct(const QString &qs){
+/*void ControllerR::getPointerProduct(const QString &qs){
         vector<Product*>v=model->filterProuduct(qs);
         Product* primo=*(v.begin());
         connect(this,SIGNAL(productdata(Product*)),view,SLOT(addWindowAddProduct(Product*)) );
              emit productdata(primo);
         //view->UpdateRightArea(a)
-}
+}*/
 
 void ControllerR::addthisprodtocart(Product *p){
     connect(this,SIGNAL(addProdtocart(Product*)),view,SLOT(AddProducttoCart(Product*)) );
+    connect(this,SIGNAL(addProdtocart(Product*)),viewmanager,SLOT(AddProducttoCart(Product*)) );
     emit addProdtocart(p);
      disconnect(this,SIGNAL(addProdtocart(Product*)),view,SLOT(AddProducttoCart(Product*)) );
+     disconnect(this,SIGNAL(addProdtocart(Product*)),viewmanager,SLOT(AddProducttoCart(Product*)) );
 }
 
 void ControllerR::FilterProductsonclick(const QString& qs){
@@ -59,29 +63,20 @@ void ControllerR::resetOrdinazione(){
 }
 void ControllerR::createneworder(vector<Product*>& v){
     //connetti sengnale ordine aggiunto alla vista di cuoco e di cassiere
-       connect(this,SIGNAL(ordineaggiunto(unsigned int)),view,SLOT(aggiornalistaord(unsigned int)));
-    unsigned int num=model->addOrder(v);
+       connect(this,SIGNAL(ordineaggiunto(Order*)),viewcuoco,SLOT(aggiornalistaord(Order*)));
+       connect(this,SIGNAL(ordineaggiunto(Order*)),viewmanager->getcucina(),SLOT(aggiornalistaord(Order*)));
+    Order* num=model->addOrder(v);
     emit ordineaggiunto(num);
-    disconnect(this,SIGNAL(ordineaggiunto(unsigned int)),view,SLOT(aggiornalistaord(unsigned int)));
+    disconnect(this,SIGNAL(ordineaggiunto(Order*)),viewcuoco,SLOT(aggiornalistaord(Order*)));
+    disconnect(this,SIGNAL(ordineaggiunto(Order*)),viewmanager->getcucina(),SLOT(aggiornalistaord(Order*)));
 }
-
-
-
-
-
-/*void Controller::Move(unsigned short x, unsigned short y){
-    //provo sd eseguire la mossa
-    try {model->Move(x,y);
-        view->Update();
-        if(model->winner() || ((model->countFrame(player1))+(model->countFrame(player2)))==9){
-            view->ShowWinner();
-            resetGame();
-        }
-    }
-    catch (std::exception* exc) {
-        view->ShowErrorMessage(exc->what());
-    }
-//se la mossa va a buon aggiorno la vista e controllo il vincitore
-//oppure dovrei aggiornare la vista con qualche messaggio
-}*/
-
+void ControllerR::orderready(Order*o){
+    connect(this,SIGNAL(ordineprep(Order*)),view,SLOT(orderready(Order*)));
+    connect(this,SIGNAL(ordineprep(Order*)),viewcuoco,SLOT(orderready(Order*)));
+    connect(this,SIGNAL(ordineprep(Order*)),viewmanager,SLOT(orderready(Order*)));
+    connect(this,SIGNAL(ordineprep(Order*)),viewmanager->getcucina(),SLOT(orderready(Order*)));
+ emit ordineprep(o);
+ disconnect(this,SIGNAL(ordineprep(Order*)),view,SLOT(orderready(Order*)));
+ disconnect(this,SIGNAL(ordineprep(Order*)),viewcuoco,SLOT(orderready(Order*)));
+ disconnect(this,SIGNAL(ordineprep(Order*)),viewmanager,SLOT(orderready(Order*)));
+}

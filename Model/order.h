@@ -3,16 +3,17 @@
 #include "Model/menu.h"
 #include <vector>
 using std::vector;
-enum State{notsetted,payed,inpreparation,ready};
+enum State{inpreparation,ready};
 
 class Order{
 private:
     vector<Menu*> menuord;
     vector<Product*> prdsord;
     State statetype;
-    unsigned short numtav;
+    unsigned short numordine;
 
 public:
+    unsigned int Get_NumOrder();
     static unsigned int idord;
     Order(vector<Product*>&);
     double Gettotale()const;

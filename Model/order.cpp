@@ -11,7 +11,11 @@ double Order::Gettotale() const{
     return i;
 }
 
-Order::Order(vector<Product*>&v):prdsord(v),statetype(inpreparation),numtav(++idord){
+unsigned int Order::Get_NumOrder(){
+    return numordine;
+}
+
+Order::Order(vector<Product*>&v):prdsord(v),statetype(inpreparation),numordine(++idord){
 
 }
 

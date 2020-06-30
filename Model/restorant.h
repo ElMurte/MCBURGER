@@ -24,6 +24,6 @@ void LoaddatafromJSON();
 public:
     Restorant();
      vector<Product*> filterProuduct(const QString& qs,Size sz=undefined );
-     unsigned int addOrder(vector<Product*>&v);
+     Order* addOrder(vector<Product*>&v);
 };
 #endif // RESTORANT_H
