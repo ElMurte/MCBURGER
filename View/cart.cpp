@@ -8,21 +8,26 @@
 #include <Model/menu.h>
 #include <Control/controller.h>
 #include <View/addrembuttonscart.h>
-Cart::Cart(ControllerR*c,QWidget* parent)
-    :QDialog(parent),controller(&*c),mainchild(new QWidget(this)),tabprod(new QTableWidget(mainchild)),
+#include <Model/order.h>
+#include <QErrorMessage>
+Cart::Cart(Cashier*cas,ControllerR*c,QWidget* parent)
+    :QDialog(parent),cassiere(cas),controller(&*c),mainchild(new QWidget(this)),tabprod(new QTableWidget(mainchild)),
       totale(new QLabel("TOTALE: 0 euro"))
 {
     setObjectName("cart");
     tabprod->setObjectName("tabcart");
     setLayout(new QVBoxLayout(this));
     QLabel*ql=new QLabel("Carello");
-    layout()->addWidget(ql);ql->setAlignment(Qt::AlignCenter);
+    QWidget*primo=new QWidget(this);primo->setLayout(new QHBoxLayout);
+    QPushButton*resetcarel=new QPushButton(QIcon(QPixmap("Resources/images/Icons/reset-icon.png")),"reset");resetcarel->setObjectName("btnrescar");
+    primo->layout()->addWidget(resetcarel);primo->layout()->addWidget(ql);
+    layout()->addWidget(primo);ql->setAlignment(Qt::AlignCenter);
     QString a("prodotto");QString b("quantita");QString cc("+ / -");QString d("prezzo");
     QStringList ll(QStringList()<<a<<b<<cc<<d);
     tabprod->setColumnCount(4);
     tabprod->setHorizontalHeaderLabels(ll);
     layout()->addWidget(tabprod);
-    layout()->addWidget(totale);
+    layout()->addWidget(totale);totale->setAlignment(Qt::AlignRight);
     boxpushorder=new QDialogButtonBox(this);
     confirmordbtn=new QPushButton("Conferma");confirmordbtn->setObjectName("btnaddprodtocart");
     dontconfirmbtn=new QPushButton("Anulla");dontconfirmbtn->setObjectName("btnannprodtocart");
@@ -30,7 +35,9 @@ Cart::Cart(ControllerR*c,QWidget* parent)
     boxpushorder->addButton(dontconfirmbtn,QDialogButtonBox::ButtonRole::RejectRole);
     layout()->addWidget(boxpushorder);
     connect(confirmordbtn,SIGNAL(clicked()),this,SLOT(createneworder()));//TODO
+    connect(this,SIGNAL(createneworder(Order*)),controller,SLOT(createneworder(Order*)));//TODO
     connect(dontconfirmbtn,SIGNAL(clicked()),this,SLOT(reject()));
+    connect(resetcarel,SIGNAL(clicked()),this,SLOT(resetcarrello()));
 }
 void Cart::InsertRowProd(Product*it){
         bool sent=true;
@@ -74,10 +81,27 @@ void Cart::InsertRowProd(Product*it){
 }
 
 void Cart::createneworder(){
-connect(this,SIGNAL(createneworder(vector<Product*>&)),controller,SLOT(createneworder(vector<Product*>&)));
-emit createneworder(vp);
+ Order*ord=cassiere->createneworder(vp);
+if(ord){
+emit createneworder(ord);
 accept();
+}
+else{
+    QErrorMessage *a=new QErrorMessage;
+    a->showMessage("CARELLO VUOTO aggiungere dei prodotti prima");
+    //reject();
+}
+
 //message box ok
+}
+
+void Cart::resetcarrello(){
+    if(!vp.empty()){
+        vp.clear();
+    while(tabprod->rowCount())//togli tutte le righe dalla tabella
+    tabprod->removeRow(0);
+    totale->setText("TOTALE : 0 euro");
+    }
 }
 
 void Cart::ShowCartWindow(){

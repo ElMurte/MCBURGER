@@ -39,11 +39,17 @@ Employee *Restorant::userexist(const QString &qs, const QString &qs2){
     }
     return nullptr;
 }
+Cooker *Restorant::findacooker(){
+    for(auto it=employees.begin();it!=employees.end();it++){
+    if(dynamic_cast<Cooker*>(*it))
+        return dynamic_cast<Cooker*>(*it);
+    }
+    return nullptr;
+}
 
-Order* Restorant::addOrder(vector<Product *> &v){
-orders.push_back(new Order(v));
-v.clear();
-return *(--orders.end());
+Order* Restorant::addOrder(Order*v){
+orders.push_back(v);
+return v;
 }
 /*utility function*/
 

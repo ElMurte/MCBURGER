@@ -50,6 +50,14 @@ void Employee::setIncome(double value)
     income = value;
 }
 
+Role Employee::getRuolo() const{
+    return ruolo;
+}
+
+void Employee::setRuolo(const Role &value){
+    ruolo = value;
+}
+
 Employee::Employee(Role r, QString nome, QString pass, unsigned short int old, bool inprove, double income)
     :ruolo(r),nome(nome),password(pass),old(old),inprove(inprove),income(income)
 {

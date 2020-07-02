@@ -39,7 +39,7 @@ public:
     ClientWindow(ControllerR* c,Cashier*cass,QWidget *parent = nullptr);
     void UpdateRightArea(QVector<MenuButton*>v);
 public slots:
-        void aggiornalistaord(Order*);
+        virtual void aggiornalistaord(Order*);
         void showGestOrd();
         void orderready(Order*i);
         void orderComplete(Order*);

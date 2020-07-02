@@ -40,7 +40,7 @@ void ClientWindow::AddProducttoCart(Product *p){
 ClientWindow::ClientWindow( ControllerR *c, Cashier *cass,QWidget*parent)
     :McBurgerView(c,parent),cassiere(cass), menuproducts(new QScrollArea(this)),productviews(new QScrollArea(this)),
       UI(new QStackedLayout(productviews)),mainlayout(new QVBoxLayout(this)),topmenuwidget(new QWidget(this)),
-      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this)),UIgestord(new UIGestioneOrdini(c,this))
+      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(cassiere,controller,this)),UIgestord(new UIGestioneOrdini(c,this))
 {
     addClientWidgets();
     QHBoxLayout*secondarigamainwidget=new QHBoxLayout(this);
@@ -57,7 +57,7 @@ void ClientWindow::aggiornalistaord(Order *i){
     cart->accept();//messaggio avvenuto con successo
     cart->totale->setText("TOTALE : 0 euro");
     QString ordine=QString::number(i->Get_NumOrder());
-    UIgestord->addorder(i);
+    UIgestord->inprep->layout()->addWidget(new VisibleOrderItem(controller,i));
     update();
 }
 void ClientWindow::orderready(Order*i){
@@ -133,7 +133,7 @@ emit buildbuttons(costrfin);
 
 void ClientWindow::addtopmenuwidgets(){
 QWidget*tbtn=new MenuButton("",0,"","Resources/images/Icons/home-icon.png");
-QWidget*resetordine=new MenuButton("",0,"","Resources/images/Icons/reset-icon.png");
+QWidget*resetordine=new MenuButton("",0,"","Resources/images/Icons/order-list-icon.png");
 QWidget*seecart=new MenuButton("",0,"","Resources/images/Icons/icon-cart.png");
 connect(tbtn,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
 connect(seecart,SIGNAL(clicked()),this,SLOT(ShowCart()));

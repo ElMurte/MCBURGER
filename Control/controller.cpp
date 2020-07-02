@@ -3,10 +3,14 @@
 #include "View/uicuoco.h"
 #include "View/uimanager.h"
 #include "View/loginui.h"
+#include <QDebug>
 ControllerR::ControllerR(Restorant *mod, QObject *parent) : QObject(parent),view(nullptr),model(mod){}
 
 void ControllerR::set_View(ClientWindow *v){
     view=v;v->show();
+}
+void ControllerR::set_View(UIManager *m){
+    view=m;m->show();
 }
 
 void ControllerR::set_Cuoco(UICuoco *c){
@@ -59,11 +63,11 @@ void ControllerR::Home(){
 void ControllerR::resetOrdinazione(){
 
 }
-void ControllerR::createneworder(vector<Product*>& v){
+void ControllerR::createneworder(Order*o){
     //connetti sengnale ordine aggiunto alla vista di cuoco e di cassiere
        connect(this,SIGNAL(ordineaggiunto(Order*)),viewcuoco,SLOT(aggiornalistaord(Order*)));
        connect(this,SIGNAL(ordineaggiunto(Order*)),view,SLOT(aggiornalistaord(Order*)));
-    Order* num=model->addOrder(v);
+    Order* num=model->addOrder(o);
     emit ordineaggiunto(num);
     disconnect(this,SIGNAL(ordineaggiunto(Order*)),viewcuoco,SLOT(aggiornalistaord(Order*)));
     disconnect(this,SIGNAL(ordineaggiunto(Order*)),view,SLOT(aggiornalistaord(Order*)));
@@ -86,21 +90,21 @@ void ControllerR::Checklogin(LoginUI*log,QString u, QString p){
 Employee*pe= model->userexist(u,p);
     if(pe){
 
-    if(dynamic_cast<Cooker*>(pe))
-    if(!viewcuoco)
-    set_Cuoco(new UICuoco(this,dynamic_cast<Cooker*>(pe)));
-
-    if(dynamic_cast<Cashier*>(pe))
-    if(!view)
-    set_View(new ClientWindow(this,dynamic_cast<Cashier*>(pe)));
-
-    if(dynamic_cast<Manager*>(pe))
-    if(!view)
-    set_View(new UIManager(this,dynamic_cast<Manager*>(pe)));
-    if(!viewcuoco)
+        if(pe->getRuolo()==cooker)
         set_Cuoco(new UICuoco(this,dynamic_cast<Cooker*>(pe)));
-
-    log->accept();
+        if(dynamic_cast<Manager*>(pe)){
+        if(!view)
+        set_View(new UIManager(this,dynamic_cast<Manager*>(pe)));
+        widgets.push_back(view);
+        if(!viewcuoco)
+            set_Cuoco(new UICuoco(this,model->findacooker()));
+         }
+        if(dynamic_cast<Cashier*>(pe)){
+        if(!view)
+        set_View(new ClientWindow(this,dynamic_cast<Cashier*>(pe)));
+        widgets.push_back(view);
+        }
+        log->accept();
     }
     else
     log->reject();

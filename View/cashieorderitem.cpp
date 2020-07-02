@@ -5,8 +5,8 @@ CashieOrderItem::CashieOrderItem(ControllerR *c, Order *ord, QWidget *parent)
 {
     complete->setObjectName("ordbtn");
     VisibleOrderItem::GenericOrderItem::layout()->addWidget(complete);
+        connect(complete,SIGNAL(clicked()),this,SLOT(confirmorder()));
     connect(this,SIGNAL(confirmorder(Order*)),controller,SLOT(orderComplete(Order*)));
-    connect(complete,SIGNAL(clicked()),this,SLOT(confirmorder()));
 }
 void CashieOrderItem::confirmorder(){
     pord->setState(State::complete);

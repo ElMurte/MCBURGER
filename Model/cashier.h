@@ -7,6 +7,7 @@ public:
     Cashier();
     Cashier* clone() const override;
     bool ordercomplete(Order*i);
+    Order* createneworder(vector<Product*>&v);
 };
 
 #endif // CASHIER_H

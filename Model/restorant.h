@@ -25,6 +25,7 @@ public:
     Restorant();
      vector<Product*> filterProuduct(const QString& qs,Size sz=undefined );
      Employee* userexist(const QString& qs, const QString& qs2);
-     Order* addOrder(vector<Product*>&v);
+     Cooker* findacooker();
+     Order* addOrder(Order*);
 };
 #endif // RESTORANT_H

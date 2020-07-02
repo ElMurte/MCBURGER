@@ -13,6 +13,16 @@ bool Product::isEqual(Product *p) const
     return this == p || (nome == p->nome && description == p->description);
 }
 
+bool Product::getDisponibile() const
+{
+    return disponibile;
+}
+
+void Product::setDisponibile(bool value)
+{
+    disponibile = value;
+}
+
 Product::Product(const QString &c):categorie(c){
     quantita=1;
 }

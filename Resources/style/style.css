@@ -13,8 +13,17 @@ border-radius:30%;
     font-size:20px;
 
 }
+QPushButton#btnrescar{
+min-width:120px;
+min-height:80px;
+max-width:140px;
+max-height:120px;
+border-radius:30%;
+background-color: red;
+}
 Qrditem{
 min-height:50px;
+max-height:130px;
 background:whitesmoke;
 }
 QPushButton#ordbtn{
@@ -34,12 +43,15 @@ max-height:150px;
 }
 QLabel{
 font-weight:bolder;
-font-size:15px;
+font-size:20px;
 }
 QDialog#cart{
 font-size:20px;
 min-width:450px;
 min-height:300px;
+}
+QTableWidget{
+max-height:400px;
 }
 QWidget#prodottocarello{
 min-height:150px;

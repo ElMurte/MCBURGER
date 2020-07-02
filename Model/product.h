@@ -12,6 +12,7 @@ unsigned int quantita;
 QString categorie;
 Size size;
 QString icon;
+bool disponibile;
 public:
     Product( const QString& c);
     virtual ~Product()=default;
@@ -36,6 +37,8 @@ public:
     void SetSize(Size);
     void set_Quantita(unsigned int value);
     virtual bool isEqual(Product*)const;
+    bool getDisponibile() const;
+    void setDisponibile(bool value);
 };
 
 #endif // PRODUCT_H

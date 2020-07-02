@@ -11,6 +11,7 @@ class ControllerR:public QObject{
 public:
     explicit ControllerR(Restorant* r,QObject *parent = nullptr);
     void set_View(ClientWindow* v);
+    void set_View(UIManager* m);
     void set_Cuoco(UICuoco* c);
 public slots:
     void FilterProductsonclick(const QString&);
@@ -19,11 +20,12 @@ public slots:
     void resetOrdinazione();//da fare
    // void getPointerProduct(const QString&);
     void addthisprodtocart(Product*);
-    void createneworder(vector<Product*>&);
+    void createneworder(Order*);
     void orderready(Order*o);
     void orderComplete(Order*);
     void Checklogin(LoginUI*,QString,QString);
 private:
+vector<QWidget*>widgets;
 QWidget* view;
 Restorant * model;
 UICuoco* viewcuoco;

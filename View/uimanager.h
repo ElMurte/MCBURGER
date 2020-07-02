@@ -16,6 +16,7 @@ public:
 public slots:
     void showUICucina();
     UICuoco *getcucina();
+    void aggiornalistaord(Order *i)override;
 };
 
 #endif // UIMANAGER_H
