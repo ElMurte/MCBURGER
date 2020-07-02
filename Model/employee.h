@@ -3,7 +3,7 @@
 #include <string>
 #include <ctime>
 #include <QJsonObject>
-enum Role{Cooker,Cashier,Manager};
+enum Role{cooker,cashier,manager};
 class Employee{
 private:
 Role ruolo;

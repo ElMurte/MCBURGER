@@ -1,8 +1,13 @@
 #include "cashier.h"
 
-Cashier::Cashier():Employee(Role::Cashier){
+Cashier::Cashier():Employee(Role::cashier){
 
 }
-class Cashier* Cashier::clone()const{
+Cashier* Cashier::clone()const{
     return new Cashier(*this);
+}
+
+bool Cashier::ordercomplete(Order *i){
+i->setState(State::complete);
+return true;
 }

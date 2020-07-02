@@ -7,7 +7,7 @@
 #include <Model/order.h>
 #include <View/orditem.h>
 #include "Model/cooker.h"
-UICuoco::UICuoco(ControllerR *c,class Cooker*cook, QWidget *parent):QDialog(parent),controller(c),cuoco(cook),inprep(new QWidget(this)){
+UICuoco::UICuoco(ControllerR *c,Cooker*cook, QWidget *parent):QDialog(parent),cuoco(cook),controller(c),inprep(new QWidget(this)){
     setLayout(new QHBoxLayout);
     inprep->setLayout(new QVBoxLayout);inprep->setObjectName("widgetord");
     inprep->layout()->addWidget(new QLabel("IN PREPARAZIONE"));

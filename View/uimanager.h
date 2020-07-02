@@ -8,11 +8,11 @@ class UIManager : public ClientWindow
     Q_OBJECT
 private:
     ClientWindow*cw;
-    class Manager*manager;
+    Manager*manager;
 UICuoco*cucina;
 
 public:
-    UIManager(ControllerR*c,class Manager*man,QWidget*parent=nullptr);
+    UIManager(ControllerR*c,Manager*man,QWidget*parent=nullptr);
 public slots:
     void showUICucina();
     UICuoco *getcucina();

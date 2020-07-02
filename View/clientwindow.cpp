@@ -37,8 +37,8 @@ void ClientWindow::AddProducttoCart(Product *p){
 //messaggio di aggiunta avvenuta con successo
 }
 
-ClientWindow::ClientWindow(ControllerR *c, QWidget*parent)
-    :McBurgerView(c,parent),menuproducts(new QScrollArea(this)),productviews(new QScrollArea(this)),
+ClientWindow::ClientWindow( ControllerR *c, Cashier *cass,QWidget*parent)
+    :McBurgerView(c,parent),cassiere(cass), menuproducts(new QScrollArea(this)),productviews(new QScrollArea(this)),
       UI(new QStackedLayout(productviews)),mainlayout(new QVBoxLayout(this)),topmenuwidget(new QWidget(this)),
       pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(controller,this)),UIgestord(new UIGestioneOrdini(c,this))
 {
@@ -70,6 +70,7 @@ void ClientWindow::orderready(Order*i){
 }
 
 void ClientWindow::orderComplete(Order *i){
+    cassiere->ordercomplete(i);
     QString ordine=QString::number(i->Get_NumOrder());
     CashieOrderItem*order=UIgestord->pronti->findChild<CashieOrderItem*>(ordine);
     UIgestord->pronti->layout()->removeWidget(order);

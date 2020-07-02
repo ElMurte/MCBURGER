@@ -1,13 +1,14 @@
 #include "cooker.h"
 
-Cooker::Cooker():Employee(Role::Cooker){
+Cooker::Cooker():Employee(Role::cooker){
 
 }
-class Cooker* Cooker::clone()const{
+Cooker* Cooker::clone()const{
     return new Cooker(*this);
 }
 
 void Cooker::setstateready(Order *o){
-o->setState(ready);
+    o->setState(ready);
 }
+
 

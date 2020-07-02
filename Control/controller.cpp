@@ -1,16 +1,16 @@
 #include "controller.h"
 #include "View/menubutton.h"
+#include "View/uicuoco.h"
+#include "View/uimanager.h"
+#include "View/loginui.h"
 ControllerR::ControllerR(Restorant *mod, QObject *parent) : QObject(parent),view(nullptr),model(mod){}
 
-void ControllerR::set_View(QWidget *v){
+void ControllerR::set_View(ClientWindow *v){
     view=v;v->show();
 }
 
 void ControllerR::set_Cuoco(UICuoco *c){
-    viewcuoco=c;viewcuoco->show();
-}
-void ControllerR::set_Manager(UIManager *vm){
-    viewmanager=vm;viewmanager->show();
+    viewcuoco=c;viewcuoco->open();
 }
 void ControllerR::FilterProductsonclick(const vector<QString>& qs){
     for(auto it=qs.begin();it!=qs.end();it++){
@@ -82,6 +82,26 @@ void ControllerR::orderComplete(Order *o){
     connect(this,SIGNAL(orderCompleted(Order*)),view,SLOT(orderComplete(Order*)));
 }
 
-void ControllerR::Checklogin(QString u, QString p){
-//Database::thisuserexist(u,p);
+void ControllerR::Checklogin(LoginUI*log,QString u, QString p){
+Employee*pe= model->userexist(u,p);
+    if(pe){
+
+    if(dynamic_cast<Cooker*>(pe))
+    if(!viewcuoco)
+    set_Cuoco(new UICuoco(this,dynamic_cast<Cooker*>(pe)));
+
+    if(dynamic_cast<Cashier*>(pe))
+    if(!view)
+    set_View(new ClientWindow(this,dynamic_cast<Cashier*>(pe)));
+
+    if(dynamic_cast<Manager*>(pe))
+    if(!view)
+    set_View(new UIManager(this,dynamic_cast<Manager*>(pe)));
+    if(!viewcuoco)
+        set_Cuoco(new UICuoco(this,dynamic_cast<Cooker*>(pe)));
+
+    log->accept();
+    }
+    else
+    log->reject();
 }

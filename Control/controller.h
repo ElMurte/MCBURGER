@@ -5,13 +5,13 @@
 #include "View/uicuoco.h"
 #include "View/uimanager.h"
 class ClientWindow;
+class LoginUI;
 class ControllerR:public QObject{
     Q_OBJECT
 public:
     explicit ControllerR(Restorant* r,QObject *parent = nullptr);
-    void set_View(QWidget* v);
+    void set_View(ClientWindow* v);
     void set_Cuoco(UICuoco* c);
-    void set_Manager(UIManager *vm);
 public slots:
     void FilterProductsonclick(const QString&);
     void FilterProductsonclick(const vector<QString>& qs);
@@ -22,12 +22,11 @@ public slots:
     void createneworder(vector<Product*>&);
     void orderready(Order*o);
     void orderComplete(Order*);
-    void Checklogin(QString,QString);
+    void Checklogin(LoginUI*,QString,QString);
 private:
 QWidget* view;
 Restorant * model;
 UICuoco* viewcuoco;
-UIManager*viewmanager;
 signals:
  void newData(const vector<Product*>& p);
  void newData(const QString& p);

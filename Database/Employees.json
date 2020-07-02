@@ -1,6 +1,7 @@
 {
     "Cashier":[
         {
+        "ruolo":"cashier",
         "username": "cashier",
         "password": "cashier",
         "old": 23,
@@ -10,12 +11,22 @@
          ],
      "Manager":[
          {
-         "username": "cashier",
-         "password": "cashier",
+         "ruolo":"manager",
+         "username": "manager",
+         "password": "manager",
          "old": 23,
          "inprove":false,
-         "income":1800,
-
+         "income":1800
          }
-          ]
+          ],
+      "Cooker":[
+          {
+          "ruolo":"cooker",
+          "username": "cooker",
+          "password": "cooker",
+          "old": 23,
+          "inprove":false,
+          "income":1800
+          }
+           ]
 }

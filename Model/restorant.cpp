@@ -5,9 +5,9 @@ void Restorant::LoaddatafromJSON(){/*alloco la memoria per i prodotti e li legge
     Database::ReadProductfromJson<Product,Patatine>("Patatine",products);
     Database::ReadProductfromJson<Product,Drink>("Drink",products);
     Database::ReadProductfromJson<Product,Sweet>("Sweet",products);
-    Database::ReadEmployeefromJson<Employee,class Cooker>("Cooker",employees);
-    Database::ReadEmployeefromJson<Employee,class Cashier>("Cashier",employees);
-    Database::ReadEmployeefromJson<Employee,class Manager>("Manager",employees);
+    Database::ReadEmployeefromJson<Employee,Cooker>("Cooker",employees);
+    Database::ReadEmployeefromJson<Employee,Cashier>("Cashier",employees);
+    Database::ReadEmployeefromJson<Employee,Manager>("Manager",employees);
 }
 
 Restorant::Restorant(){
@@ -30,6 +30,14 @@ vector<Product*> r;
         }
     }
     return r;
+}
+
+Employee *Restorant::userexist(const QString &qs, const QString &qs2){
+    for(auto it=employees.begin();it!=employees.end();it++){
+    if((*it)->getNome()==qs && (*it)->getPassword()==qs2)
+        return (*it);
+    }
+    return nullptr;
 }
 
 Order* Restorant::addOrder(vector<Product *> &v){

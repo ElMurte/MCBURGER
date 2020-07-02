@@ -1,7 +1,6 @@
 #include "manager.h"
 
-Manager::Manager():Employee(Role::Manager)
-{
+Manager::Manager():Employee(Role::manager){
 
 }
 

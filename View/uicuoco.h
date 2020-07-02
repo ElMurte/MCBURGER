@@ -10,13 +10,13 @@ class Cooker;
 class UICuoco:public QDialog{
     Q_OBJECT
 private:
-   class Cooker*cuoco;
+   Cooker*cuoco;
    ControllerR*controller;
    QWidget* inprep;
    QWidget* pronti;
 public:
    void showGestOrd();
-    UICuoco(ControllerR*c,class Cooker*cook, QWidget*parent=nullptr);
+    UICuoco(ControllerR*c,Cooker*cook, QWidget*parent=nullptr);
 public slots:
 void addorder(Order*);
 void aggiornalistaord(Order *i);

@@ -1,7 +1,7 @@
 #include "View/uimanager.h"
 #include "View/menubutton.h"
 #include "Model/manager.h"
-UIManager::UIManager(ControllerR *c,class Manager* man,QWidget*parent):ClientWindow(c,parent),manager(man),cucina(new UICuoco(c,manager,this))
+UIManager::UIManager(ControllerR *c,Manager* man,QWidget*parent):ClientWindow(c,man,parent),manager(man),cucina(new UICuoco(c,manager,this))
 {
     setParent(parent);
     MenuButton* cucinabtn=new MenuButton("",0,"","Resources/images/Icons/cookroom-icon.png");cucinabtn->setObjectName("btnlay");
