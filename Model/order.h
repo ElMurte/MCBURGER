@@ -3,7 +3,7 @@
 #include "Model/menu.h"
 #include <vector>
 using std::vector;
-enum State{inpreparation,ready};
+enum State{inpreparation,ready,complete};
 
 class Order{
 private:
@@ -13,9 +13,10 @@ private:
     unsigned short numordine;
 
 public:
+    vector<Product *> &get_Products();
     unsigned int Get_NumOrder();
     static unsigned int idord;
-    Order(vector<Product*>&);
+    Order(vector<Product*>&);//vettore già allocato nello heap non ha senso copiarlo da 0
     double Gettotale()const;
     void addProd(Product*);
     void removeProd(Product*);

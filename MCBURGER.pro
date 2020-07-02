@@ -32,7 +32,10 @@ SOURCES += \
     Model/sweet.cpp \
     View/addrembuttonscart.cpp \
     View/cart.cpp \
+    View/cashieorderitem.cpp \
     View/clientwindow.cpp \
+    View/genericorderitem.cpp \
+    View/loginui.cpp \
     View/mcburgerview.cpp \
     View/menubutton.cpp \
     View/orditem.cpp \
@@ -40,6 +43,7 @@ SOURCES += \
     View/uicuoco.cpp \
     View/uigestioneordini.cpp \
     View/uimanager.cpp \
+    View/visibleorderitem.cpp \
     View/windowaddproduct.cpp \
     main.cpp \
 
@@ -61,7 +65,10 @@ HEADERS += \
     Model/sweet.h \
     View/addrembuttonscart.h \
     View/cart.h \
+    View/cashieorderitem.h \
     View/clientwindow.h \
+    View/genericorderitem.h \
+    View/loginui.h \
     View/mcburgerview.h \
     View/menubutton.h \
     View/orditem.h \
@@ -69,6 +76,7 @@ HEADERS += \
     View/uicuoco.h \
     View/uigestioneordini.h \
     View/uimanager.h \
+    View/visibleorderitem.h \
     View/windowaddproduct.h
 
 # Default rules for deployment.

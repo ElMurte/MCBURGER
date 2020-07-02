@@ -40,6 +40,7 @@ public slots:
         void aggiornalistaord(Order*);
         void showGestOrd();
         void orderready(Order*i);
+        void orderComplete(Order*);
 protected slots:
    // void setnullptrtoaddprodwin();
 

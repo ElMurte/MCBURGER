@@ -1,13 +1,12 @@
 #ifndef MENU_H
 #define MENU_H
-#include <string>
-using std::string;
+#include <vector>
+using std::vector;
 #include"product.h"
-#include "Dlist.h"
 class Menu{
 private:
-    Dlist<Product*>products;
-    string nome;
+    vector<Product*>products;
+    QString nome;
     Size size;
     float price;
 public:

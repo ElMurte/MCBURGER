@@ -1,8 +1,8 @@
 #include "cashier.h"
 
-Cashier::Cashier(){
+Cashier::Cashier():Employee(Role::Cashier){
 
 }
-Cashier* Cashier::clone()const{
+class Cashier* Cashier::clone()const{
     return new Cashier(*this);
 }

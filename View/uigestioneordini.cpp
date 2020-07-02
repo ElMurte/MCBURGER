@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QDebug>
 #include <Model/order.h>
+#include <View/visibleorderitem.h>
 UIGestioneOrdini::UIGestioneOrdini(ControllerR*c,QWidget*parent):QDialog(parent),controller(c),inprep(new QWidget(this)),pronti(new QWidget(this)){
 setLayout(new QHBoxLayout);
 inprep->setLayout(new QVBoxLayout);inprep->setObjectName("widgetord");
@@ -24,7 +25,8 @@ void UIGestioneOrdini::showGestOrd(){
 }
 
 void UIGestioneOrdini::addorder(Order* i){
-    inprep->layout()->addWidget(new Orditem(controller,i,inprep));
+    inprep->layout()->addWidget(new VisibleOrderItem(controller,i,inprep));
+    update();
 }
 
 /*void UIGestioneOrdini::confirmorder(Order*i){

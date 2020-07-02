@@ -2,7 +2,7 @@
 #include "View/menubutton.h"
 ControllerR::ControllerR(Restorant *mod, QObject *parent) : QObject(parent),view(nullptr),model(mod){}
 
-void ControllerR::set_View(ClientWindow *v){
+void ControllerR::set_View(QWidget *v){
     view=v;v->show();
 }
 
@@ -36,10 +36,8 @@ void ControllerR::FilterProductsonclick(const vector<QString>& qs){
 
 void ControllerR::addthisprodtocart(Product *p){
     connect(this,SIGNAL(addProdtocart(Product*)),view,SLOT(AddProducttoCart(Product*)) );
-    connect(this,SIGNAL(addProdtocart(Product*)),viewmanager,SLOT(AddProducttoCart(Product*)) );
     emit addProdtocart(p);
      disconnect(this,SIGNAL(addProdtocart(Product*)),view,SLOT(AddProducttoCart(Product*)) );
-     disconnect(this,SIGNAL(addProdtocart(Product*)),viewmanager,SLOT(AddProducttoCart(Product*)) );
 }
 
 void ControllerR::FilterProductsonclick(const QString& qs){
@@ -64,19 +62,26 @@ void ControllerR::resetOrdinazione(){
 void ControllerR::createneworder(vector<Product*>& v){
     //connetti sengnale ordine aggiunto alla vista di cuoco e di cassiere
        connect(this,SIGNAL(ordineaggiunto(Order*)),viewcuoco,SLOT(aggiornalistaord(Order*)));
-       connect(this,SIGNAL(ordineaggiunto(Order*)),viewmanager->getcucina(),SLOT(aggiornalistaord(Order*)));
+       connect(this,SIGNAL(ordineaggiunto(Order*)),view,SLOT(aggiornalistaord(Order*)));
     Order* num=model->addOrder(v);
     emit ordineaggiunto(num);
     disconnect(this,SIGNAL(ordineaggiunto(Order*)),viewcuoco,SLOT(aggiornalistaord(Order*)));
-    disconnect(this,SIGNAL(ordineaggiunto(Order*)),viewmanager->getcucina(),SLOT(aggiornalistaord(Order*)));
+    disconnect(this,SIGNAL(ordineaggiunto(Order*)),view,SLOT(aggiornalistaord(Order*)));
 }
 void ControllerR::orderready(Order*o){
     connect(this,SIGNAL(ordineprep(Order*)),view,SLOT(orderready(Order*)));
     connect(this,SIGNAL(ordineprep(Order*)),viewcuoco,SLOT(orderready(Order*)));
-    connect(this,SIGNAL(ordineprep(Order*)),viewmanager,SLOT(orderready(Order*)));
-    connect(this,SIGNAL(ordineprep(Order*)),viewmanager->getcucina(),SLOT(orderready(Order*)));
  emit ordineprep(o);
  disconnect(this,SIGNAL(ordineprep(Order*)),view,SLOT(orderready(Order*)));
  disconnect(this,SIGNAL(ordineprep(Order*)),viewcuoco,SLOT(orderready(Order*)));
- disconnect(this,SIGNAL(ordineprep(Order*)),viewmanager,SLOT(orderready(Order*)));
+}
+
+void ControllerR::orderComplete(Order *o){
+    connect(this,SIGNAL(orderCompleted(Order*)),view,SLOT(orderComplete(Order*)));
+    emit orderCompleted(o);
+    connect(this,SIGNAL(orderCompleted(Order*)),view,SLOT(orderComplete(Order*)));
+}
+
+void ControllerR::Checklogin(QString u, QString p){
+//Database::thisuserexist(u,p);
 }

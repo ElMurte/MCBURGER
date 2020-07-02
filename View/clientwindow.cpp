@@ -9,6 +9,7 @@
 #include "View/productbutton.h"
 #include <QtDebug>
 #include <View/uigestioneordini.h>
+#include <View/cashieorderitem.h>
 //UpdateRightArea(a);
 /*auto*s=new ControllerR(*controller);
 new ClientWindow(s);*/
@@ -61,9 +62,18 @@ void ClientWindow::aggiornalistaord(Order *i){
 }
 void ClientWindow::orderready(Order*i){
     QString ordine=QString::number(i->Get_NumOrder());
-    Orditem*order=UIgestord->inprep->findChild<Orditem*>(ordine);
+    VisibleOrderItem*order=UIgestord->inprep->findChild<VisibleOrderItem*>(ordine);
     UIgestord->inprep->layout()->removeWidget(order);
-    UIgestord->pronti->layout()->addWidget(new Orditem(controller,i));
+    delete order;
+    UIgestord->pronti->layout()->addWidget(new CashieOrderItem(controller,i));
+    update();
+}
+
+void ClientWindow::orderComplete(Order *i){
+    QString ordine=QString::number(i->Get_NumOrder());
+    CashieOrderItem*order=UIgestord->pronti->findChild<CashieOrderItem*>(ordine);
+    UIgestord->pronti->layout()->removeWidget(order);
+    delete order;
     update();
 }
 

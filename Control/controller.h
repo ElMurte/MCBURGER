@@ -9,7 +9,7 @@ class ControllerR:public QObject{
     Q_OBJECT
 public:
     explicit ControllerR(Restorant* r,QObject *parent = nullptr);
-    void set_View(ClientWindow* v);
+    void set_View(QWidget* v);
     void set_Cuoco(UICuoco* c);
     void set_Manager(UIManager *vm);
 public slots:
@@ -21,8 +21,10 @@ public slots:
     void addthisprodtocart(Product*);
     void createneworder(vector<Product*>&);
     void orderready(Order*o);
+    void orderComplete(Order*);
+    void Checklogin(QString,QString);
 private:
-ClientWindow* view;
+QWidget* view;
 Restorant * model;
 UICuoco* viewcuoco;
 UIManager*viewmanager;
@@ -33,6 +35,7 @@ signals:
  void addProdtocart(Product*);
  void ordineaggiunto(Order*);
  void ordineprep(Order*);
+ void orderCompleted(Order*);
 };
 
 #endif // CONTROLLER_H

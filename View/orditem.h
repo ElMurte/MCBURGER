@@ -1,14 +1,14 @@
 #ifndef ORDITEM_H
 #define ORDITEM_H
 #include <Control/controller.h>
+#include "View/visibleorderitem.h"
 #include <QWidget>
 class UIGestioneOrdini;
 class Order;
-class Orditem:public QWidget{
+class Orditem:public VisibleOrderItem{
     Q_OBJECT
 private:
-    Order*pord;
-    ControllerR*controller;
+    QPushButton*confirmord;
 public:
     Orditem(ControllerR*controller,Order*ord,QWidget*parent=nullptr);
 public slots:

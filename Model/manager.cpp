@@ -1,10 +1,10 @@
 #include "manager.h"
 
-Manager::Manager()
+Manager::Manager():Employee(Role::Manager)
 {
 
 }
 
-Manager *Manager::clone() const{
+class Manager* Manager::clone() const{
     return new Manager(*this);
 }

@@ -11,6 +11,10 @@ double Order::Gettotale() const{
     return i;
 }
 
+vector<Product *>& Order::get_Products(){
+return prdsord;
+}
+
 unsigned int Order::Get_NumOrder(){
     return numordine;
 }

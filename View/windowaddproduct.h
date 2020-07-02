@@ -23,7 +23,7 @@ void setStyle();
 protected:
 public:
     WindowAddProduct(ControllerR* c,QWidget* parent = nullptr);
-    void showWindow(Product*);
+    void showWindow(Product*pp);
 public slots:
 void remquantita();
 void addquantita();

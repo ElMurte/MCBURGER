@@ -6,15 +6,17 @@
 class Order;
 class Orditem;
 class ControllerR;
+class Cooker;
 class UICuoco:public QDialog{
     Q_OBJECT
 private:
+   class Cooker*cuoco;
    ControllerR*controller;
    QWidget* inprep;
    QWidget* pronti;
 public:
    void showGestOrd();
-    UICuoco(ControllerR*c,QWidget*parent=nullptr);
+    UICuoco(ControllerR*c,class Cooker*cook, QWidget*parent=nullptr);
 public slots:
 void addorder(Order*);
 void aggiornalistaord(Order *i);

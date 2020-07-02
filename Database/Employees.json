@@ -1,0 +1,21 @@
+{
+    "Cashier":[
+        {
+        "username": "cashier",
+        "password": "cashier",
+        "old": 23,
+        "inprove":false,
+        "income":1800
+        }
+         ],
+     "Manager":[
+         {
+         "username": "cashier",
+         "password": "cashier",
+         "old": 23,
+         "inprove":false,
+         "income":1800,
+
+         }
+          ]
+}

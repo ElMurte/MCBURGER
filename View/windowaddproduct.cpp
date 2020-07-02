@@ -60,7 +60,7 @@ WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(pare
 
 
 
-void WindowAddProduct::showWindow(Product*p)
+void WindowAddProduct::showWindow(Product*pp)
 {
     if(name == nullptr) {
         picture=new QLabel(psa);picture->setObjectName("imgprodotto");
@@ -74,7 +74,7 @@ void WindowAddProduct::showWindow(Product*p)
         sal->addWidget(desc);
         sal->addWidget(price);
     }
-    this->p=p->clone();
+    p=pp;
     //img = QPixmap("Resources/images/Burger/big-mc.png");//get immagine
     picture->setPixmap(p->Get_Icon());
     name->setText(p->Get_Nome());

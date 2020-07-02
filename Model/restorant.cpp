@@ -5,8 +5,9 @@ void Restorant::LoaddatafromJSON(){/*alloco la memoria per i prodotti e li legge
     Database::ReadProductfromJson<Product,Patatine>("Patatine",products);
     Database::ReadProductfromJson<Product,Drink>("Drink",products);
     Database::ReadProductfromJson<Product,Sweet>("Sweet",products);
-    /*MENU ??? */
-    /*Employes*/
+    Database::ReadEmployeefromJson<Employee,class Cooker>("Cooker",employees);
+    Database::ReadEmployeefromJson<Employee,class Cashier>("Cashier",employees);
+    Database::ReadEmployeefromJson<Employee,class Manager>("Manager",employees);
 }
 
 Restorant::Restorant(){
@@ -33,11 +34,6 @@ vector<Product*> r;
 
 Order* Restorant::addOrder(vector<Product *> &v){
 orders.push_back(new Order(v));
-for(auto it=v.begin();it!=v.end();it++){
-    delete *it;
-    v.erase(it);
-    it--;
-}
 v.clear();
 return *(--orders.end());
 }
