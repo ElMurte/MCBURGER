@@ -11,16 +11,10 @@ UIManager::UIManager(ControllerR *c,Manager* man,QWidget*parent):ClientWindow(c,
     MenuButton* cucinabtn=new MenuButton("",0,"","Resources/images/Icons/cookroom-icon.png");cucinabtn->setObjectName("btnlay");
     connect(cucinabtn,SIGNAL(clicked()),this,SLOT(showUICucina()));
     topmenuwidget->layout()->addWidget(cucinabtn);
-
-   /* QList<ProductButton*>ql = UI->parent()->findChildren<ProductButton*>("productbutton");
-    for(auto it=ql.begin();it!=ql.end();it++)
-        connect((*it),SIGNAL(rightClicked()),(*it),SLOT(onrightClick()));*/
+    connect(this,SIGNAL(getcucina(Cooker*)),controller,SLOT(CucinaAccesa(Cooker*)));
 }
 
 void UIManager::showUICucina(){
-    cucina->open();
-}
 
-UICuoco *UIManager::getcucina(){
-return cucina;
+    emit getcucina(manager);
 }

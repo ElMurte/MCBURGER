@@ -7,7 +7,7 @@
 #include <Model/order.h>
 #include <View/orditem.h>
 #include "Model/cooker.h"
-UICuoco::UICuoco(ControllerR *c,Cooker*cook, QWidget *parent):QDialog(parent),cuoco(cook),controller(c),inprep(new QWidget(this)){
+UICuoco::UICuoco(ControllerR *c,Cooker*cook, QWidget *parent):QWidget(parent),cuoco(cook),controller(c),inprep(new QWidget(this)){
     setLayout(new QHBoxLayout);
     inprep->setLayout(new QVBoxLayout);inprep->setObjectName("widgetord");
     inprep->layout()->addWidget(new QLabel("IN PREPARAZIONE"));
@@ -20,7 +20,7 @@ UICuoco::UICuoco(ControllerR *c,Cooker*cook, QWidget *parent):QDialog(parent),cu
 }
 
 void UICuoco::showGestOrd(){
-    open();
+    show();
 }
 
 void UICuoco::addorder(Order* i){
@@ -35,15 +35,6 @@ inprep->layout()->removeWidget(order);
 delete order;
 update();
 }
-/*void UICuoco::confirmorder(Order*i){
-    i->setState(State::ready);//cambio stato ed emetto segnale
-    QString ordine=QString::number(i->Get_NumOrder());
-    Orditem*order=inprep->findChild<Orditem*>(ordine);
-    if(order) qDebug()<<"esiste";
-    else  qDebug()<<"NONNONNON esiste";
-    pronti->layout()->addWidget(order);
-    update();
-}*/
 
 void UICuoco::aggiornalistaord(Order *i){
     QString ordine=QString::number(i->Get_NumOrder());

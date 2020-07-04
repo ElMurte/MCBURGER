@@ -29,7 +29,6 @@ public:
      vector<Product*> filterProuduct(const QString& qs);
      vector<Product*> getViewOfProducts(unsigned int calories,unsigned int price=0,bool bacon=false,bool glutenfree=false);
      Employee* userexist(const QString& qs, const QString& qs2);
-     Cooker* findacooker();//***//
      Order* addOrder(Order*);
 };
 #endif // RESTORANT_H

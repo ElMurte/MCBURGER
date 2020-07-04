@@ -29,14 +29,4 @@ void UIGestioneOrdini::addorder(Order* i){
     update();
 }
 
-/*void UIGestioneOrdini::confirmorder(Order*i){
-    i->setState(State::ready);
-    QString ordine=QString::number(i->Get_NumOrder());
-    Orditem*order=inprep->findChild<Orditem*>(ordine);
-    if(order) qDebug()<<"esiste";
-    else  qDebug()<<"NONNONNON esiste";
-    pronti->layout()->addWidget(order);
-    update();
-}*/
-
 

@@ -10,8 +10,6 @@
 #include <Control/controller.h>
 #include <Model/product.h>
 #include <QMessageBox>
-#include <QErrorMessage>
-#include <QDebug>
 
 WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(parent),controller(&*c),p(nullptr),
     picture(nullptr),name(nullptr),desc(nullptr),price(nullptr)
@@ -122,17 +120,15 @@ void WindowAddProduct::addquantita(){
 
 void WindowAddProduct::changesizesmall()
 {
-    if(p && p->Get_Size()!=undefined)
-p->SetSize(Size::small);
+    if(p && p->Get_Size()!=undefined){
+        p->SetSize(Size::small);
+    }
 }
 
 void WindowAddProduct::changesizemedium()
 {
-    qDebug()<<p->Get_Size();
     if(p && p->Get_Size()!=undefined){
         p->SetSize(Size::medium);
-        QErrorMessage *a=new QErrorMessage;
-        a->showMessage("SIZE SIZE");
     }
 }
 

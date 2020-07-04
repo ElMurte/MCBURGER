@@ -44,6 +44,7 @@ SOURCES += \
     View/uicuoco.cpp \
     View/uigestioneordini.cpp \
     View/uimanager.cpp \
+    View/uiwatchorders.cpp \
     View/visibleorderitem.cpp \
     View/windowaddproduct.cpp \
     main.cpp \
@@ -78,6 +79,7 @@ HEADERS += \
     View/uicuoco.h \
     View/uigestioneordini.h \
     View/uimanager.h \
+    View/uiwatchorders.h \
     View/visibleorderitem.h \
     View/windowaddproduct.h
 
@@ -92,7 +94,9 @@ DISTFILES += \
     Database/Products.json \
     Resources/images/Burger/bIg-mc.png \
     Resources/images/Burger/chicken-burger.png \
+    Resources/images/Burger/gluten-free-burger.png \
     Resources/images/Burger/hamburger.png \
+    Resources/images/Burger/myselection.png \
     Resources/images/Caffe/cappuccino.png \
     Resources/images/Drink/coca-cola.png \
     Resources/images/Drink/fanta.png \

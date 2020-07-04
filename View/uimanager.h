@@ -15,7 +15,8 @@ public:
     UIManager(ControllerR*c,Manager*man,QWidget*parent=nullptr);
 public slots:
     void showUICucina();
-    UICuoco *getcucina();
+signals:
+    void getcucina(Cooker*);
 };
 
 #endif // UIMANAGER_H

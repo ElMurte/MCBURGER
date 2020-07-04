@@ -9,7 +9,7 @@
 GenericOrderItem::GenericOrderItem(ControllerR *c, Order *ord, QWidget *parent):QWidget(parent),pord(ord),controller(c)
 {
     setLayout(new QHBoxLayout);setObjectName(QString::number(ord->Get_NumOrder()));
-    layout()->addWidget(new QLabel(QString::number(ord->Get_NumOrder())));
+    layout()->addWidget(new QLabel("Ordine n: "+QString::number(ord->Get_NumOrder())));
 }
 
 

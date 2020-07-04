@@ -6,6 +6,7 @@
 #include "View/uimanager.h"
 class ClientWindow;
 class LoginUI;
+class UIwatchOrders;
 class ControllerR:public QObject{
     Q_OBJECT
 public:
@@ -16,8 +17,6 @@ public:
 public slots:
     void FilterProductsonclick(const QString&);
     void FilterProductsonclick(const vector<QString>& qs);
-    void Home();//da fare
-    void resetOrdinazione();//da fare
    // void getPointerProduct(const QString&);
     void addthisprodtocart(Product*);
     void createneworder(Order*);
@@ -28,12 +27,13 @@ public slots:
     void getsalvaeuro();
     void getglfproducts();
     void getdietetici();
-
+    void CucinaAccesa(Cooker*);
 private:
 vector<QWidget*>widgets;
 QWidget* view;
 Restorant * model;
 UICuoco* viewcuoco;
+UIwatchOrders*viewclients;
 signals:
  void newData(const vector<Product*>& p);
  void newData(const QString& p);

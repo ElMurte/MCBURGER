@@ -9,7 +9,7 @@
 #include <Control/controller.h>
 #include <View/addrembuttonscart.h>
 #include <Model/order.h>
-#include <QErrorMessage>
+#include <QMessageBox>
 Cart::Cart(Cashier*cas,ControllerR*c,QWidget* parent)
     :QDialog(parent),cassiere(cas),controller(&*c),mainchild(new QWidget(this)),tabprod(new QTableWidget(mainchild)),
       totale(new QLabel("TOTALE: 0 euro"))
@@ -101,8 +101,8 @@ emit createneworder(ord);
 accept();
 }
 else{
-    QErrorMessage *a=new QErrorMessage;
-    a->showMessage("CARELLO VUOTO aggiungere dei prodotti prima");
+    QMessageBox a(this);
+    a.setText("CARELLO VUOTO aggiungere dei prodotti prima");a.exec();
     //reject();
 }
 

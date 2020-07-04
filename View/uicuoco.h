@@ -7,7 +7,7 @@ class Order;
 class Orditem;
 class ControllerR;
 class Cooker;
-class UICuoco:public QDialog{
+class UICuoco:public QWidget{
     Q_OBJECT
 private:
    Cooker*cuoco;
