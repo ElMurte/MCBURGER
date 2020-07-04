@@ -9,6 +9,9 @@
 #include <QCheckBox>
 #include <Control/controller.h>
 #include <Model/product.h>
+#include <QMessageBox>
+#include <QErrorMessage>
+#include <QDebug>
 
 WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(parent),controller(&*c),p(nullptr),
     picture(nullptr),name(nullptr),desc(nullptr),price(nullptr)
@@ -30,6 +33,8 @@ WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(pare
 
     quantita=new QLabel("0");//+ -
     QWidget*addrembox=new QWidget(this);addrembox->setLayout(new QHBoxLayout);
+    addrembox->setObjectName("bottoncinicart");
+    addrembox->layout()->setAlignment(Qt::AlignCenter);
     QPushButton*moreofthis=new QPushButton("+");moreofthis->setObjectName("btncart");
     connect(moreofthis,SIGNAL(clicked()),this,SLOT(addquantita()));
     QPushButton*lessofthis=new QPushButton("-");lessofthis->setObjectName("btncart");
@@ -39,7 +44,19 @@ WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(pare
     addrembox->layout()->addWidget(lessofthis);
     vbp->addWidget(sa);
     vbp->addWidget(addrembox);
-    //aggiungial carello annulla
+    //aggiungial size
+   prodwithsize=new QWidget(this);prodwithsize->setLayout(new QHBoxLayout);prodwithsize->setObjectName("selectszwidget");
+   QPushButton*t=new QPushButton("small");t->setObjectName("sizebtn");
+    prodwithsize->layout()->addWidget(t);
+    QPushButton*t1=new QPushButton("medium");t1->setObjectName("sizebtn");
+    prodwithsize->layout()->addWidget(t1);
+    QPushButton*t2=new QPushButton("big");t2->setObjectName("sizebtn");
+    prodwithsize->layout()->addWidget(t2);
+    connect(t,SIGNAL(clicked()),this,SLOT(changesizesmall()));
+    connect(t1,SIGNAL(clicked()),this,SLOT(changesizemedium()));
+    connect(t2,SIGNAL(clicked()),this,SLOT(changesizebig()));
+    vbp->addWidget(prodwithsize);
+    // conf annulla
     QDialogButtonBox*addcancelprod=new QDialogButtonBox;addcancelprod->setObjectName("addannprodbtns");
     QPushButton*addprodbtn=new QPushButton("Aggiungi");addprodbtn->setObjectName("btnaddprodtocart");
     QPushButton*cancelprodbtn=new QPushButton("Annulla");cancelprodbtn->setObjectName("btnannprodtocart");
@@ -81,6 +98,9 @@ void WindowAddProduct::showWindow(Product*pp)
     desc->setText(p->Get_Description());
     quantita->setText(QString::number(p->get_Quantita()));
     price->setText(QString::number(p->Get_Price())+" €");
+    if(p->Get_Size()==undefined)
+        prodwithsize->setVisible(false);
+    else prodwithsize->setVisible(true);
     open();
 }
 
@@ -98,6 +118,28 @@ void WindowAddProduct::addquantita(){
     q++;
    p->set_Quantita(q);
    quantita->setText(QString::number(q));
+}
+
+void WindowAddProduct::changesizesmall()
+{
+    if(p && p->Get_Size()!=undefined)
+p->SetSize(Size::small);
+}
+
+void WindowAddProduct::changesizemedium()
+{
+    qDebug()<<p->Get_Size();
+    if(p && p->Get_Size()!=undefined){
+        p->SetSize(Size::medium);
+        QErrorMessage *a=new QErrorMessage;
+        a->showMessage("SIZE SIZE");
+    }
+}
+
+void WindowAddProduct::changesizebig()
+{
+    if(p && p->Get_Size()!=undefined)
+    p->SetSize(Size::big);
 }
 
 void WindowAddProduct::addProdtoCart(){

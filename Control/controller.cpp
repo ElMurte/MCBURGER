@@ -19,12 +19,19 @@ void ControllerR::set_Cuoco(UICuoco *c){
 void ControllerR::FilterProductsonclick(const vector<QString>& qs){
     for(auto it=qs.begin();it!=qs.end();it++){
 
-        if((*it).toLower()==(QString("Sweet").toLower()))
+        /*if((*it).toLower()==(QString("Sweet").toLower()))
             emit newData(*it);
+        if((*it).toLower()==(QString("Vegan").toLower()))
+            emit newData(model->filterProuduct("",2));
+        if((*it).toLower()==(QString("SalvaEuro").toLower()))
+            emit newData(model->filterProuduct("",1));
+        if((*it).toLower()==(QString("GlutenFree").toLower()))
+            emit newData(model->filterProuduct("",0,true));
+        if((*it).toLower()==(QString("Dietetici").toLower()))
+            emit newData(model->filterProuduct("",0,true));*/
+
         else{
         vector<Product*>v=model->filterProuduct(*it);
-        QString test;
-            //view->UpdateRightArea(a);
         emit newData(v);
         }
     }

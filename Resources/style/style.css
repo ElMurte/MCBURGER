@@ -48,17 +48,19 @@ font-size:20px;
 QDialog#cart{
 font-size:20px;
 min-width:450px;
-min-height:300px;
+min-height:30px;
 }
 QTableWidget{
-max-height:400px;
+min-height:480px;
 }
 QWidget#prodottocarello{
-min-height:150px;
-max-height:230px;
+min-height:120px;
+max-height:130px;
 }
 QPushButton#btncart{
-min-width:15px;
+border:2px solid black;
+border-radius:35%;
+min-width:25px;
 min-height:15px;
 max-width:35px;
 max-height:35px;
@@ -92,9 +94,11 @@ QScrollArea#areaaddprod{
 QWidget#WindowAddProd{
 background:white;
 min-width:300px;
-min-height:350px;
+min-height:400px;
 }
-
+QWidget#bottoncinicart{
+min-width:100px;
+}
 
 
 /*ClientWindow*/
@@ -113,20 +117,50 @@ max-height:200px;
 
 MenuButton#menubtn{
 width:300px;
+min-height:120px;
+max-height:180px;
+background:white;
+}
+MenuButton{
+min-width:300px;
+max-width:450px;
+min-height:250px;
+max-height:300px;
+}
+QPushButton#menubtn{
+width:300px;
 max-height:100px;
 }
 QDialogButtonBox#addannprodbtns{
 }
 
 QPushButton#btnaddprodtocart{
+min-width:140px;
+min-height:80px;
+max-width:220px;
+max-height:130px;
 color:white;
 font-weight:bold;
 background:springgreen;
 }
+
 QPushButton#btnannprodtocart{
+min-width:140px;
+min-height:80px;
+max-width:220px;
+max-height:130px;
 background:tomato;
 font-weight:bold;
 color:white;
+}
+QPushButton#sizebtn{
+max-width:70px;
+min-width:50px;
+min-height:23px;
+max-height:30px;
+background:white;
+border:1px solid grey;
+padding:5px;
 }
 QPushButton#btnlay{
 min-height:100px;
@@ -143,7 +177,7 @@ border:3px solid black;
 
 QScrollArea{
 border:1px transparent black;
-background:white;
+background:whitesmoke;
 }
 ClientWindow{
 background:whitesmoke;
@@ -155,6 +189,9 @@ background-color:whitesmoke;
 }
 QWidget#leftWidgetArea{
 background-color:whitesmoke;
+}
+QWidget#selectszwidget{
+min-height:80px
 }
 /*QScrollArea#RightAreaClient{
 }

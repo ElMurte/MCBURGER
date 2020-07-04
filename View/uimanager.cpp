@@ -12,10 +12,9 @@ UIManager::UIManager(ControllerR *c,Manager* man,QWidget*parent):ClientWindow(c,
     connect(cucinabtn,SIGNAL(clicked()),this,SLOT(showUICucina()));
     topmenuwidget->layout()->addWidget(cucinabtn);
 
-    QList<ProductButton*>ql = UI->parent()->findChildren<ProductButton*>("productbutton");
+   /* QList<ProductButton*>ql = UI->parent()->findChildren<ProductButton*>("productbutton");
     for(auto it=ql.begin();it!=ql.end();it++)
-        connect((*it),SIGNAL(rightClicked()),(*it),SLOT(onrightClick()));
-    if(ql.isEmpty()) qDebug()<<"DCDCDCDCD";
+        connect((*it),SIGNAL(rightClicked()),(*it),SLOT(onrightClick()));*/
 }
 
 void UIManager::showUICucina(){

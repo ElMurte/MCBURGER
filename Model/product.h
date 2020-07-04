@@ -17,6 +17,7 @@ public:
     Product( const QString& c);
     virtual ~Product()=default;
     virtual Product* clone()const=0;
+    virtual bool operator==(const Product&);
     virtual void readInfoFromJson(const QJsonObject &json);
     virtual void writeInfoInJson(QJsonObject &json)const;
     /*GETTERS*/

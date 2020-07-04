@@ -24,7 +24,11 @@ void Product::setDisponibile(bool value)
 }
 
 Product::Product(const QString &c):categorie(c){
-    quantita=1;
+    quantita=1;disponibile=true;
+}
+
+bool Product::operator==(const Product &p){
+    return(nome==p.nome && p.size==size && p.calories==calories && p.price==price);
 }
 QString Product::Get_Nome() const{
     return nome;
@@ -64,6 +68,11 @@ void Product::Set_Calories(const unsigned short & calor){
 
 void Product::SetPrice(const float & prc){
     price=prc;
+}
+
+void Product::SetSize(Size s)
+{
+    size=s;
 }
 
 QString Product::Get_Categorie() const

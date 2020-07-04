@@ -5,7 +5,7 @@
         "description": "Base del panino,Salsa Big Mac,Cipolla tritata disidratata,Insalata Iceberg tritata,Fetta di formaggio Cheddar fuso,Hamburger,Tramezzo del panino,Salsa (Segreta) Big Mac,Cipolla disidratata tritata,2 cetriolini,Hamburger,Corona del paninoSalsa Big Mac: 1 tazza (equivalente a 250 grammi circa) di Miracle Whip (un equivalente della maionese), 1/3 di tazza di vinaigrette (80 ml) (sale olio e aceto), 1/4 di tazza di sottaceti-giardiniera (60 ml),1 cucchiaio di zucchero, 1 cucchiaino di cipolla tritata, 1 pizzico di pepe.",
         "calories": 900,
         "price": 4.6,
-        "size": "medium",
+        "size": "undefined",
         "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
@@ -17,7 +17,7 @@
         "description": "100% pollo italiano impanato e gustosa salsa Caesar tra due morbide fette di pane. Nella sua semplicità il Chickenburger è davvero sorprendente, forse perché non serve altro per godersi la sua panatura croccante?",
         "calories": 323,
         "price": 1.5,
-        "size": "small",
+        "size": "undefined",
         "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
@@ -29,7 +29,7 @@
         "description": "Carne 100% bovina da allevamenti italiani, arricchita con cipolla a dadini, cetriolo, ketchup e senape. L’Hamburger, un panino semplice che non passa mai di moda.",
         "calories": 254,
         "price": 1,
-        "size": "small",
+        "size": "undefined",
         "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
@@ -40,11 +40,11 @@
     ],
     "Patatine":[
         {
-        "name": "Patatine medie",
+        "name": "Patatine",
         "description": "Perfette per uno snack, da gustare da sole o accompagnate da una delle nostre salse, oppure nel tuo Happy Meal, le patatine regolari sono sempre irresistibili. Sempre con patate tagliate intere e cotte in olio 100% vegetale.",
         "calories": 231,
         "price": 1.4,
-        "size":"medium",
+        "size":1,
         "categories":"Patatine",
         "icon":"Resources/images/Patatine/patatine-classiche-medie.png"
         }
@@ -55,7 +55,7 @@
                 "description": "Coca Cola® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 168,
                 "price": 1.5,
-                "size": "small",
+                "size": 1,
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/coca-cola.png"
                 },
@@ -64,7 +64,7 @@
                 "description": "Coca Cola Zero® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 5,
                 "price": 1.5,
-                "size": "small",
+                "size": 1,
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/coca-cola-zero.png"
                 },
@@ -73,7 +73,7 @@
                 "description": "Fanta® Orange alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 192,
                 "price": 1.5,
-                "size": "small",
+                "size": 1,
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/fanta.png"
                 },
@@ -82,7 +82,7 @@
                 "description": "Sprite alla spina disponibile nei formati 0,25L, 0,4L, 0,5L.",
                 "calories": 153,
                 "price": 1.5,
-                "size": "small",
+                "size": 1,
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/sprite.png"
                 },
@@ -91,7 +91,7 @@
                 "description": "Lipton Ice Tea® alla spina disponibile nei formati 0,25L, 0,4L, 0,5L e nei gusti limone e pesca.",
                 "calories": 168,
                 "price": 1.5,
-                "size": "small",
+                "size": 1,
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/tea-lipton.png"
                 }

@@ -40,14 +40,24 @@ Cart::Cart(Cashier*cas,ControllerR*c,QWidget* parent)
     connect(resetcarel,SIGNAL(clicked()),this,SLOT(resetcarrello()));
 }
 void Cart::InsertRowProd(Product*it){
+    double prezzoiniz=it->Get_Price();QString dim;bool havesize=false;
+    if(it->Get_Size()==small){ it->SetPrice(it->Get_Price());
+        dim=" small";havesize=true;
+    }
+    if(it->Get_Size()==medium){ it->SetPrice(it->Get_Price()+0.5);
+        dim=" medium";havesize=true;
+    }
+    if(it->Get_Size()==big){ it->SetPrice(it->Get_Price()+1);
+        dim=" big";havesize=true;
+    }
         bool sent=true;
         for(auto pp=vp.begin();pp!=vp.end();pp++)
-            if((*pp)->Get_Nome()==it->Get_Nome()){
+            if(*(*pp)==*it){
              sent=false;
              unsigned int q=(*pp)->get_Quantita();
              q=q+it->get_Quantita();
              (*pp)->set_Quantita(q);
-             unsigned int riga=tabprod->findItems((*pp)->Get_Nome(),Qt::MatchFlag::MatchExactly).first()->row();
+             unsigned int riga=tabprod->findItems((*pp)->Get_Nome()+dim,Qt::MatchFlag::MatchExactly).first()->row();
              //tabprod->removeCellWidget(riga,1);
              QTableWidgetItem*qtwi=new QTableWidgetItem("x "+QString::number(q));
               QTableWidgetItem*qtwi1=new QTableWidgetItem(QString::number(q)+"x"+QString::number(it->Get_Price())+"="+QString::number(q*it->Get_Price()));
@@ -57,10 +67,12 @@ void Cart::InsertRowProd(Product*it){
              //qtwi1->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled );
             }
         if(sent){
+
             tabprod->insertRow(tabprod->rowCount());
             tabprod->setRowHeight(tabprod->rowCount()-1,200);
-            QTableWidgetItem*nome=new QTableWidgetItem(QIcon(QPixmap(it->Get_Icon())),it->Get_Nome());
+            QTableWidgetItem*nome=new QTableWidgetItem(QIcon(QPixmap(it->Get_Icon())),it->Get_Nome()+dim);
             QTableWidgetItem*quantita=new QTableWidgetItem("x "+QString::number(it->get_Quantita()));
+
             QTableWidgetItem*totaleparziae=new QTableWidgetItem(QString::number(it->get_Quantita())+"x"+QString::number(it->Get_Price())+" ="+QString::number(it->Get_Price()*it->get_Quantita()));
             nome->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled );
             quantita->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled );
@@ -76,8 +88,10 @@ void Cart::InsertRowProd(Product*it){
             }
         totale->setText("TOTALE: "+ QString::number(Get_totale())+" euro");
         tabprod->setMinimumWidth(700);
-        tabprod->setMinimumHeight(500);
-        it->set_Quantita(1);
+        tabprod->setMinimumHeight(480);
+        it->set_Quantita(1);it->SetPrice(prezzoiniz);
+        if(havesize)
+            it->SetSize(small);
 }
 
 void Cart::createneworder(){
@@ -111,13 +125,13 @@ void Cart::ShowCartWindow(){
 double Cart::Get_totale() const
 {
     double i=0;
-        for(auto it=vp.begin();it!=vp.end();it++){
-            i+=((*it)->Get_Price())*(*it)->get_Quantita();
-        }
-        for(auto it=vm.begin();it!=vm.end();it++){
-            i+=(*it)->Get_Price();//manca quantita per menu
-        }
-        return i;
+    for(auto it=vp.begin();it!=vp.end();it++){
+        i+=((*it)->Get_Price())*(*it)->get_Quantita();
+    }
+    for(auto it=vm.begin();it!=vm.end();it++){
+        i+=(*it)->Get_Price();//manca quantita per menu
+    }
+    return i;
 }
 
 

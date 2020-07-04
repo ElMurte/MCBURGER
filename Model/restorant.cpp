@@ -15,17 +15,23 @@ LoaddatafromJSON();
 
 }
 
-vector<Product*> Restorant::filterProuduct(const QString &qs,Size sz){
+vector<Product*> Restorant::filterProuduct(const QString &qs, double price, bool glf){
 vector<Product*> r;
-    if((sz)==undefined){
+    if((price)==0 && !glf){
     for(auto it=products.begin();it!=products.end();it++){
         if((*it)->Get_Categorie().toLower().contains(qs.toLower()) ||  (*it)->Get_Nome().toLower().contains(qs.toLower()) )
             r.push_back(*it);
     }
     }
-    else{//non filtra
+    if(qs=="" && price>0){
         for(auto it=products.begin();it!=products.end();it++){
-        if((*it)->Get_Categorie().toLower()==qs.toLower() && sz==(*it)->Get_Size())
+        if( price>=(*it)->Get_Price())
+            r.push_back(*it);
+        }
+    }
+    if(qs=="" && !price && glf ){
+        for(auto it=products.begin();it!=products.end();it++){
+        if( 200>=(*it)->Get_Calories())
             r.push_back(*it);
         }
     }

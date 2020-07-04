@@ -17,13 +17,14 @@ using std::vector;using std::cout;
 class Restorant{
 private:
 vector<Product*> products;
+vector<Product*> menuprincipale;
 vector<Menu*> menus;
 Dlist<Employee*> employees;//Container gerarchia G
 vector<Order*> orders;
 void LoaddatafromJSON();
 public:
     Restorant();
-     vector<Product*> filterProuduct(const QString& qs,Size sz=undefined );
+     vector<Product*> filterProuduct(const QString& qs,double price=0,bool glf=false);
      Employee* userexist(const QString& qs, const QString& qs2);
      Cooker* findacooker();
      Order* addOrder(Order*);

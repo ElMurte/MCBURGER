@@ -19,6 +19,7 @@ QTextBrowser* desc;
 QLabel* price;
 QLabel* quantita;
 QWidget*psa;
+QWidget*prodwithsize;
 void setStyle();
 protected:
 public:
@@ -27,6 +28,9 @@ public:
 public slots:
 void remquantita();
 void addquantita();
+void changesizesmall();
+void changesizemedium();
+void changesizebig();
 void addProdtoCart();
 signals:
 void addthisprod(Product*);
