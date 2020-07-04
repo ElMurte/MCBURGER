@@ -27,7 +27,6 @@ public:
  bool getInprove() const;
  void setInprove(bool value);
  double getIncome() const;
- void setIncome(double value);
  Role getRuolo() const;
  void setRuolo(const Role &value);
 };

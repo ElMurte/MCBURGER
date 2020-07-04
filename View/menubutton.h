@@ -11,6 +11,7 @@ public:
 signals:
 void clickedCell(const QString&);
 void clickedCell(const int&);
+void buildmylayoutbuttons();
 private:
     QString categorie;
     int page;

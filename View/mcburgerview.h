@@ -14,7 +14,6 @@ public:
     McBurgerView(ControllerR*c,QWidget*parent=nullptr);
 protected slots:
     virtual void updateFromData(const vector<Product*>& products) = 0;
-    virtual void updateFromData(const QString&) = 0;
 };
 
 #endif // MCBURGERVIEW_H

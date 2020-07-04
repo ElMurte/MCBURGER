@@ -24,12 +24,3 @@ void UIManager::showUICucina(){
 UICuoco *UIManager::getcucina(){
 return cucina;
 }
-void UIManager::aggiornalistaord(Order *i){
-    while(cart->tabprod->rowCount())//togli tutte le righe dalla tabella
-    cart->tabprod->removeRow(0);
-    cart->accept();//messaggio avvenuto con successo
-    cart->totale->setText("TOTALE : 0 euro");
-    QString ordine=QString::number(i->Get_NumOrder());
-    UIgestord->inprep->layout()->addWidget(new Orditem(controller,i));
-    update();
-}

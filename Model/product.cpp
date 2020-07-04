@@ -8,11 +8,6 @@ void Product::set_Quantita(unsigned int value){
     quantita = value;
 }
 
-bool Product::isEqual(Product *p) const
-{
-    return this == p || (nome == p->nome && description == p->description);
-}
-
 bool Product::getDisponibile() const
 {
     return disponibile;

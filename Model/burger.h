@@ -15,6 +15,9 @@ public:
     Burger* clone() const override;
     void writeInfoInJson(QJsonObject &json) const override;
     void readInfoFromJson(const QJsonObject &json)override;
+    bool getBacon() const;
+    bool getGlutenfree() const;
+    bool getChicken() const;
 };
 
 #endif // BURGER_H

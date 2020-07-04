@@ -13,9 +13,9 @@ MenuButton::MenuButton(const QString& cat,int pag,const QString& label,const QSt
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(this,SIGNAL(clicked()),this,SLOT(handleclick()));
 }
-void MenuButton::fakehandleclick(){
+void MenuButton::fakehandleclick(){//costruzione del bottone iniziale
 emit clickedCell(categorie);
 }
-void MenuButton::handleclick(){
+void MenuButton::handleclick(){//puntatore layout UI
 emit clickedCell(page);
 }

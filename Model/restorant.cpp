@@ -5,6 +5,7 @@ void Restorant::LoaddatafromJSON(){/*alloco la memoria per i prodotti e li legge
     Database::ReadProductfromJson<Product,Patatine>("Patatine",products);
     Database::ReadProductfromJson<Product,Drink>("Drink",products);
     Database::ReadProductfromJson<Product,Sweet>("Sweet",products);
+    Database::ReadProductfromJson<Product,Caffetteria>("Caffetteria",products);
     Database::ReadEmployeefromJson<Employee,Cooker>("Cooker",employees);
     Database::ReadEmployeefromJson<Employee,Cashier>("Cashier",employees);
     Database::ReadEmployeefromJson<Employee,Manager>("Manager",employees);
@@ -15,27 +16,42 @@ LoaddatafromJSON();
 
 }
 
-vector<Product*> Restorant::filterProuduct(const QString &qs, double price, bool glf){
+vector<Product*> Restorant::filterProuduct(const QString &qs){
 vector<Product*> r;
-    if((price)==0 && !glf){
     for(auto it=products.begin();it!=products.end();it++){
         if((*it)->Get_Categorie().toLower().contains(qs.toLower()) ||  (*it)->Get_Nome().toLower().contains(qs.toLower()) )
             r.push_back(*it);
     }
-    }
-    if(qs=="" && price>0){
-        for(auto it=products.begin();it!=products.end();it++){
-        if( price>=(*it)->Get_Price())
-            r.push_back(*it);
-        }
-    }
-    if(qs=="" && !price && glf ){
-        for(auto it=products.begin();it!=products.end();it++){
-        if( 200>=(*it)->Get_Calories())
-            r.push_back(*it);
-        }
-    }
     return r;
+}
+
+vector<Product *> Restorant::getViewOfProducts(unsigned int calories, unsigned int price, bool bacon, bool glutenfree){
+    vector<Product*> r;
+        if(calories>0){
+            for(auto it=products.begin();it!=products.end();it++){
+            if((*it)->Get_Calories()<=100)
+                r.push_back(*it);
+            }
+        }
+        if(price>0){
+            for(auto it=products.begin();it!=products.end();it++){
+            if((*it)->Get_Price()<=price)
+                r.push_back(*it);
+            }
+        }
+        if(bacon){
+            for(auto it=products.begin();it!=products.end();it++){
+            if(dynamic_cast<Burger*>(*it) &&  static_cast<Burger*>(*it)->getBacon())
+               r.push_back(*it);
+              }
+        }
+        if(glutenfree){
+            for(auto it=products.begin();it!=products.end();it++){
+            if(dynamic_cast<Burger*>(*it) && static_cast<Burger*>(*it)->getGlutenfree())
+               r.push_back(*it);
+              }
+        }
+        return r;
 }
 
 Employee *Restorant::userexist(const QString &qs, const QString &qs2){

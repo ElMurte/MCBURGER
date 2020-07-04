@@ -37,7 +37,6 @@ public:
     void SetCategorie(QString);
     void SetSize(Size);
     void set_Quantita(unsigned int value);
-    virtual bool isEqual(Product*)const;
     bool getDisponibile() const;
     void setDisponibile(bool value);
 };

@@ -5,7 +5,7 @@
         "description": "Base del panino,Salsa Big Mac,Cipolla tritata disidratata,Insalata Iceberg tritata,Fetta di formaggio Cheddar fuso,Hamburger,Tramezzo del panino,Salsa (Segreta) Big Mac,Cipolla disidratata tritata,2 cetriolini,Hamburger,Corona del paninoSalsa Big Mac: 1 tazza (equivalente a 250 grammi circa) di Miracle Whip (un equivalente della maionese), 1/3 di tazza di vinaigrette (80 ml) (sale olio e aceto), 1/4 di tazza di sottaceti-giardiniera (60 ml),1 cucchiaio di zucchero, 1 cucchiaino di cipolla tritata, 1 pizzico di pepe.",
         "calories": 900,
         "price": 4.6,
-        "size": "undefined",
+        "size":0,
         "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
@@ -17,7 +17,7 @@
         "description": "100% pollo italiano impanato e gustosa salsa Caesar tra due morbide fette di pane. Nella sua semplicità il Chickenburger è davvero sorprendente, forse perché non serve altro per godersi la sua panatura croccante?",
         "calories": 323,
         "price": 1.5,
-        "size": "undefined",
+        "size": 0,
         "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
@@ -29,14 +29,37 @@
         "description": "Carne 100% bovina da allevamenti italiani, arricchita con cipolla a dadini, cetriolo, ketchup e senape. L’Hamburger, un panino semplice che non passa mai di moda.",
         "calories": 254,
         "price": 1,
-        "size": "undefined",
+        "size": 0,
         "categories":"Burger",
         "bacon":false,
         "glutenfree":false,
         "chicken":false,
         "icon":"Resources/images/Burger/hamburger.png"
+        },
+        {
+        "name": "My Selection BBQ",
+        "description": "180G di succosa carne bovina da soli allevamenti italiani, gouda stagionato, bacon croccante, insalata, coleslaw, salsa BBQ con Cipolla Rossa di Tropea Calabria IGP e Aceto Balsamico di Modena IGP e pane con semi di sesamo e papavero",
+        "calories": 744,
+        "price": 4.2,
+        "size": 0,
+        "categories":"Burger",
+        "bacon":true,
+        "glutenfree":false,
+        "chicken":false,
+        "icon":"Resources/images/Burger/myselection.png"
+        },
+        {
+        "name": "Gluten Free Burger",
+        "description": "Due fette di formaggio filante si uniscono a due fette di gustosa carne 100% bovina da allevamenti italiani racchiuse in un morbido pane senza glutine. Con Gluten Free Burger puoi goderti tutto il gusto di un hamburger, senza pensieri.",
+        "calories": 457,
+        "price": 2.8,
+        "size": 0,
+        "categories":"Burger",
+        "bacon":false,
+        "glutenfree":true,
+        "chicken":false,
+        "icon":"Resources/images/Burger/gluten-free-burger.png"
         }
-
     ],
     "Patatine":[
         {
@@ -47,6 +70,15 @@
         "size":1,
         "categories":"Patatine",
         "icon":"Resources/images/Patatine/patatine-classiche-medie.png"
+        },
+        {
+        "name": "Le Ricche Cheddar",
+        "description": "Le patatine di sempre più tutto il gusto della salsa calda al Cheddar. Lasciati tentare da Le Ricche: dorate e incredibilmente golose.",
+        "calories": 231,
+        "price": 1.4,
+        "size":0,
+        "categories":"Patatine",
+        "icon":"Resources/images/Patatine/ricche_cheddar.png"
         }
         ],
         "Drink":[
@@ -94,17 +126,54 @@
                 "size": 1,
                 "categories":"Drink",
                 "icon":"Resources/images/Drink/tea-lipton.png"
+                },
+                {
+                "name": "Acqua Lilia",
+                "description": "Acqua minerale disponibile naturale e frizzante.",
+                "calories": 168,
+                "price": 1,
+                "size": 0,
+                "categories":"Drink",
+                "icon":"Resources/images/Drink/acqua-lilla.png"
                 }
          ],
-         "Caffe":[
+         "Caffetteria":[
          {
          "name": "Capuccino",
          "description": "Il caffè, unito a un’irresistibile crema di latte: è impossibile rinunciare al piacere di un classico della caffetteria italiana. Magari insieme a uno dei nostri croissant. Disponibile anche decaffeinato, orzo e ginseng.",
          "calories": 82,
          "price": 1.3,
-         "size": "undefined",
-         "categories":"Caffe",
+         "size": 0,
+         "categories":"Caffetteria",
          "icon":"Resources/images/Caffe/cappuccino.png"
+         },
+         {
+         "name": "Caffe espresso",
+         "description": "È la prima cosa a cui pensi al mattino, l’ultima che sogni dopo ogni pranzo o in mezzo a una delle tue pause nel pomeriggio. Con il suo aroma inconfondibile, dà gusto ogni tuo momento.
+         Disponibile anche macchiato e decaffeinato.",
+         "calories": 1,
+         "price": 1,
+         "size": 0,
+         "categories":"Caffetteria",
+         "icon":"Resources/images/Caffe/caffe-espresso.png"
+         },
+         {
+         "name": "Spremuta Arancia",
+         "description": "È la carica naturale per iniziare al meglio la giornata o una merenda fresca e dissetante, perfetta per accompagnare uno dei nostri dolcetti.",
+         "calories": 82,
+         "price": 1.9,
+         "size": 0,
+         "categories":"Caffetteria",
+         "icon":"Resources/images/Caffe/spremuta-arancia.png"
+         },
+         {
+         "name": "Cioccolata",
+         "description": "L'inverno è meno freddo se ci si può scaldare con una buona cioccolata calda. Prova le due varianti, al latte e fondente, guarnite con soffice panna montata.",
+         "calories": 216,
+         "price": 2.5,
+         "size": 0,
+         "categories":"Caffetteria",
+         "icon":"Resources/images/Caffe/cioccolata.png"
          }
          ],
          "Sweet":[
@@ -113,27 +182,54 @@
          "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
          "calories": 281,
          "price": 1,
-         "size": "undefined",
+         "size": 0,
          "categories":"Brioche",
          "icon":"Resources/images/Sweet/Brioche/croissant-vuoto.png"
          },
          {
-         "name": "Donut Classico",
-         "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
+         "name": "Croissant con Nutella",
+         "description": "Un croissant con lievito madre riempito con Nutella® e la giornata si riempie subito di dolcezza. Un trionfo di gusto.",
          "calories": 281,
          "price": 1,
-         "size": "undefined",
+         "size": 0,
+         "categories":"Brioche",
+         "icon":"Resources/images/Sweet/Brioche/croissant-nutella.png"
+         },
+         {
+         "name": "Donut Cioccolato",
+         "description": "Una dolce ciambella, rifinita con goloso cioccolato.",
+         "calories": 275,
+         "price": 1,
+         "size": 0,
          "categories":"Donut",
          "icon":"Resources/images/Sweet/Donut/donut-cioccolato.png"
          },
          {
-         "name": "Torta Cioccolato Multi",
-         "description": "Nel nostro croissant alla marmellata trovi tutta la qualità della confettura di albicocche 100% italiane. Goditi la sua dolcezza: è proprio quello che ci vuole per affrontare ogni tipo di giornata.",
+         "name": "Donut marshmallows",
+         "description": "Una dolce ciambella, con una glassatura di zucchero rosa e piccoli marshmallows.",
          "calories": 281,
          "price": 1,
-         "size": "undefined",
+         "size": 0,
+         "categories":"Donut",
+         "icon":"Resources/images/Sweet/Donut/donut-marshmallow.png"
+         },
+         {
+         "name": "Torta Cioccolato Multi",
+         "description": "Alcuni pomeriggi possono essere così: torta croccante con crema e crema al cioccolato, sfoglie sottili di cialda e dadini al cacao.",
+         "calories": 519,
+         "price": 2.3,
+         "size": 0,
          "categories":"Cake",
          "icon":"Resources/images/Sweet/Cake/torta-cioccolato-multi.png"
+         },
+         {
+         "name": "Cheesecake monterosa",
+         "description": "Soffice pan di Spagna, morbida ricotta e deliziose fragoline di bosco per una pausa che dal primo assaggio ti fa vivere il relax della montagna",
+         "calories": 261,
+         "price": 2.3,
+         "size": 0,
+         "categories":"Cake",
+         "icon":"Resources/images/Sweet/Cake/cheesecake-monterosa.png"
          }
          ]
 }

@@ -4,6 +4,5 @@
 McBurgerView::McBurgerView(ControllerR *c, QWidget*parent):QWidget(parent),controller(c)
 {
     connect(controller,SIGNAL(newData(const vector<Product*>&)),this, SLOT(updateFromData(const vector<Product*>&)));
-    connect(controller,SIGNAL(newData(const QString&)),this, SLOT(updateFromData(const QString&)));
 }
 

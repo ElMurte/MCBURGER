@@ -11,14 +11,11 @@
 #include <QToolButton>
 #include <View/uigestioneordini.h>
 #include <View/cashieorderitem.h>
-//UpdateRightArea(a);
-/*auto*s=new ControllerR(*controller);
-new ClientWindow(s);*/
-//TODO: UPDATE VIEW WITH DATA IN products
 void ClientWindow::addClientWidgets(){
 addtopmenuwidgets();
-addLeftMenuButtons();
 addinitialButtonstoUILayout();
+addLeftMenuButtons();
+
 createsubmenus();
 menuproducts->setObjectName("LeftAreaClient");
 }
@@ -58,7 +55,10 @@ void ClientWindow::aggiornalistaord(Order *i){
     cart->accept();//messaggio avvenuto con successo
     cart->totale->setText("TOTALE : 0 euro");
     QString ordine=QString::number(i->Get_NumOrder());
+    if(!dynamic_cast<Manager*>(cassiere))
     UIgestord->inprep->layout()->addWidget(new VisibleOrderItem(controller,i));
+    else
+    UIgestord->inprep->layout()->addWidget(new Orditem(controller,i));
     update();
 }
 void ClientWindow::orderready(Order*i){
@@ -88,11 +88,11 @@ void ClientWindow::addLeftMenuButtons(){
     QVector<MenuButton*> v;
     QWidget*t=new QWidget();
     QVBoxLayout* menu=new QVBoxLayout(t);
-    v.push_back(new MenuButton("Burger",1,"Panini","Resources/images/Icons/burgericon.png"));
-    v.push_back(new MenuButton("Drink",2,"Bibite","Resources/images/Icons/drinkicon.png"));
-    v.push_back(new MenuButton("Patatine",3,"Patatine","Resources/images/Icons/patatineicon.png"));
-    v.push_back(new MenuButton("Sweet",4,"Dolci","Resources/images/Icons/sweeticon.png"));
-     v.push_back(new MenuButton("Caffe",5,"Caffe","Resources/images/Icons/caffeicon.png"));
+    v.push_back(new MenuButton("Burger",5,"Panini","Resources/images/Icons/burgericon.png"));
+    v.push_back(new MenuButton("Drink",6,"Bibite","Resources/images/Icons/drinkicon.png"));
+    v.push_back(new MenuButton("Patatine",7,"Patatine","Resources/images/Icons/patatineicon.png"));
+    v.push_back(new MenuButton("Sweet",8,"Dolci","Resources/images/Icons/sweeticon.png"));
+    v.push_back(new MenuButton("Caffe",12,"Caffe","Resources/images/Icons/caffeicon.png"));
     for(auto it=v.begin();it!=v.end();it++){
      connect(*it,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
      menu->addWidget((*it));
@@ -107,10 +107,11 @@ void ClientWindow::addinitialButtonstoUILayout(){
     //QGridLayout* menu=new QGridLayout(productviews);
     QScrollArea*t=new QScrollArea(this);
     QGridLayout*boxbottoni=new QGridLayout(t);t->setLayout(boxbottoni);
-    v.push_back(new MenuButton("",9,"Vegan","Resources/images/Icons/vegan.png"));
-     v.push_back(new MenuButton("",10,"SalvaEuro","Resources/images/Icons/salvaeuro.png"));
-     v.push_back(new MenuButton("",11,"Glutenfree","Resources/images/Icons/salvaeuro.png"));
-      v.push_back(new MenuButton("",12,"Dietetici","Resources/images/Icons/vegan.png"));
+    MenuButton*vegan(new MenuButton("",1,"Vegan","Resources/images/Icons/vegan.png"));connect(vegan,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getveganproducts()));
+     MenuButton*salvaeuro=(new MenuButton("",2,"SalvaEuro","Resources/images/Icons/salvaeuro.png"));connect(salvaeuro,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getsalvaeuro()));
+     MenuButton*glutenfree=new MenuButton("",3,"Glutenfree","Resources/images/Icons/salvaeuro.png");connect(glutenfree,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getglfproducts()));
+     MenuButton*dietetici(new MenuButton("",4,"Dietetici","Resources/images/Icons/vegan.png"));connect(dietetici,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getdietetici()));
+     v.push_back(vegan);v.push_back(salvaeuro);v.push_back(glutenfree);v.push_back(dietetici);
     for(auto p = std::make_pair(0, v.begin());p.second!=v.end();p.second++,p.first++){
         (*(p.second))->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         (*(p.second))->setObjectName("centralembtn");
@@ -120,20 +121,25 @@ void ClientWindow::addinitialButtonstoUILayout(){
      connect(*p.second,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
     }
     UI->addWidget(t);
+    for(auto p =v.begin();p!=v.end();p++)
+        emit (*p)->buildmylayoutbuttons();
     t->setWidgetResizable(true);
         t->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         t->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
-
 }
 
 void ClientWindow::createsubmenus(){
 connect(this,SIGNAL(buildbuttons(vector<QString>)),controller,SLOT(FilterProductsonclick(vector<QString>)) );
 vector<QString>costrfin;//vettore per costruire i layouts dei vari prodotti senza farlo ogni volta
 costrfin.push_back("Burger");costrfin.push_back("Drink");
-costrfin.push_back("Patatine");costrfin.push_back("Sweet");
-costrfin.push_back("Brioche");costrfin.push_back("Cake");costrfin.push_back("Donut");
-costrfin.push_back("Vegan");costrfin.push_back("SalvaEuro");costrfin.push_back("Glutenfree");costrfin.push_back("Dietetici");
+costrfin.push_back("Patatine");//costrfin.push_back("Sweet");
+
+/*costrfin.push_back("Vegan");costrfin.push_back("SalvaEuro");costrfin.push_back("Glutenfree");costrfin.push_back("Dietetici");*/
 emit buildbuttons(costrfin);
+buildsubmenusweets();
+vector<QString>costrfin1;
+costrfin1.push_back("Brioche");costrfin1.push_back("Cake");costrfin1.push_back("Donut");costrfin1.push_back("Caffetteria");
+emit buildbuttons(costrfin1);
 }
 
 void ClientWindow::addtopmenuwidgets(){
@@ -193,21 +199,20 @@ void ClientWindow::updateFromData(const vector<Product *> &products){
     sa->setWidgetResizable(true);
         sa->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         sa->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
+}
 
-}
-void ClientWindow::updateFromData(const QString& qs){
+void ClientWindow::buildsubmenusweets(){
     QVector<MenuButton*> a;
-    if(qs=="Sweet"){
-           a.push_back(new MenuButton("Brioche",6,"Brioche","Resources/images/Sweet/croissant-vuoto.png"));
-           a.push_back(new MenuButton("Cake",7,"Torte","Resources/images/Sweet/torta.png"));
-           a.push_back(new MenuButton("Donut",8,"Ciambelle","Resources/images/Sweet/ciambella.png"));
-    QScrollArea*t=new QScrollArea(this);
-    QHBoxLayout*tl=new QHBoxLayout(t);
-    t->setLayout(tl);int indice=0;
-        for(auto it=a.begin();it!=a.end();it++,indice++){
-               tl->addWidget(*it);connect(*it,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
-        }
-    /*menu?*/
-    UI->addWidget(t);
-    }
+    a.push_back(new MenuButton("Brioche",9,"Brioche","Resources/images/Sweet/croissant-vuoto.png"));
+    a.push_back(new MenuButton("Cake",10,"Torte","Resources/images/Sweet/torta.png"));
+    a.push_back(new MenuButton("Donut",11,"Ciambelle","Resources/images/Sweet/ciambella.png"));
+QScrollArea*t=new QScrollArea(this);
+QHBoxLayout*tl=new QHBoxLayout(t);
+t->setLayout(tl);int indice=0;
+ for(auto it=a.begin();it!=a.end();it++,indice++){
+        tl->addWidget(*it);connect(*it,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
+ }
+ UI->addWidget(t);
 }
+
+

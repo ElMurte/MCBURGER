@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Control/controller.cpp \
     Model/burger.cpp \
+    Model/caffetteria.cpp \
     Model/cashier.cpp \
     Model/cooker.cpp \
     Model/database.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     Control/controller.h \
     Model/Dlist.h \
     Model/burger.h \
+    Model/caffetteria.h \
     Model/cashier.h \
     Model/cooker.h \
     Model/database.h \

@@ -24,6 +24,11 @@ public slots:
     void orderready(Order*o);
     void orderComplete(Order*);
     void Checklogin(LoginUI*,QString,QString);
+    void getveganproducts();
+    void getsalvaeuro();
+    void getglfproducts();
+    void getdietetici();
+
 private:
 vector<QWidget*>widgets;
 QWidget* view;

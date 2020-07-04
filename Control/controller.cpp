@@ -30,10 +30,8 @@ void ControllerR::FilterProductsonclick(const vector<QString>& qs){
         if((*it).toLower()==(QString("Dietetici").toLower()))
             emit newData(model->filterProuduct("",0,true));*/
 
-        else{
         vector<Product*>v=model->filterProuduct(*it);
         emit newData(v);
-        }
     }
 }
 
@@ -114,5 +112,25 @@ Employee*pe= model->userexist(u,p);
         log->accept();
     }
     else
-    log->reject();
+        log->reject();
+}
+
+void ControllerR::getveganproducts(){
+    vector<Product*>v=model->getViewOfProducts(0,0,true);
+    emit newData(v);
+}
+
+void ControllerR::getsalvaeuro(){
+    vector<Product*>v=model->getViewOfProducts(0,1);
+    emit newData(v);
+}
+
+void ControllerR::getglfproducts(){
+    vector<Product*>v=model->getViewOfProducts(0,0,false,true);
+    emit newData(v);
+}
+
+void ControllerR::getdietetici(){
+    vector<Product*>v=model->getViewOfProducts(100);
+    emit newData(v);
 }

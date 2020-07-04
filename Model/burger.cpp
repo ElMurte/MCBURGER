@@ -1,5 +1,20 @@
 #include "burger.h"
 
+bool Burger::getBacon() const
+{
+    return bacon;
+}
+
+bool Burger::getGlutenfree() const
+{
+    return glutenfree;
+}
+
+bool Burger::getChicken() const
+{
+    return chicken;
+}
+
 Burger::Burger():Product("Burger"){
 }
 

@@ -45,10 +45,6 @@ double Employee::getIncome() const
     return income;
 }
 
-void Employee::setIncome(double value)
-{
-    income = value;
-}
 
 Role Employee::getRuolo() const{
     return ruolo;

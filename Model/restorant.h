@@ -11,7 +11,9 @@
 #include<QDir>
 #include<QString>
 #include "Model/order.h"
-#include"Model/database.h"//class to read data
+#include"Model/database.h"
+#include "caffetteria.h"
+//class to read data
 //partial delcalration has a
 using std::vector;using std::cout;
 class Restorant{
@@ -24,9 +26,10 @@ vector<Order*> orders;
 void LoaddatafromJSON();
 public:
     Restorant();
-     vector<Product*> filterProuduct(const QString& qs,double price=0,bool glf=false);
+     vector<Product*> filterProuduct(const QString& qs);
+     vector<Product*> getViewOfProducts(unsigned int calories,unsigned int price=0,bool bacon=false,bool glutenfree=false);
      Employee* userexist(const QString& qs, const QString& qs2);
-     Cooker* findacooker();
+     Cooker* findacooker();//***//
      Order* addOrder(Order*);
 };
 #endif // RESTORANT_H
