@@ -20,6 +20,7 @@ QString filesheet=QLatin1String(file.readAll());
 setStyleSheet(filesheet);
 }
 void UIGestioneOrdini::showGestOrd(){
+    activateWindow();
     open();
 }
 

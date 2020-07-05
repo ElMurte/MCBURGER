@@ -37,10 +37,10 @@ void ClientWindow::AddProducttoCart(Product *p){
 ClientWindow::ClientWindow( ControllerR *c, Cashier *cass,QWidget*parent)
     :McBurgerView(c,parent),cassiere(cass), menuproducts(new QScrollArea(this)),productviews(new QScrollArea(this)),
       UI(new QStackedLayout(productviews)),mainlayout(new QVBoxLayout(this)),topmenuwidget(new QWidget(this)),
-      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(cassiere,controller,this)),UIgestord(new UIGestioneOrdini(c,this))
+      pointerproductwindow(new WindowAddProduct(controller,this)),cart(new Cart(cassiere,controller,this)),UIgestord(new UIGestioneOrdini(c))
 {
     addClientWidgets();
-    QHBoxLayout*secondarigamainwidget=new QHBoxLayout(this);
+    QHBoxLayout*secondarigamainwidget=new QHBoxLayout();
     secondarigamainwidget->addWidget(menuproducts);secondarigamainwidget->addWidget(productviews);
         mainlayout->addWidget(topmenuwidget);
         mainlayout->addItem(secondarigamainwidget);
@@ -96,7 +96,6 @@ void ClientWindow::addLeftMenuButtons(){
      connect(*it,SIGNAL(clickedCell(int)),UI,SLOT(setCurrentIndex(int)));
      menu->addWidget((*it));
         (*it)->setObjectName("menubtn");
-    //connect(*it,SIGNAL(clickedCell(const QString&)),controller,SLOT(FilterProductsonclick(QString)));
     }
     t->setObjectName("leftWidgetArea");
     menuproducts->setWidget(t);
@@ -160,9 +159,6 @@ resetordine->setObjectName("btnlay");
 topmenuwidget->setMaximumHeight(130);
 }
 void ClientWindow::setRestorantStyle(){
-    //style
-    /*setMinimumWidth(1080);
-    setMinimumHeight(720);*/
     menuproducts->setWidgetResizable(true);productviews->setWidgetResizable(true);
     productviews->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
     productviews->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
