@@ -1,5 +1,4 @@
 #include "visibleorderitem.h"
-#include <QDebug>
 VisibleOrderItem::VisibleOrderItem(ControllerR *c, Order *ord, QWidget *parent)
     :GenericOrderItem(c,ord,parent),showord(new QPushButton("show")),showOrderUI(new QDialog(parent))
 {

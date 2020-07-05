@@ -4,7 +4,6 @@
 #include "View/uigestioneordini.h"
 #include "View/orditem.h"
 #include "productbutton.h"
-#include <QtDebug>
 UIManager::UIManager(ControllerR *c,Manager* man,QWidget*parent):ClientWindow(c,man,parent),manager(man)
 {
     setParent(parent);//altre azioni manager

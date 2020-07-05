@@ -9,8 +9,9 @@ UIwatchOrders::UIwatchOrders(ControllerR *c, QWidget *parent):QWidget(parent),co
     setLayout(new QHBoxLayout);
     inprep->setLayout(new QVBoxLayout);inprep->setObjectName("widgetord");
     pronti->setLayout(new QVBoxLayout);pronti->setObjectName("widgetord");
-    inprep->layout()->addWidget(new QLabel("IN PREPARAZIONE"));
-    pronti->layout()->addWidget(new QLabel("PRONTI"));
+    QLabel *t1=new QLabel("IN PREPARAZIONE");QLabel *t2=new QLabel("PRONTI");t1->setAlignment(Qt::AlignTop);t2->setAlignment(Qt::AlignTop);
+    inprep->layout()->addWidget(t1);
+    pronti->layout()->addWidget(t2);
     layout()->addWidget(inprep);
     layout()->addWidget(pronti);
     QFile file("Resources/style/style.css");

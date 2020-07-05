@@ -7,7 +7,6 @@
 #include <QDialogButtonBox>
 #include "Control/controller.h"
 #include "View/productbutton.h"
-#include <QtDebug>
 #include <QToolButton>
 #include <View/uigestioneordini.h>
 #include <View/cashieorderitem.h>
@@ -52,7 +51,7 @@ ClientWindow::ClientWindow( ControllerR *c, Cashier *cass,QWidget*parent)
 void ClientWindow::aggiornalistaord(Order *i){
     while(cart->tabprod->rowCount())//togli tutte le righe dalla tabella
     cart->tabprod->removeRow(0);
-    cart->accept();//messaggio avvenuto con successo
+    cart->accept();//avvenuto con successo
     cart->totale->setText("TOTALE : 0 euro");
     QString ordine=QString::number(i->Get_NumOrder());
     if(!dynamic_cast<Manager*>(cassiere))
@@ -107,10 +106,10 @@ void ClientWindow::addinitialButtonstoUILayout(){
     //QGridLayout* menu=new QGridLayout(productviews);
     QScrollArea*t=new QScrollArea(this);
     QGridLayout*boxbottoni=new QGridLayout(t);t->setLayout(boxbottoni);
-    MenuButton*vegan(new MenuButton("",1,"Vegan","Resources/images/Icons/vegan.png"));connect(vegan,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getveganproducts()));
+    MenuButton*vegan(new MenuButton("",1,"La tua Colazione","Resources/images/Icons/break-icon.png"));connect(vegan,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getveganproducts()));
      MenuButton*salvaeuro=(new MenuButton("",2,"SalvaEuro","Resources/images/Icons/salvaeuro.png"));connect(salvaeuro,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getsalvaeuro()));
-     MenuButton*glutenfree=new MenuButton("",3,"Glutenfree","Resources/images/Icons/salvaeuro.png");connect(glutenfree,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getglfproducts()));
-     MenuButton*dietetici(new MenuButton("",4,"Dietetici","Resources/images/Icons/vegan.png"));connect(dietetici,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getdietetici()));
+     MenuButton*glutenfree=new MenuButton("",3,"Glutenfree","Resources/images/Icons/glf-icon.png");connect(glutenfree,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getglfproducts()));
+     MenuButton*dietetici(new MenuButton("",4,"Dietetici","Resources/images/Icons/diet-icon.png"));connect(dietetici,SIGNAL(buildmylayoutbuttons()),controller,SLOT(getdietetici()));
      v.push_back(vegan);v.push_back(salvaeuro);v.push_back(glutenfree);v.push_back(dietetici);
     for(auto p = std::make_pair(0, v.begin());p.second!=v.end();p.second++,p.first++){
         (*(p.second))->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);

@@ -3,7 +3,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QFile>
-#include <QDebug>
 #include <Model/order.h>
 #include <View/visibleorderitem.h>
 UIGestioneOrdini::UIGestioneOrdini(ControllerR*c,QWidget*parent):QDialog(parent),controller(c),inprep(new QWidget(this)),pronti(new QWidget(this)){

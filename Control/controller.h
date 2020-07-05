@@ -14,6 +14,7 @@ public:
     void set_View(ClientWindow* v);
     void set_View(UIManager* m);
     void set_Cuoco(UICuoco* c);
+    bool cucinaison();
 public slots:
     void FilterProductsonclick(const QString&);
     void FilterProductsonclick(const vector<QString>& qs);

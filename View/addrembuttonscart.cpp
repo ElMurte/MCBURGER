@@ -41,12 +41,7 @@ void AddRemButtonsCart::remquantita_tocart(){
         p->set_Quantita(quant);
         carel->tabprod->item(riga,3)->setText(QString::number(quant)+"x "+QString::number(p->Get_Price())+" = "+QString::number(quant*p->Get_Price()));
         carel->totale->setText("TOTALE: "+ QString::number(carel->Get_totale()));
-
-        //carel->tabprod->reset();
     }
-    //emit rimossounariga();
-    //rimuovi la riga e rimetti a 1 la quantita del puntatore se non clonato
-        //p->set_Quantita(p->get_Quantita()-1);
 
 }
 

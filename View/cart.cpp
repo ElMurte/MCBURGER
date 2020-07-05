@@ -96,17 +96,17 @@ void Cart::InsertRowProd(Product*it){
 
 void Cart::createneworder(){
  Order*ord=cassiere->createneworder(vp);
-if(ord){
-emit createneworder(ord);
-accept();
-}
-else{
-    QMessageBox a(this);
-    a.setText("CARELLO VUOTO aggiungere dei prodotti prima");a.exec();
-    //reject();
-}
-
-//message box ok
+    if(ord && controller->cucinaison()){
+    emit createneworder(ord);
+    accept();
+    }
+    else{
+        QMessageBox a(this);
+        if(!ord)
+        a.setText("CARELLO VUOTO aggiungere dei prodotti prima");
+        else a.setText("CUCINA non Avviata contattere il manager o un cuoco");
+        a.exec();
+    }
 }
 
 void Cart::resetcarrello(){

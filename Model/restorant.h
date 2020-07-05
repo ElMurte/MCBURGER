@@ -19,7 +19,6 @@ using std::vector;using std::cout;
 class Restorant{
 private:
 vector<Product*> products;
-vector<Product*> menuprincipale;
 vector<Menu*> menus;
 Dlist<Employee*> employees;//Container gerarchia G
 vector<Order*> orders;
@@ -27,7 +26,7 @@ void LoaddatafromJSON();
 public:
     Restorant();
      vector<Product*> filterProuduct(const QString& qs);
-     vector<Product*> getViewOfProducts(unsigned int calories,unsigned int price=0,bool bacon=false,bool glutenfree=false);
+     vector<Product*> getViewOfProducts(unsigned int calories,unsigned int price=0,bool colaz=false,bool glutenfree=false);
      Employee* userexist(const QString& qs, const QString& qs2);
      Order* addOrder(Order*);
 };

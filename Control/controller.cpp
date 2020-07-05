@@ -7,7 +7,7 @@
 #include <QErrorMessage>
 #include <QMessageBox>
 #include <QDebug>
-ControllerR::ControllerR(Restorant *mod, QObject *parent) : QObject(parent),view(nullptr),model(mod){}
+ControllerR::ControllerR(Restorant *mod, QObject *parent) : QObject(parent),view(nullptr),model(mod),viewcuoco(nullptr){}
 
 void ControllerR::set_View(ClientWindow *v){
     view=v;v->show();
@@ -18,6 +18,11 @@ void ControllerR::set_View(UIManager *m){
 
 void ControllerR::set_Cuoco(UICuoco *c){
     viewcuoco=c;viewcuoco->show();
+}
+
+bool ControllerR::cucinaison()
+{
+   return (viewcuoco!=nullptr);
 }
 void ControllerR::FilterProductsonclick(const vector<QString>& qs){
     for(auto it=qs.begin();it!=qs.end();it++){

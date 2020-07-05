@@ -25,7 +25,7 @@ vector<Product*> r;
     return r;
 }
 
-vector<Product *> Restorant::getViewOfProducts(unsigned int calories, unsigned int price, bool bacon, bool glutenfree){
+vector<Product *> Restorant::getViewOfProducts(unsigned int calories, unsigned int price, bool colaz, bool glutenfree){
     vector<Product*> r;
         if(calories>0){
             for(auto it=products.begin();it!=products.end();it++){
@@ -39,9 +39,9 @@ vector<Product *> Restorant::getViewOfProducts(unsigned int calories, unsigned i
                 r.push_back(*it);
             }
         }
-        if(bacon){
+        if(colaz){
             for(auto it=products.begin();it!=products.end();it++){
-            if(dynamic_cast<Burger*>(*it) &&  static_cast<Burger*>(*it)->getBacon())
+            if(dynamic_cast<Caffetteria*>(*it) ||dynamic_cast<Sweet*>(*it) )
                r.push_back(*it);
               }
         }
@@ -66,9 +66,3 @@ Order* Restorant::addOrder(Order*v){
 orders.push_back(v);
 return v;
 }
-/*utility function*/
-
-
-
-
-

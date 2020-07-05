@@ -1,5 +1,4 @@
 #include "productbutton.h"
-#include <QtDebug>
 #include "Model/product.h"
 #include "View/windowaddproduct.h"
 #include "Model/manager.h"

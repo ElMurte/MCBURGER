@@ -4,7 +4,7 @@
 LoginUI::LoginUI(ControllerR*cc, QWidget *parent)
     : QDialog(parent),controller(cc),usertext(new QLabel("username:")),username(new QLineEdit(this)),userpass(new QLabel("password:")),password(new QLineEdit(this)),loginbtn(new QPushButton("LOGIN",this))
 {
-setLayout(new QVBoxLayout);
+setLayout(new QVBoxLayout);setObjectName("loginw");setMinimumWidth(300);setMinimumHeight(180);
 layout()->addWidget(usertext);
 layout()->addWidget(username);
 layout()->addWidget(userpass);

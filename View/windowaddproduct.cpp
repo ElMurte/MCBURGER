@@ -6,7 +6,6 @@
 #include <QLabel>
 #include <QFile>
 #include <QPushButton>
-#include <QCheckBox>
 #include <Control/controller.h>
 #include <Model/product.h>
 #include <QMessageBox>
@@ -73,8 +72,6 @@ WindowAddProduct::WindowAddProduct(ControllerR* c, QWidget *parent):QDialog(pare
     setStyleSheet(filesheet);
 }
 
-
-
 void WindowAddProduct::showWindow(Product*pp)
 {
     if(name == nullptr) {
@@ -90,7 +87,6 @@ void WindowAddProduct::showWindow(Product*pp)
         sal->addWidget(price);
     }
     p=pp;
-    //img = QPixmap("Resources/images/Burger/big-mc.png");//get immagine
     picture->setPixmap(p->Get_Icon());
     name->setText(p->Get_Nome());
     desc->setText(p->Get_Description());
@@ -144,4 +140,3 @@ void WindowAddProduct::addProdtoCart(){
     accept();
        disconnect(this,SIGNAL(addthisprod(Product*)),controller,SLOT(addthisprodtocart(Product*)));
 }
-
