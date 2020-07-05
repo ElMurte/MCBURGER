@@ -10,7 +10,8 @@
         "bacon":false,
         "glutenfree":false,
         "chicken":false,
-        "icon":"Resources/images/Burger/big-mc.png"
+        "icon":"Resources/images/Burger/big-mc.png",
+        "disponibile":true
         },
         {
         "name": "Chickenburger",
@@ -22,7 +23,8 @@
         "bacon":false,
         "glutenfree":false,
         "chicken":true,
-        "icon":"Resources/images/Burger/chicken-burger.png"
+        "icon":"Resources/images/Burger/chicken-burger.png",
+        "disponibile":true
         },
         {
         "name": "Hamburger",
@@ -34,7 +36,8 @@
         "bacon":false,
         "glutenfree":false,
         "chicken":false,
-        "icon":"Resources/images/Burger/hamburger.png"
+        "icon":"Resources/images/Burger/hamburger.png",
+        "disponibile":false
         },
         {
         "name": "My Selection BBQ",
@@ -46,7 +49,8 @@
         "bacon":true,
         "glutenfree":false,
         "chicken":false,
-        "icon":"Resources/images/Burger/myselection.png"
+        "icon":"Resources/images/Burger/myselection.png",
+        "disponibile":true
         },
         {
         "name": "Gluten Free Burger",
@@ -58,7 +62,8 @@
         "bacon":false,
         "glutenfree":true,
         "chicken":false,
-        "icon":"Resources/images/Burger/gluten-free-burger.png"
+        "icon":"Resources/images/Burger/gluten-free-burger.png",
+        "disponibile":true
         }
     ],
     "Patatine":[
@@ -69,7 +74,8 @@
         "price": 1.4,
         "size":1,
         "categories":"Patatine",
-        "icon":"Resources/images/Patatine/patatine-classiche-medie.png"
+        "icon":"Resources/images/Patatine/patatine-classiche-medie.png",
+        "disponibile":true
         },
         {
         "name": "Le Ricche Cheddar",
@@ -78,7 +84,8 @@
         "price": 1.4,
         "size":0,
         "categories":"Patatine",
-        "icon":"Resources/images/Patatine/ricche_cheddar.png"
+        "icon":"Resources/images/Patatine/ricche_cheddar.png",
+        "disponibile":true
         }
         ],
         "Drink":[
@@ -89,7 +96,8 @@
                 "price": 1.5,
                 "size": 1,
                 "categories":"Drink",
-                "icon":"Resources/images/Drink/coca-cola.png"
+                "icon":"Resources/images/Drink/coca-cola.png",
+                "disponibile":true
                 },
                 {
                 "name": "CocaCola Zero",
@@ -98,7 +106,8 @@
                 "price": 1.5,
                 "size": 1,
                 "categories":"Drink",
-                "icon":"Resources/images/Drink/coca-cola-zero.png"
+                "icon":"Resources/images/Drink/coca-cola-zero.png",
+                "disponibile":true
                 },
                 {
                 "name": "Fanta",
@@ -107,7 +116,8 @@
                 "price": 1.5,
                 "size": 1,
                 "categories":"Drink",
-                "icon":"Resources/images/Drink/fanta.png"
+                "icon":"Resources/images/Drink/fanta.png",
+                "disponibile":true
                 },
                 {
                 "name": "Sprite",
@@ -116,7 +126,8 @@
                 "price": 1.5,
                 "size": 1,
                 "categories":"Drink",
-                "icon":"Resources/images/Drink/sprite.png"
+                "icon":"Resources/images/Drink/sprite.png",
+                "disponibile":true
                 },
                 {
                 "name": "Tea Lipton",
@@ -125,7 +136,8 @@
                 "price": 1.5,
                 "size": 1,
                 "categories":"Drink",
-                "icon":"Resources/images/Drink/tea-lipton.png"
+                "icon":"Resources/images/Drink/tea-lipton.png",
+                "disponibile":true
                 },
                 {
                 "name": "Acqua Lilia",
@@ -134,7 +146,8 @@
                 "price": 1,
                 "size": 0,
                 "categories":"Drink",
-                "icon":"Resources/images/Drink/acqua-lilla.png"
+                "icon":"Resources/images/Drink/acqua-lilla.png",
+                "disponibile":true
                 }
          ],
          "Caffetteria":[
@@ -145,7 +158,8 @@
          "price": 1.3,
          "size": 0,
          "categories":"Caffetteria",
-         "icon":"Resources/images/Caffe/cappuccino.png"
+         "icon":"Resources/images/Caffe/cappuccino.png",
+         "disponibile":true
          },
          {
          "name": "Caffe espresso",
@@ -155,7 +169,8 @@
          "price": 1,
          "size": 0,
          "categories":"Caffetteria",
-         "icon":"Resources/images/Caffe/caffe-espresso.png"
+         "icon":"Resources/images/Caffe/caffe-espresso.png",
+         "disponibile":true
          },
          {
          "name": "Spremuta Arancia",
@@ -164,7 +179,8 @@
          "price": 1.9,
          "size": 0,
          "categories":"Caffetteria",
-         "icon":"Resources/images/Caffe/spremuta-arancia.png"
+         "icon":"Resources/images/Caffe/spremuta-arancia.png",
+         "disponibile":true
          },
          {
          "name": "Cioccolata",
@@ -173,7 +189,8 @@
          "price": 2.5,
          "size": 0,
          "categories":"Caffetteria",
-         "icon":"Resources/images/Caffe/cioccolata.png"
+         "icon":"Resources/images/Caffe/cioccolata.png",
+         "disponibile":true
          }
          ],
          "Sweet":[
@@ -184,7 +201,8 @@
          "price": 1,
          "size": 0,
          "categories":"Brioche",
-         "icon":"Resources/images/Sweet/Brioche/croissant-vuoto.png"
+         "icon":"Resources/images/Sweet/Brioche/croissant-vuoto.png",
+         "disponibile":true
          },
          {
          "name": "Croissant con Nutella",
@@ -193,7 +211,8 @@
          "price": 1,
          "size": 0,
          "categories":"Brioche",
-         "icon":"Resources/images/Sweet/Brioche/croissant-nutella.png"
+         "icon":"Resources/images/Sweet/Brioche/croissant-nutella.png",
+         "disponibile":true
          },
          {
          "name": "Donut Cioccolato",
@@ -202,7 +221,8 @@
          "price": 1,
          "size": 0,
          "categories":"Donut",
-         "icon":"Resources/images/Sweet/Donut/donut-cioccolato.png"
+         "icon":"Resources/images/Sweet/Donut/donut-cioccolato.png",
+         "disponibile":true
          },
          {
          "name": "Donut marshmallows",
@@ -211,7 +231,8 @@
          "price": 1,
          "size": 0,
          "categories":"Donut",
-         "icon":"Resources/images/Sweet/Donut/donut-marshmallow.png"
+         "icon":"Resources/images/Sweet/Donut/donut-marshmallow.png",
+         "disponibile":true
          },
          {
          "name": "Torta Cioccolato Multi",
@@ -220,7 +241,8 @@
          "price": 2.3,
          "size": 0,
          "categories":"Cake",
-         "icon":"Resources/images/Sweet/Cake/torta-cioccolato-multi.png"
+         "icon":"Resources/images/Sweet/Cake/torta-cioccolato-multi.png",
+         "disponibile":true
          },
          {
          "name": "Cheesecake monterosa",
@@ -229,7 +251,8 @@
          "price": 2.3,
          "size": 0,
          "categories":"Cake",
-         "icon":"Resources/images/Sweet/Cake/cheesecake-monterosa.png"
+         "icon":"Resources/images/Sweet/Cake/cheesecake-monterosa.png",
+         "disponibile":true
          }
          ]
 }

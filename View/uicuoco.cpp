@@ -31,8 +31,9 @@ void UICuoco::orderready(Order*i){
 cuoco->setstateready(i);
 QString ordine=QString::number(i->Get_NumOrder());
 Orditem*order=inprep->findChild<Orditem*>(ordine);
+order->setParent(nullptr);
 inprep->layout()->removeWidget(order);
-delete order;
+//delete order;
 update();
 }
 

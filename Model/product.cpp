@@ -19,7 +19,7 @@ void Product::setDisponibile(bool value)
 }
 
 Product::Product(const QString &c):categorie(c){
-    quantita=1;disponibile=true;
+    quantita=1;
 }
 
 bool Product::operator==(const Product &p){
@@ -83,6 +83,7 @@ void Product::readInfoFromJson(const QJsonObject &json){
         categorie=json["categories"].toString().toLower();
         size=Size(qRound(json["size"].toDouble()));
         icon=json["icon"].toString();
+        disponibile=json["disponibile"].toBool();
 }
 
 void Product::writeInfoInJson(QJsonObject &json) const{

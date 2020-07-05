@@ -13,7 +13,6 @@ void Restorant::LoaddatafromJSON(){/*alloco la memoria per i prodotti e li legge
 
 Restorant::Restorant(){
 LoaddatafromJSON();
-
 }
 
 vector<Product*> Restorant::filterProuduct(const QString &qs){

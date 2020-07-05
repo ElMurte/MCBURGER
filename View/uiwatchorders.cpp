@@ -31,8 +31,9 @@ void UIwatchOrders::addorder(Order* i){
 void UIwatchOrders::orderready(Order *i){
     QString ordine=QString::number(i->Get_NumOrder());
     GenericOrderItem*order=inprep->findChild<GenericOrderItem*>(ordine);
+    order->setParent(nullptr);
     inprep->layout()->removeWidget(order);
-    delete order;
+    //delete order;
     pronti->layout()->addWidget(new GenericOrderItem(controller,i));
     update();
 }
@@ -40,7 +41,8 @@ void UIwatchOrders::orderready(Order *i){
 void UIwatchOrders::orderComplete(Order *i){
     QString ordine=QString::number(i->Get_NumOrder());
     GenericOrderItem*order=pronti->findChild<GenericOrderItem*>(ordine);
+    order->setParent(nullptr);
     pronti->layout()->removeWidget(order);
-    delete order;
+    //delete order;
     update();
 }

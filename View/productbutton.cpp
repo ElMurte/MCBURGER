@@ -9,6 +9,9 @@ ProductButton::ProductButton(Cashier*cass,Product*p, QWidget *parent) : QToolBut
     setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     connect(this,SIGNAL(clicked()),this,SLOT(fakehandleclick()));
+    if(!prodp->getDisponibile())
+    setStyleSheet("color:transparent;background:transparent;");
+
 if(dynamic_cast<Manager*>(cassiere))
     connect(this,SIGNAL(rightClicked()),this,SLOT(onrightClick()));
 }
