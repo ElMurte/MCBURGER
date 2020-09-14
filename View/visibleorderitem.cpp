@@ -9,9 +9,18 @@ VisibleOrderItem::VisibleOrderItem(ControllerR *c, Order *ord, QWidget *parent)
 }
 
 void VisibleOrderItem::showOrder(){
-
+    if ( showOrderUI->layout() != NULL )
+    {
+        QLayoutItem* item;
+        while ( ( item = showOrderUI->layout()->takeAt( 0 ) ) != NULL )
+        {
+            delete item->widget();
+            delete item;
+        }
+    }
     for(auto it=(pord->get_Products()).begin();it!=(pord->get_Products().end());it++){
         showOrderUI->layout()->addWidget(new QLabel(QString::number((*it)->get_Quantita())+"x "+(*it)->Get_Nome()));
     }
     showOrderUI->open();
+    showOrderUI->activateWindow();
 }

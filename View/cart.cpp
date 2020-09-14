@@ -15,7 +15,7 @@ Cart::Cart(Cashier*cas,ControllerR*c,QWidget* parent)
       totale(new QLabel("TOTALE: 0 euro"))
 {
     setObjectName("cart");
-    tabprod->setObjectName("tabcart");
+    tabprod->setObjectName("tabcart");tabprod->setIconSize(QSize(120, 120));
     setLayout(new QVBoxLayout(this));
     QLabel*ql=new QLabel("Carello");
     QWidget*primo=new QWidget(this);primo->setLayout(new QHBoxLayout);
@@ -72,7 +72,6 @@ void Cart::InsertRowProd(Product*it){
             tabprod->setRowHeight(tabprod->rowCount()-1,200);
             QTableWidgetItem*nome=new QTableWidgetItem(QIcon(QPixmap(it->Get_Icon())),it->Get_Nome()+dim);
             QTableWidgetItem*quantita=new QTableWidgetItem("x "+QString::number(it->get_Quantita()));
-
             QTableWidgetItem*totaleparziae=new QTableWidgetItem(QString::number(it->get_Quantita())+"x"+QString::number(it->Get_Price())+" ="+QString::number(it->Get_Price()*it->get_Quantita()));
             nome->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled );
             quantita->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled );
